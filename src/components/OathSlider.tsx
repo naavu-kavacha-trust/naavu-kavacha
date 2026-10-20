@@ -91,7 +91,7 @@ const OathSlider = ({ images }: { images: OathImage[] }) => {
                     type="button"
                     aria-haspopup="dialog"
                     onClick={(e) => setViewer({ index: i, origin: e.currentTarget })}
-                    className="group relative block aspect-[4/5] w-full cursor-zoom-in overflow-hidden rounded-2xl border border-border bg-secondary/40 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                    className="group relative mx-auto block aspect-[4/5] w-[85%] cursor-zoom-in overflow-hidden rounded-2xl border border-border bg-secondary/40 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:w-full"
                   >
                     <SmartImage
                       src={image.src}
@@ -112,7 +112,7 @@ const OathSlider = ({ images }: { images: OathImage[] }) => {
                 <CarouselItem key={i} className={slideClass}>
                   <div
                     aria-hidden="true"
-                    className="flex aspect-[4/5] w-full items-center justify-center rounded-2xl border border-border bg-secondary/50 text-primary/40"
+                    className="mx-auto flex aspect-[4/5] w-[85%] items-center justify-center rounded-2xl border border-border bg-secondary/50 text-primary/40 sm:w-full"
                   >
                     <Leaf className="h-10 w-10" strokeWidth={1.5} />
                   </div>
