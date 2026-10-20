@@ -1,0 +1,17 @@
+# Everyone may crawl everything.
+# A "Sitemap:" line is added here automatically (npm run sitemap, also run before every build)
+# once SITE_URL is set in src/data/siteConfig.ts.
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: *
+Allow: /

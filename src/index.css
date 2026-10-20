@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 33% 96%;
+    --foreground: 150 20% 15%;
+
+    --card: 40 30% 93%;
+    --card-foreground: 150 20% 15%;
+    --team-card: 145 28% 40%;
+
+    --popover: 40 33% 96%;
+    --popover-foreground: 150 20% 15%;
+
+    --primary: 152 45% 28%;
+    --primary-foreground: 40 33% 96%;
+
+    --secondary: 36 30% 85%;
+    --secondary-foreground: 150 20% 15%;
+
+    --muted: 40 20% 90%;
+    --muted-foreground: 150 10% 35%;
+
+    --accent: 100 35% 45%;
+    --accent-foreground: 40 33% 96%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 36 20% 82%;
+    --input: 36 20% 82%;
+    --ring: 152 45% 28%;
+
+    --radius: 0.5rem;
+
+    --forest: 152 45% 28%;
+    --forest-light: 145 30% 42%;
+    --leaf: 100 35% 45%;
+    --earth: 30 30% 45%;
+    --sand: 36 30% 85%;
+    --cream: 40 33% 96%;
+    --bark: 25 25% 25%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* The navbar is fixed, so anchor targets need clearance beneath it. */
+  section[id],
+  footer[id] {
+    scroll-margin-top: 5rem;
+  }
+
+  /* The About page also has a sticky sub-navigation under the navbar (see AboutSubNav), so its anchors
+     need room for both. --navbar-height is measured and published by the Navbar. */
+  .about-page section[id] {
+    scroll-margin-top: calc(var(--navbar-height, 4.5rem) + var(--subnav-height, 3.75rem) + 0.5rem);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply px-6 py-20 md:px-12 lg:px-20 xl:px-32;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground;
+  }
+
+  .section-subtitle {
+    @apply text-lg md:text-xl text-muted-foreground font-body leading-relaxed max-w-2xl;
+  }
+}
+
+/* Hero entrance: plain CSS so the first paint does not wait for the animation library. */
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.hero-rise {
+  animation: hero-rise 0.5s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-rise {
+    animation: none;
+  }
+}
