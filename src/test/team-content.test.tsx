@@ -8,10 +8,10 @@ import { renderPage } from "@/test/test-utils";
  * Expected concise founder and co-founder bios shown on the About page.
  */
 const SUPPLIED_FOUNDER =
-  "Ajay Gowda H is an environmentalist, student, and founder of Naavu Kavacha. He leads grassroots work across Karnataka, including seed conservation, plantation drives, lake and forest clean-ups, and community awareness initiatives. His work engages young people and communities in protecting nature and building a more sustainable future.";
+  "Ajay Gowda H is an environmentalist, student, and founder of Naavu Kavacha. He leads grassroots work across Karnataka, including seed conservation, plantation drives, lake and forest clean-ups, and community awareness initiatives. His work engages young people and communities in protecting nature and building a more sustainable future. Driven by a commitment to community development and youth empowerment, he inspires environmental responsibility and collective action. He envisions sustainable communities where conservation becomes a way of life.";
 
 const SUPPLIED_COFOUNDER =
-  "Nidhi B S is a student, environmentalist, and co-founder of Naavu Kavacha. She supports grassroots initiatives across Karnataka through planning, community outreach, environmental awareness, plantation drives, and clean-ups. Her work helps engage communities in conservation and contributes to a greener, more sustainable future.";
+  "Nidhi B S is a student, environmentalist, and co-founder of Naavu Kavacha. She supports grassroots initiatives across Karnataka through planning, community outreach, environmental awareness, plantation drives, and clean-ups. Her work helps engage communities in conservation and contributes to a greener, more sustainable future. She is dedicated to turning collective action into meaningful change and building communities where conservation becomes a way of life. Her discipline and dedication support the trust’s vision for a sustainable future.";
 
 beforeEach(() => {
   window.history.replaceState(null, "", "/about");
