@@ -94,7 +94,7 @@ const FounderSection = ({ group, members, tone }: FounderSectionProps) => {
                   </div>
                 </div>
 
-                <div className={cn("flex flex-col justify-center px-7 pb-8 md:px-10 md:py-10 lg:px-14", portraitRight && "md:order-1")}>
+                <div className={cn("flex flex-col justify-center px-7 pt-8 pb-8 md:px-10 md:py-10 lg:px-14", portraitRight && "md:order-1")}>
                   <h3 className="font-sans text-3xl font-bold leading-tight text-foreground md:text-4xl">{person.name}</h3>
                   <p className="mt-3 inline-flex w-fit rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary md:text-base">{person.role}</p>
 

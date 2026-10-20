@@ -52,10 +52,7 @@ export const teamMembers: TeamMember[] = [
     name: "Ajay Gowda H",
     role: "Founder",
     photo: "ajay-gowda-h.png",
-    // Supplied by the site owner, word for word. Only the paragraph break (a blank line) was added.
-    bio:
-      "Ajay Gowda H is an environmentalist, student and the founder of Naavu Kavacha, driven by a deep commitment to environmental conservation, community development, and youth empowerment. Through grassroots initiatives across Karnataka, he has been working to inspire environmental responsibility and turn collective action into meaningful change.\n\n" +
-      "From seed conservation and plantation drives to lake and forest clean-ups, his efforts focus on engaging young people and communities in protecting nature. With a vision to build sustainable communities where conservation becomes a way of life, he continues to lead initiatives that nurture environmental awareness, encourage community participation, and contribute towards a greener and more sustainable future.",
+    bio: "Ajay Gowda H is an environmentalist, student, and founder of Naavu Kavacha. He leads grassroots work across Karnataka, including seed conservation, plantation drives, lake and forest clean-ups, and community awareness initiatives. His work engages young people and communities in protecting nature and building a more sustainable future.",
     order: 1,
     // TODO(client): confirm in writing that Ajay agrees to his name and bio being published (and, if he is under 18,
     // that a parent or guardian does). Set `consent: false` to hide him from the site at once.
@@ -68,10 +65,7 @@ export const teamMembers: TeamMember[] = [
     name: "Nidhi B S",
     role: "Co-Founder",
     photo: "nidhi-b-s.png",
-    // Supplied by the site owner, word for word. Only the paragraph break (a blank line) was added.
-    bio:
-      "Nidhi B S is a student, environmentalist, and the co-founder of Naavu Kavacha, driven by a deep commitment to environmental conservation, community development, and youth empowerment. Through her involvement in grassroots initiatives across Karnataka, she contributes to inspiring environmental responsibility and turning collective action into meaningful change.\n\n" +
-      "With strengths in planning, community outreach, and engaging people, she plays an active role in initiatives ranging from environmental awareness programmes and plantation drives to lake and forest clean-ups. Guided by her discipline and dedication, she shares the vision of building sustainable communities where conservation becomes a way of life, contributing towards a greener and more sustainable future.",
+    bio: "Nidhi B S is a student, environmentalist, and co-founder of Naavu Kavacha. She supports grassroots initiatives across Karnataka through planning, community outreach, environmental awareness, plantation drives, and clean-ups. Her work helps engage communities in conservation and contributes to a greener, more sustainable future.",
     order: 1,
     // TODO(client): confirm in writing that Nidhi agrees to her name and bio being published (and, if she is under 18,
     // that a parent or guardian does). Set `consent: false` to hide her from the site at once.

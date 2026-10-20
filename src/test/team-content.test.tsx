@@ -5,15 +5,13 @@ import { getCoFounders, getCoreTeam, getFounders, paragraphsOf } from "@/data/te
 import { renderPage } from "@/test/test-utils";
 
 /**
- * The wording the site owner supplied for the founder and co-founder, exactly as they sent it.
- * If someone edits the words in src/data/team.ts, this fails, so wording is never changed by accident.
- * (If the owner sends new wording, update it here too.)
+ * Expected concise founder and co-founder bios shown on the About page.
  */
 const SUPPLIED_FOUNDER =
-  "Ajay Gowda H is an environmentalist, student and the founder of Naavu Kavacha, driven by a deep commitment to environmental conservation, community development, and youth empowerment. Through grassroots initiatives across Karnataka, he has been working to inspire environmental responsibility and turn collective action into meaningful change. From seed conservation and plantation drives to lake and forest clean-ups, his efforts focus on engaging young people and communities in protecting nature. With a vision to build sustainable communities where conservation becomes a way of life, Ajay continues to lead initiatives that nurture environmental awareness, encourage community participation, and contribute towards a greener and more sustainable future.";
+  "Ajay Gowda H is an environmentalist, student, and founder of Naavu Kavacha. He leads grassroots work across Karnataka, including seed conservation, plantation drives, lake and forest clean-ups, and community awareness initiatives. His work engages young people and communities in protecting nature and building a more sustainable future.";
 
 const SUPPLIED_COFOUNDER =
-  "Nidhi B S is a student, environmentalist, and the co-founder of Naavu Kavacha, driven by a deep commitment to environmental conservation, community development, and youth empowerment. Through her involvement in grassroots initiatives across Karnataka, she contributes to inspiring environmental responsibility and turning collective action into meaningful change. With strengths in planning, community outreach, and engaging people, she plays an active role in initiatives ranging from environmental awareness programmes and plantation drives to lake and forest clean-ups. Guided by her discipline and dedication, Nidhi shares the vision of building sustainable communities where conservation becomes a way of life, contributing towards a greener and more sustainable future.";
+  "Nidhi B S is a student, environmentalist, and co-founder of Naavu Kavacha. She supports grassroots initiatives across Karnataka through planning, community outreach, environmental awareness, plantation drives, and clean-ups. Her work helps engage communities in conservation and contributes to a greener, more sustainable future.";
 
 beforeEach(() => {
   window.history.replaceState(null, "", "/about");
@@ -33,11 +31,11 @@ describe("the supplied founder and co-founder", () => {
     expect(getCoreTeam()).toEqual([]);
   });
 
-  it("the wording is exactly what was supplied; the only change is a paragraph break", () => {
+  it("keeps both bios concise and in a single paragraph", () => {
     expect(paragraphsOf(getFounders()[0].bio).join(" ")).toBe(SUPPLIED_FOUNDER);
     expect(paragraphsOf(getCoFounders()[0].bio).join(" ")).toBe(SUPPLIED_COFOUNDER);
-    expect(paragraphsOf(getFounders()[0].bio)).toHaveLength(2);
-    expect(paragraphsOf(getCoFounders()[0].bio)).toHaveLength(2);
+    expect(paragraphsOf(getFounders()[0].bio)).toHaveLength(1);
+    expect(paragraphsOf(getCoFounders()[0].bio)).toHaveLength(1);
   });
 
   it("nothing was added that was not supplied: no message, quote, social links or contact details", () => {
@@ -57,7 +55,7 @@ describe("the supplied founder and co-founder", () => {
 });
 
 describe("how they appear on the About page", () => {
-  it("each has a heading, name, role and both paragraphs, in the right section", () => {
+  it("each has a heading, name, role and one concise bio paragraph, in the right section", () => {
     const { container } = renderPage(<AboutPage />);
     for (const [id, heading, name, role, supplied] of [
       ["founder", "Our Founder", "Ajay Gowda H", "Founder", SUPPLIED_FOUNDER],
@@ -68,7 +66,7 @@ describe("how they appear on the About page", () => {
       expect(section.getByRole("heading", { level: 3, name })).toBeInTheDocument();
       expect(section.getByText(role)).toBeInTheDocument();
       const paragraphs = Array.from((container.querySelector(`#${id}`) as HTMLElement).querySelectorAll(".max-w-prose p")).map((p) => p.textContent);
-      expect(paragraphs).toHaveLength(2);
+      expect(paragraphs).toHaveLength(1);
       expect(paragraphs.join(" ")).toBe(supplied);
     }
   });
