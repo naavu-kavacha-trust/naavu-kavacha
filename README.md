@@ -68,38 +68,3 @@ After choosing the production domain, set `SITE_URL` in `src/data/siteConfig.ts`
 
 To update page text or team details, edit the matching file in `src/data/`. For gallery photos, add image files to `src/assets/gallery/`; add captions, alt text, or categories in `src/data/gallery.ts` when needed. See [MISSING_ASSETS.md](MISSING_ASSETS.md) for outstanding asset needs and [CHANGES.md](CHANGES.md) for the project history.
 
-## Publish this project to GitHub
-
-Create a **new empty repository** on GitHub. Do not initialize it with a README, license, or `.gitignore`, because those files already exist in this project, including this repository's All Rights Reserved notice. In a terminal, from the project root, run:
-
-```bash
-git init -b main
-git add .
-git status
-git commit -m "Prepare Naavu Kavacha website"
-git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
-git push -u origin main
-```
-
-Replace the remote URL with the one shown by GitHub. Review `git status` before committing and make sure no `.env` files or other private credentials are staged. `.env.example` is safe to commit; local `.env` files are ignored.
-
-## Deploy to Vercel
-
-1. Push the project to GitHub using the steps above.
-2. Sign in to [Vercel](https://vercel.com/), choose **Add New → Project**, and import the GitHub repository. Authorize Vercel to access it if prompted.
-3. Set the project root to the repository root. Vercel should detect Vite; confirm these settings if they are not filled automatically:
-   - Framework preset: **Vite**
-   - Build command: `npm run build`
-   - Output directory: `dist`
-   - Install command: leave Vercel's detected npm command in place.
-4. If the volunteer form should post to an endpoint, add `VITE_VOLUNTEER_ENDPOINT` in the project's environment settings. Choose the environments where it should apply, then redeploy. Leave it unset to use the email fallback.
-5. Select **Deploy**. After deployment, open the site and check `/`, `/about`, `/our-work`, `/gallery`, and `/volunteer`, including direct refreshes on those routes. The included `vercel.json` rewrite sends app routes to `index.html`.
-6. Once you know the production URL, update `SITE_URL` in `src/data/siteConfig.ts` (and the absolute social preview URL in `index.html` if needed), commit, and push. Vercel will build and deploy the new commit automatically.
-
-After connecting the repository, pushes and pull requests can trigger Vercel deployments. The production branch is typically `main`; preview deployments let you review changes before merging.
-
-## Deployment references
-
-- [Vercel: Deploying Git repositories](https://vercel.com/docs/git)
-- [Vercel: Vite](https://vercel.com/docs/frameworks/frontend/vite)
-- [GitHub Docs: Add locally hosted code to GitHub](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github)
