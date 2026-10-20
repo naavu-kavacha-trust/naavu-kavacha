@@ -18,6 +18,10 @@ import cleanupDriveImg from "@/assets/activities/cleanup-drive.jpg";
 import cleaningImg from "@/assets/cleaning.jpg";
 import saplingImg from "@/assets/sapling.jpg";
 import communityImg from "@/assets/community.jpg";
+import growingGaneshaGalleryImg from "@/assets/gallery/01.jpg";
+import cleanupGalleryImg from "@/assets/gallery/03.jpg";
+import awarenessGalleryImg from "@/assets/gallery/04.jpg";
+import seedballGalleryImg from "@/assets/gallery/06.jpg";
 import { formatStatById } from "@/data/impact";
 import type { VolunteerInterest } from "@/data/interests";
 import { BookOpen, Bird, Circle, Recycle, Sparkles, Sprout, TreePine, Users, type LucideIcon } from "lucide-react";
@@ -114,18 +118,19 @@ function photosFor(id: string): { url: string; file: string }[] {
 
 /**
  * Explicit photos first (they carry hand-written alt text), then any dropped-in
- * files. The cover is the first of these unless `cover` says otherwise.
+ * files, followed by additional photos already used in the public gallery.
  */
 function buildImages(
   id: string,
   title: string,
   explicit: ActivityImage[] = [],
+  additional: ActivityImage[] = [],
 ): { images: ActivityImage[]; cover: string } {
   const extra = photosFor(id).map(({ url, file }, i) => ({
     src: url,
     alt: PHOTO_ALTS[file] ?? `${title}: Naavu Kavacha photo ${i + 1}`,
   }));
-  const images = [...explicit, ...extra];
+  const images = [...explicit, ...extra, ...additional];
   return { images, cover: images[0]?.src ?? "" };
 }
 
@@ -153,12 +158,22 @@ const SEED_COLLECTION_SCHOOLS = [
 
 // --- Activities ----------------------------------------------------------------
 
-const seedballs = buildImages("seedball-dispersal", "Seedball Dispersal", [
-  {
-    src: seedballPreparationImg,
-    alt: "Rows of freshly made seedballs drying on plastic sheets",
-  },
-]);
+const seedballs = buildImages(
+  "seedball-dispersal",
+  "Seedball Dispersal",
+  [
+    {
+      src: seedballPreparationImg,
+      alt: "Rows of freshly made seedballs drying on plastic sheets",
+    },
+  ],
+  [
+    {
+      src: seedballGalleryImg,
+      alt: "Students and an adult prepare seedballs together indoors",
+    },
+  ],
+);
 const saplings = buildImages("sapling-plantation", "Sapling Plantation", [
   {
     src: saplingImg,
@@ -171,20 +186,40 @@ const community = buildImages("community-activities", "Community Activities", [
     alt: "Naavu Kavacha volunteers in high-visibility vests posing near collected waste",
   },
 ]);
-const cleanUp = buildImages("clean-up-drive", "Clean-Up Drive", [
+const cleanUp = buildImages(
+  "clean-up-drive",
+  "Clean-Up Drive",
+  [
+    {
+      src: cleanupDriveImg,
+      alt: "Naavu Kavacha volunteers wearing gloves beside green bags of collected waste",
+    },
+    {
+      src: cleaningImg,
+      alt: "Volunteers lined up along a street next to bags of collected waste",
+    },
+  ],
+  [
+    {
+      src: cleanupGalleryImg,
+      alt: "Volunteers gather beside bags of collected waste after a community clean-up",
+    },
+  ],
+);
+const ganesha = buildImages("growing-ganesha", "Growing Ganesha", [], [
   {
-    src: cleanupDriveImg,
-    alt: "Naavu Kavacha volunteers wearing gloves beside green bags of collected waste",
-  },
-  {
-    src: cleaningImg,
-    alt: "Volunteers lined up along a street next to bags of collected waste",
+    src: growingGaneshaGalleryImg,
+    alt: "Students display the clay Ganesha idols they made",
   },
 ]);
-const ganesha = buildImages("growing-ganesha", "Growing Ganesha");
 const seedCollection = buildImages("seed-collection", "Seed Collection");
 const birdFeeders = buildImages("bird-feeders", "Bamboo Bird Feeders");
-const awareness = buildImages("awareness", "School Awareness Programs");
+const awareness = buildImages("awareness", "School Awareness Programs", [], [
+  {
+    src: awarenessGalleryImg,
+    alt: "Students gather in rows for an outdoor environmental awareness session",
+  },
+]);
 
 export const activities: Activity[] = [
   {
