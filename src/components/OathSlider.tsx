@@ -17,11 +17,11 @@ import { cn } from "@/lib/utils";
 // The viewer is only needed once a photo is tapped; it loads in its own chunk after first paint.
 const Lightbox = lazy(() => import("@/components/Lightbox"));
 
-const AUTOPLAY_DELAY_MS = 4500;
+const AUTOPLAY_DELAY_MS = 3500;
 /** Shown instead of photos until the first ones are added (see MISSING_ASSETS.md). */
 const PLACEHOLDER_COUNT = 3;
 
-const slideClass = "basis-[85%] pl-4 sm:basis-1/2 lg:basis-1/3";
+const slideClass = "basis-full pl-4 sm:basis-1/2 lg:basis-1/3";
 
 /**
  * Swipeable photo slider: one photo (with a peek of the next) on phones, two on
