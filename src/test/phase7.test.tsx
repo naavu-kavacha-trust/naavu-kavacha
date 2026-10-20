@@ -42,14 +42,14 @@ describe("oath data", () => {
 });
 
 describe("Special Moments section", () => {
-  it("keeps the Waterman story and adds the Oath block under it, with the copy and a CTA", () => {
+  it("keeps the Waterman story and adds the Oath block under it without a CTA", () => {
     renderPage(<GalleryPage />);
     const section = document.getElementById("special-moments")!;
     expect(within(section).getByRole("heading", { name: "Meeting the Waterman of India" })).toBeTruthy();
     const oath = within(section).getByRole("heading", { name: "Oath for Change – A Living Milestone" });
     expect(oath).toBeTruthy();
     expect(section.textContent).toContain("each celebrity signature strengthened the vision");
-    expect(within(section).getByRole("link", { name: "Take the oath with us" }).getAttribute("href")).toBe("/volunteer");
+    expect(within(section).queryByRole("link", { name: "Take the oath with us" })).toBeNull();
     expect(section.querySelector("hr")).not.toBeNull();
   });
 

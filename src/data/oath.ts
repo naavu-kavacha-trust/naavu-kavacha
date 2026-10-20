@@ -20,7 +20,6 @@ export const oathCopy = {
     '"Oath for Change – A Living Milestone" became even more meaningful as respected personalities and public figures added their signatures to the movement, turning every autograph into a symbol of responsibility and hope.',
     "From inspiring conversations to shared commitments for society and the environment, each celebrity signature strengthened the vision that change begins with an oath — and lives on through action.",
   ],
-  cta: "Take the oath with us",
 } as const;
 
 /**

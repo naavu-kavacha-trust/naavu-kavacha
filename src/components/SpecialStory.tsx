@@ -1,11 +1,10 @@
-import { Link } from "react-router-dom";
 import { m as motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import watermanImg from "@/assets/waterman.jpg";
 import OathSlider from "@/components/OathSlider";
 import SmartImage from "@/components/ui/SmartImage";
 import { oathCopy, oathImages } from "@/data/oath";
-import { SECTION_IDS, ROUTES } from "@/data/siteConfig";
+import { SECTION_IDS } from "@/data/siteConfig";
 
 /** Special Moments: the Waterman of India story, then the Oath for Change milestone. */
 const SpecialStory = () => {
@@ -63,15 +62,6 @@ const SpecialStory = () => {
           </div>
 
           <OathSlider images={oathImages} />
-
-          <div className="mt-10 text-center">
-            <Link
-              to={ROUTES.volunteer}
-              className="inline-flex min-h-12 items-center rounded-full bg-primary px-8 py-3.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-            >
-              {oathCopy.cta}
-            </Link>
-          </div>
         </motion.div>
       </div>
     </section>
