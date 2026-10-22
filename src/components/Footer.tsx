@@ -43,7 +43,7 @@ const Footer = () => {
               </p>
             </div>
 
-            <ul className="mt-6 flex items-center gap-2" aria-label="Social media">
+            <ul className="-ml-2 mt-6 flex items-center gap-2" aria-label="Social media">
               <li>
                 <a
                   href={INSTAGRAM_URL}
@@ -69,7 +69,7 @@ const Footer = () => {
                 </a>
               </li>
             </ul>
-            <div className="mt-16 flex flex-wrap items-center gap-x-6 gap-y-1">
+            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-1">
               <ContactDialog subject="General Inquiry">
                 <button type="button" className={linkClass}>
                   Email Us
@@ -78,7 +78,7 @@ const Footer = () => {
               <button
                 type="button"
                 onClick={() => window.scrollTo({ top: 0 })}
-                className={`${linkClass} gap-1.5`}
+                className={`${linkClass} gap-1.5 rounded-xl border border-sand/25 bg-sand/5 px-4 hover:border-leaf/60 hover:bg-sand/10`}
               >
                 Back to top
                 <ArrowUp className="h-4 w-4" aria-hidden="true" />
