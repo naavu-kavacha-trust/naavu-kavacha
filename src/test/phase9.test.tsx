@@ -82,10 +82,10 @@ describe("index.html", () => {
     const organization = JSON.parse(jsonLd!);
     expect(organization).toMatchObject({
       "@context": "https://schema.org",
-      "@type": "Organization",
+      "@type": "NGO",
       name: "Naavu Kavacha Trust",
       url: "https://naavu-kavacha.vercel.app",
-      areaServed: "Karnataka",
+      areaServed: ["Bengaluru", "Karnataka"],
       sameAs: [
         "https://www.instagram.com/naavu_kavacha",
         "https://www.linkedin.com/company/naavukavacha-trust",
