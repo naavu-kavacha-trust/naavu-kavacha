@@ -1,6 +1,7 @@
 import { m as motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import watermanImg from "@/assets/waterman.jpg";
+import waterman384 from "@/assets/optimized/waterman-384.webp";
+import waterman768 from "@/assets/optimized/waterman-768.webp";
 import OathSlider from "@/components/OathSlider";
 import SmartImage from "@/components/ui/SmartImage";
 import { oathCopy, oathImages } from "@/data/oath";
@@ -25,7 +26,9 @@ const SpecialStory = () => {
           <h2 className="section-title mb-8">Meeting the Waterman of India</h2>
           <div className="max-w-md mx-auto mb-8 rounded-2xl overflow-hidden border border-border shadow-sm">
             <SmartImage
-              src={watermanImg}
+              src={waterman384}
+              srcSet={`${waterman384} 384w, ${waterman768} 768w`}
+              sizes="(max-width: 511px) calc(100vw - 3rem), 448px"
               alt="Naavu Kavacha team with Dr. Rajendra Singh, the Waterman of India"
               width={853}
               height={916}

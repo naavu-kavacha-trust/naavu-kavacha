@@ -10,6 +10,7 @@ import {
   initialsOf,
   paragraphsOf,
   resolveTeamPhoto,
+  resolveTeamPhotoSources,
   selectTeam,
   teamMembers,
   type TeamMember,
@@ -141,6 +142,18 @@ describe("photo lookup", () => {
   });
 
   it("uses the `photo` file name when one is given", () => {
+    expect(resolveTeamPhoto(person({ id: "someone", photo: "custom-name.png" }), files)).toBe("/a/custom.png");
+  });
+
+  it("uses responsive WebP variants for display while preserving the original", () => {
+    const variants = {
+      "/src/assets/optimized/team/custom-name-png-384.webp": "/optimized/custom-384.webp",
+      "/src/assets/optimized/team/custom-name-png-768.webp": "/optimized/custom-768.webp",
+    };
+    expect(resolveTeamPhotoSources(person({ id: "someone", photo: "custom-name.png" }), files, variants)).toEqual({
+      src: "/optimized/custom-384.webp",
+      srcSet: "/optimized/custom-384.webp 384w, /optimized/custom-768.webp 768w",
+    });
     expect(resolveTeamPhoto(person({ id: "someone", photo: "custom-name.png" }), files)).toBe("/a/custom.png");
   });
 

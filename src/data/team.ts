@@ -167,13 +167,49 @@ const photoFiles = import.meta.glob("/src/assets/team/*.{jpg,jpeg,png,webp}", {
   import: "default",
 }) as Record<string, string>;
 
-/** The person's photo, or null when there is none (the initials are shown then). */
-export function resolveTeamPhoto(member: TeamMember, files: Record<string, string> = photoFiles): string | null {
+const optimizedPhotoFiles = import.meta.glob("/src/assets/optimized/team/*.webp", {
+  eager: true,
+  query: "?url",
+  import: "default",
+}) as Record<string, string>;
+
+export interface TeamPhotoSources {
+  src: string;
+  srcSet?: string;
+}
+
+function photoPath(member: TeamMember, files: Record<string, string>): string | undefined {
   const nameOf = (path: string) => path.split("/").pop() ?? "";
-  const key = Object.keys(files).find((path) =>
+  return Object.keys(files).find((path) =>
     member.photo ? nameOf(path) === member.photo : nameOf(path).replace(/\.[^.]+$/, "") === member.id,
   );
+}
+
+/** The person's photo, or null when there is none (the initials are shown then). */
+export function resolveTeamPhoto(member: TeamMember, files: Record<string, string> = photoFiles): string | null {
+  const key = photoPath(member, files);
   return key ? files[key] : null;
+}
+
+/** Responsive card/section photo; full-resolution originals remain available through resolveTeamPhoto. */
+export function resolveTeamPhotoSources(
+  member: TeamMember,
+  files: Record<string, string> = photoFiles,
+  optimized: Record<string, string> = optimizedPhotoFiles,
+): TeamPhotoSources | null {
+  const originalPath = photoPath(member, files);
+  if (!originalPath) return null;
+
+  const originalName = originalPath.split("/").pop() ?? "";
+  const variantName = originalName.replace(/\./g, "-");
+  const small = optimized[`/src/assets/optimized/team/${variantName}-384.webp`];
+  const large = optimized[`/src/assets/optimized/team/${variantName}-768.webp`];
+  const original = files[originalPath];
+
+  return {
+    src: small ?? original,
+    ...(small && large ? { srcSet: `${small} 384w, ${large} 768w` } : {}),
+  };
 }
 
 /** Social links that are safe to show: https only, so nothing like "javascript:" can ever be rendered. */

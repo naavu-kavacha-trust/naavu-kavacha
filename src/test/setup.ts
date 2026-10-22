@@ -17,7 +17,15 @@ Object.defineProperty(window, "matchMedia", {
 
 // jsdom lacks these browser APIs, which framer-motion, scroll-spy and anchors rely on.
 class IntersectionObserverStub {
-  observe() {}
+  constructor(
+    private readonly callback: IntersectionObserverCallback,
+    private readonly options?: IntersectionObserverInit,
+  ) {}
+  observe(target: Element) {
+    if (this.options?.rootMargin === "300px 0px") {
+      this.callback([{ isIntersecting: true, target } as IntersectionObserverEntry], this as unknown as IntersectionObserver);
+    }
+  }
   unobserve() {}
   disconnect() {}
   takeRecords() {

@@ -24,6 +24,17 @@ describe("oath data", () => {
     expect(images.every((i) => i.caption === undefined)).toBe(true);
   });
 
+  it("uses responsive copies for display and keeps full-size image URLs for the viewer", () => {
+    const images = buildOathImages({
+      "/src/assets/oath/01.jpg": "/full/01.jpg",
+    });
+    expect(images[0]).toMatchObject({
+      src: "/full/01.jpg",
+      displaySrc: expect.stringContaining("01-384.webp"),
+      displaySrcSet: expect.stringContaining("01-768.webp 768w"),
+    });
+  });
+
   it("uses client-supplied captions and alt text only when given", () => {
     const images = buildOathImages(
       { "/src/assets/oath/01.jpg": "/one.jpg", "/src/assets/oath/02.jpg": "/two.jpg" },

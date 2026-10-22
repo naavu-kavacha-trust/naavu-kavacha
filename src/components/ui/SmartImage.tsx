@@ -2,6 +2,42 @@ import { useEffect, useRef, useState, type ImgHTMLAttributes } from "react";
 import { Leaf } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+const observedImages = new Map<Element, () => void>();
+let nearViewportObserver: IntersectionObserver | null = null;
+
+function observeNearViewport(element: Element, onVisible: () => void): (() => void) | null {
+  if (typeof IntersectionObserver === "undefined") return null;
+
+  nearViewportObserver ??= new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        const load = observedImages.get(entry.target);
+        if (!load) continue;
+        observedImages.delete(entry.target);
+        nearViewportObserver?.unobserve(entry.target);
+        load();
+      }
+      if (observedImages.size === 0) {
+        nearViewportObserver?.disconnect();
+        nearViewportObserver = null;
+      }
+    },
+    { rootMargin: "300px 0px" },
+  );
+  observedImages.set(element, onVisible);
+  nearViewportObserver.observe(element);
+
+  return () => {
+    observedImages.delete(element);
+    nearViewportObserver?.unobserve(element);
+    if (observedImages.size === 0) {
+      nearViewportObserver?.disconnect();
+      nearViewportObserver = null;
+    }
+  };
+}
+
 interface SmartImageProps
   extends Omit<ImgHTMLAttributes<HTMLImageElement>, "src" | "alt" | "loading"> {
   src: string;
@@ -9,6 +45,8 @@ interface SmartImageProps
   alt: string;
   /** Above-the-fold images: loads eagerly instead of lazily. */
   priority?: boolean;
+  /** Near-the-top images: load eagerly without asking the browser to prioritize them. */
+  eager?: boolean;
   /** Intrinsic dimensions. Pass both so the browser reserves space (no layout shift). */
   width?: number;
   height?: number;
@@ -24,6 +62,8 @@ const SmartImage = ({
   src,
   alt,
   priority = false,
+  eager = false,
+  srcSet,
   width,
   height,
   className,
@@ -34,20 +74,49 @@ const SmartImage = ({
 }: SmartImageProps) => {
   const [status, setStatus] = useState<"loading" | "loaded" | "error">(src ? "loading" : "error");
   const imgRef = useRef<HTMLImageElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const [requestedSrc, setRequestedSrc] = useState<string | null>(() => (priority || eager ? src : null));
+  const [nativeLazyFallback, setNativeLazyFallback] = useState(false);
+  const shouldLoad = Boolean(src) && (priority || eager || requestedSrc === src || nativeLazyFallback);
 
-  // Reset when the source changes (e.g. carousels or lightboxes reusing the component).
-  // An empty src means "no photo yet" and shows the placeholder straight away.
+  // Reset the visual state when a carousel or lightbox reuses this image for another photo.
   useEffect(() => {
     setStatus(src ? "loading" : "error");
   }, [src]);
 
+  // Start the request shortly before the image enters view. The native lazy-loading
+  // attribute remains the fallback on browsers without IntersectionObserver.
+  useEffect(() => {
+    if (!src) return;
+    if (priority || eager) {
+      setRequestedSrc(src);
+      return;
+    }
+
+    const wrapper = wrapperRef.current;
+    if (typeof IntersectionObserver === "undefined") {
+      setNativeLazyFallback(true);
+      return;
+    }
+    if (!wrapper) {
+      return;
+    }
+
+    const stopObserving = observeNearViewport(wrapper, () => setRequestedSrc(src));
+    if (!stopObserving) {
+      setNativeLazyFallback(true);
+      return;
+    }
+    return stopObserving;
+  }, [src, priority, eager]);
+
   // A cached image can finish loading before React attaches onLoad.
   useEffect(() => {
     const img = imgRef.current;
-    if (img && img.complete) {
+    if (shouldLoad && img?.complete) {
       setStatus(img.naturalWidth > 0 ? "loaded" : "error");
     }
-  }, [src]);
+  }, [src, shouldLoad]);
 
   const aspectRatio = width && height ? `${width} / ${height}` : undefined;
 
@@ -68,7 +137,7 @@ const SmartImage = ({
   }
 
   return (
-    <div className={cn("relative h-full w-full overflow-hidden", wrapperClassName)}>
+    <div ref={wrapperRef} className={cn("relative h-full w-full overflow-hidden", wrapperClassName)}>
       {status === "loading" && (
         <div
           aria-hidden="true"
@@ -78,11 +147,12 @@ const SmartImage = ({
       )}
       <img
         ref={imgRef}
-        src={src}
+        src={shouldLoad ? src : undefined}
+        srcSet={shouldLoad ? srcSet : undefined}
         alt={alt}
         width={width}
         height={height}
-        loading={priority ? "eager" : "lazy"}
+        loading={nativeLazyFallback && !priority && !eager ? "lazy" : shouldLoad ? "eager" : "lazy"}
         decoding="async"
         {...(priority ? ({ fetchpriority: "high" } as Record<string, string>) : {})}
         onLoad={(e) => {

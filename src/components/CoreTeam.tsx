@@ -11,7 +11,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { SECTION_IDS } from "@/data/siteConfig";
-import { GROUP_COPY, getCoreTeam, getSafeSocial, paragraphsOf, resolveTeamPhoto, selectTeam, type TeamMember } from "@/data/team";
+import { GROUP_COPY, getCoreTeam, getSafeSocial, paragraphsOf, resolveTeamPhoto, resolveTeamPhotoSources, selectTeam, type TeamMember } from "@/data/team";
 import { cn } from "@/lib/utils";
 import type { SectionTone } from "@/components/FounderSection";
 
@@ -85,12 +85,15 @@ const CoreTeam = ({ members, tone }: CoreTeamProps) => {
         <ul className="mx-auto grid max-w-6xl grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
           {people.map((person, i) => {
             const photo = resolveTeamPhoto(person);
+            const displayPhoto = resolveTeamPhotoSources(person);
             const card = (
               <div className="flex min-h-[132px] items-center gap-4 overflow-hidden rounded-xl border border-primary-foreground/25 bg-team-card pr-5 shadow-sm transition-colors group-hover:border-primary-foreground/45">
                 <div className="flex h-32 w-[136px] shrink-0 items-end justify-center overflow-hidden bg-team-card">
                   {photo ? (
                     <SmartImage
-                      src={photo}
+                      src={displayPhoto?.src ?? photo}
+                      srcSet={displayPhoto?.srcSet}
+                      sizes="136px"
                       alt=""
                       width={400}
                       height={650}

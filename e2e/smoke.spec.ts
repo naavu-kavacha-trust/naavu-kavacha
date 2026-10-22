@@ -44,6 +44,34 @@ test.describe("pages and old links", () => {
   });
 });
 
+test.describe("responsive image loading", () => {
+  for (const path of ["/", "/about", "/our-work", "/gallery", "/volunteer"]) {
+    test(`${path} loads images near the initial viewport`, async ({ page }) => {
+      await page.goto(path);
+      await expect
+        .poll(() =>
+          page.locator("main img").evaluateAll((images) =>
+            images.some((image) => image.getAttribute("src") && image.complete && image.naturalWidth > 0),
+          ),
+        )
+        .toBe(true);
+    });
+  }
+
+  test("keeps distant About team portraits deferred until the visitor reaches them", async ({ page }) => {
+    await page.goto("/about");
+    const portrait = page.locator("#team img").first();
+    await expect(portrait).toHaveAttribute("alt", "");
+    expect(await portrait.getAttribute("src")).toBeNull();
+
+    await portrait.scrollIntoViewIfNeeded();
+    await expect
+      .poll(() => portrait.evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 0))
+      .toBe(true);
+    expect(await portrait.getAttribute("srcset")).toContain("384w");
+  });
+});
+
 test.describe("mobile menu", () => {
   test.use({ viewport: { width: 390, height: 844 }, hasTouch: true });
 
@@ -98,10 +126,14 @@ test.describe("lightbox", () => {
     const count = await thumbs.count();
     expect(count).toBeGreaterThan(0);
 
+    const thumbnailSrc = await thumbs.first().locator("img").getAttribute("src");
     await thumbs.first().click();
     const viewer = page.getByRole("dialog");
     await expect(viewer).toBeVisible();
     await expect(viewer.getByText(new RegExp(`^1 / ${count}$`))).toBeVisible();
+    const fullSizeSrc = await viewer.locator("img").getAttribute("src");
+    expect(fullSizeSrc).not.toBe(thumbnailSrc);
+    expect(fullSizeSrc).not.toContain("optimized/gallery");
 
     if (count > 1) {
       await page.keyboard.press("ArrowRight");

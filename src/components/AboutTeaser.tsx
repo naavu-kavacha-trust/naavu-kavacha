@@ -3,6 +3,7 @@ import { m as motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import logo400 from "@/assets/optimized/logo-about-400.webp";
 import logo800 from "@/assets/optimized/logo-about-800.webp";
+import SmartImage from "@/components/ui/SmartImage";
 import { getStoryTeaser } from "@/data/about";
 import { formatStat, getHeadlineStats } from "@/data/impact";
 import { ROUTES, SECTION_IDS } from "@/data/siteConfig";
@@ -52,15 +53,14 @@ const AboutTeaser = () => {
           className="relative"
         >
           <div className="mx-auto aspect-square w-full max-w-[400px] overflow-hidden rounded-2xl bg-black shadow-xl">
-            <img
+            <SmartImage
               src={logo400}
               srcSet={`${logo400} 400w, ${logo800} 800w`}
               sizes="(max-width: 767px) 90vw, 400px"
               alt="Naavu Kavacha logo"
               width={500}
               height={499}
-              loading="lazy"
-              decoding="async"
+              eager={inView}
               className="h-full w-full object-contain"
             />
           </div>

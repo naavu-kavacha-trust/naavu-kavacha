@@ -4,7 +4,8 @@ import { Leaf } from "lucide-react";
 import DeferredContactDialog from "@/components/DeferredContactDialog";
 import SmartImage from "@/components/ui/SmartImage";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
-import teamImg from "@/assets/gallery/team-tunturu.jpg";
+import teamPhoto384 from "@/assets/optimized/gallery/team-tunturu-384.webp";
+import teamPhoto768 from "@/assets/optimized/gallery/team-tunturu-768.webp";
 import { SECTION_IDS, WHATSAPP_CHANNEL_URL } from "@/data/siteConfig";
 
 // Form libraries (react-hook-form, zod) load in their own chunk after the first paint.
@@ -45,7 +46,9 @@ const JoinUs = () => {
             <div className="overflow-hidden rounded-2xl shadow-xl">
               <div className="aspect-[4/3] w-full">
                 <SmartImage
-                  src={teamImg}
+                  src={teamPhoto384}
+                  srcSet={`${teamPhoto384} 384w, ${teamPhoto768} 768w`}
+                  sizes="(max-width: 1023px) calc(100vw - 3rem), (min-width: 1280px) 490px, 40vw"
                   alt="Five Naavu Kavacha team members standing on the steps of the Tunturu Mahiti Kendra building"
                   width={1600}
                   height={1200}

@@ -32,7 +32,7 @@ const WhatWeDoCard = ({
           <SmartImage
             src={activity.coverImage}
             srcSet={activity.coverImageSrcSet}
-            sizes="(max-width: 639px) calc(100vw - 3rem), (max-width: 1023px) calc(50vw - 3rem), 33vw"
+            sizes="(max-width: 639px) calc(100vw - 3rem), (max-width: 1023px) calc(50vw - 3rem), (min-width: 1280px) 411px, 33vw"
             alt={activity.images[0]?.alt ?? title}
             wrapperClassName="h-full"
             className="transition-transform duration-500 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"

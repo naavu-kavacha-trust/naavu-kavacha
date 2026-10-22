@@ -94,7 +94,9 @@ const OathSlider = ({ images }: { images: OathImage[] }) => {
                     className="group relative mx-auto block aspect-[4/5] w-[85%] cursor-zoom-in overflow-hidden rounded-2xl border border-border bg-secondary/40 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:w-full"
                   >
                     <SmartImage
-                      src={image.src}
+                      src={image.displaySrc ?? image.src}
+                      srcSet={image.displaySrcSet}
+                      sizes="(max-width: 767px) 85vw, (min-width: 1280px) 384px, 33vw"
                       alt={image.alt}
                       wrapperClassName="h-full"
                       className="transition-transform duration-500 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"

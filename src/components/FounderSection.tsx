@@ -10,6 +10,7 @@ import {
   getSafeSocial,
   paragraphsOf,
   resolveTeamPhoto,
+  resolveTeamPhotoSources,
   selectTeam,
   type TeamMember,
 } from "@/data/team";
@@ -65,6 +66,7 @@ const FounderSection = ({ group, members, tone }: FounderSectionProps) => {
             // mirror each other; several people within a group alternate. Phones always show the portrait first.
             const portraitRight = (group === "cofounder") !== (i % 2 === 1);
             const photo = resolveTeamPhoto(person);
+            const displayPhoto = resolveTeamPhotoSources(person);
             const message = person.message?.map((p) => p.trim()).filter(Boolean) ?? [];
             const body = message.length > 0 ? message : paragraphsOf(person.bio);
             const social = getSafeSocial(person);
@@ -81,7 +83,9 @@ const FounderSection = ({ group, members, tone }: FounderSectionProps) => {
                   <div className="h-full w-full max-w-[460px] overflow-hidden">
                     {photo ? (
                       <SmartImage
-                        src={photo}
+                        src={displayPhoto?.src ?? photo}
+                        srcSet={displayPhoto?.srcSet}
+                        sizes="(max-width: 767px) 90vw, (min-width: 1280px) 460px, 45vw"
                         alt={`${person.name}, ${person.role}`}
                         width={1200}
                         height={1500}

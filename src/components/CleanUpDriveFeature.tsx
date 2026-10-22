@@ -32,6 +32,8 @@ const CleanUpDriveFeature = () => {
       <div className="relative aspect-[4/5] w-full sm:aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[28rem]">
         <SmartImage
           src={activity.coverImage}
+          srcSet={activity.coverImageSrcSet}
+          sizes="(max-width: 1023px) 100vw, (min-width: 1280px) 640px, 50vw"
           alt={photo?.alt ?? activity.title}
           wrapperClassName="absolute inset-0"
           className="object-[center_60%]"

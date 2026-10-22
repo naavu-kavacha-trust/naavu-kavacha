@@ -8,6 +8,8 @@
 
 export interface OathImage {
   src: string;
+  displaySrc?: string;
+  displaySrcSet?: string;
   alt: string;
   caption?: string;
 }
@@ -45,6 +47,12 @@ const files = import.meta.glob("/src/assets/oath/*.{jpg,jpeg,png,webp}", {
   import: "default",
 }) as Record<string, string>;
 
+const displayFiles = import.meta.glob("/src/assets/optimized/oath/*.webp", {
+  eager: true,
+  query: "?url",
+  import: "default",
+}) as Record<string, string>;
+
 /** Builds the image list from a path -> url map, sorted by file name ("2.jpg" before "10.jpg"). */
 export function buildOathImages(
   modules: Record<string, string>,
@@ -53,11 +61,17 @@ export function buildOathImages(
   return Object.entries(modules)
     .map(([path, src]) => ({ name: path.split("/").pop() ?? path, src }))
     .sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }))
-    .map(({ name, src }, i) => ({
-      src,
-      alt: details[name]?.alt ?? `A guest signing the Oath for Change (photo ${i + 1})`,
-      ...(details[name]?.caption ? { caption: details[name].caption } : {}),
-    }));
+    .map(({ name, src }, i) => {
+      const small = displayFiles[`/src/assets/optimized/oath/${name.replace(/\.[^.]+$/, "")}-384.webp`];
+      const large = displayFiles[`/src/assets/optimized/oath/${name.replace(/\.[^.]+$/, "")}-768.webp`];
+      return {
+        src,
+        ...(small ? { displaySrc: small } : {}),
+        ...(small && large ? { displaySrcSet: `${small} 384w, ${large} 768w` } : {}),
+        alt: details[name]?.alt ?? `A guest signing the Oath for Change (photo ${i + 1})`,
+        ...(details[name]?.caption ? { caption: details[name].caption } : {}),
+      };
+    });
 }
 
 export const oathImages: OathImage[] = buildOathImages(files);

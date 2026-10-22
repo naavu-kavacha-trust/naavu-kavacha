@@ -40,7 +40,7 @@ const GalleryPreview = ({ images = galleryImages }: { images?: GalleryImage[] })
                   <SmartImage
                     src={image.thumbnailSrc ?? image.src}
                     srcSet={image.thumbnailSrcSet}
-                    sizes="(max-width: 767px) 50vw, (max-width: 1023px) 33vw, 25vw"
+                    sizes="(max-width: 767px) 50vw, (max-width: 1023px) 33vw, (min-width: 1280px) 416px, 33vw"
                     alt=""
                     wrapperClassName="h-full"
                     className="transition-transform duration-500 motion-reduce:transition-none [@media(hover:hover)]:group-hover:scale-105 motion-reduce:[@media(hover:hover)]:group-hover:scale-100"
