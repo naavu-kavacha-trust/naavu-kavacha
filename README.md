@@ -16,10 +16,6 @@
   <a href="https://www.linkedin.com/company/naavukavacha-trust">LinkedIn</a>
 </p>
 
-<p align="center">
-  <img src="public/og-image.jpg" alt="Preview of the Naavu Kavacha website" width="800" />
-</p>
-
 ## About
 
 Naavu Kavacha brings students and communities together to care for the environment. The website shares the initiative’s work, stories, and ways to get involved.
