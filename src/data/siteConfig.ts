@@ -126,9 +126,9 @@ export const PAGE_META = {
   // The same words as in index.html (a test keeps the two identical): this is what visitors and search engines
   // see before the site has loaded, and again whenever they come back to the home page.
   home: {
-    title: "Naavu Kavacha - Protecting Nature, One Seed at a Time",
+    title: "Naavu Kavacha Trust | Environmental Initiative, Karnataka",
     description:
-      "Naavu Kavacha is a student-driven environmental initiative creating a greener Earth through awareness, seed collection, plantation drives, and community action.",
+      "Naavu Kavacha Trust is a student-driven environmental initiative in Karnataka focused on seed collection, plantation drives, clean-ups, and community awareness.",
   },
   about: {
     title: "About Us | NAAVU KAVACHA",
@@ -179,9 +179,7 @@ export const PAGE_HEROES = {
 } as const;
 
 /**
- * The live address of the site, without a trailing slash, for example "https://www.example.org".
- * While this is empty no sitemap is made. Once it is set, `npm run build` writes `public/sitemap.xml` for the
+ * The live address of the site, without a trailing slash. `npm run build` writes `public/sitemap.xml` for the
  * five pages and adds a `Sitemap:` line to `public/robots.txt`.
- * TODO(client): fill in once the domain is known (the og:image address in index.html needs it too).
  */
-export const SITE_URL = "";
+export const SITE_URL = "https://naavu-kavacha.vercel.app";

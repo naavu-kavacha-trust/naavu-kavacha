@@ -31,9 +31,8 @@ const Hero = () => {
           style={{ animationDelay: "0.3s" }}
           className="hero-rise text-sand/80 text-base md:text-lg font-body leading-relaxed max-w-2xl mx-auto mb-10"
         >
-          Naavu Kavacha is a student-driven environmental initiative working to create a greener
-          Earth through awareness programs, seed collection, plantation drives, and
-          community environmental action.
+          Naavu Kavacha Trust is a student-driven environmental initiative working across Karnataka
+          through awareness programs, seed collection, plantation drives, and community action.
         </p>
 
         <div

@@ -78,7 +78,7 @@ describe("page titles and descriptions", () => {
 describe("social previews", () => {
   it("index.html keeps its site-wide preview image and card settings", () => {
     for (const tag of [
-      'property="og:image" content="/og-image.jpg"',
+      'property="og:image" content="https://naavu-kavacha.vercel.app/og-image.jpg"',
       'property="og:image:width" content="1200"',
       'property="og:image:height" content="630"',
       'property="og:image:alt"',

@@ -15,3 +15,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://naavu-kavacha.vercel.app/sitemap.xml

@@ -10,6 +10,7 @@ export const VOLUNTEER_INTERESTS = [
   "School awareness sessions",
   "Growing Ganesha",
   "Event coordination & logistics",
+  "Technical & Design Support (posters, graphics & digital tools)",
   "Photography, content & social media",
   "Community outreach",
 ] as const;

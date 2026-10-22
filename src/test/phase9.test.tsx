@@ -71,9 +71,26 @@ describe("index.html", () => {
   it("has a title, description, share image and theme colour", () => {
     expect(html).toMatch(/<title>[^<]{10,}<\/title>/);
     expect(html).toMatch(/<meta name="description" content="[^"]{50,}"/);
-    expect(html).toMatch(/property="og:image" content="[^"]+"/);
+    expect(html).toMatch(/property="og:image" content="https:\/\/naavu-kavacha\.vercel\.app\/og-image\.jpg"/);
     expect(html).toMatch(/name="twitter:card"/);
     expect(html).toMatch(/name="theme-color"/);
+  });
+
+  it("identifies Naavu Kavacha and its official profiles in organization structured data", () => {
+    const jsonLd = /<script type="application\/ld\+json">([\s\S]*?)<\/script>/.exec(html)?.[1];
+    expect(jsonLd).toBeDefined();
+    const organization = JSON.parse(jsonLd!);
+    expect(organization).toMatchObject({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "Naavu Kavacha Trust",
+      url: "https://naavu-kavacha.vercel.app",
+      areaServed: "Karnataka",
+      sameAs: [
+        "https://www.instagram.com/naavu_kavacha",
+        "https://www.linkedin.com/company/naavukavacha-trust",
+      ],
+    });
   });
 
   it("loads the web fonts once, without blocking the first paint", () => {
