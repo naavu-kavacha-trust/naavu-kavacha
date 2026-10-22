@@ -394,9 +394,10 @@ describe("code splitting stays in place", () => {
     }
   });
 
-  it("the animation features load on demand, after the first paint", () => {
+  it("keeps the full animation feature set in the startup bundle to avoid a sequential request", () => {
     const providers = sources.find((s) => s.path.endsWith("AppProviders.tsx"))!.text;
-    expect(providers).toMatch(/import\("@\/lib\/motion-features"\)/);
-    expect(staticImports(/motion-features/)).toEqual([]);
+    expect(providers).toMatch(/import\s*\{\s*domMax\s*\}\s*from\s*"framer-motion"/);
+    expect(providers).toMatch(/<LazyMotion features=\{domMax\}>/);
+    expect(providers).not.toMatch(/import\("@\/lib\/motion-features"\)/);
   });
 });

@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Instagram, Mail, Menu } from "lucide-react";
 import BrandLockup from "@/components/BrandLockup";
 import { Sheet, SheetContent, SheetDescription, SheetTitle } from "@/components/ui/sheet";
-import ContactDialog from "@/components/ContactDialog";
+import DeferredContactDialog from "@/components/DeferredContactDialog";
 import { INSTAGRAM_URL, NAV_ITEMS, ROUTES, isRouteHref } from "@/data/siteConfig";
 import { prefetchHandlers } from "@/lib/route-chunks";
 import { isPlainClick, scrollToSection } from "@/lib/scroll";
@@ -311,10 +311,18 @@ const Navbar = () => {
       </Sheet>
 
       {/* Opened from the mobile menu's Email Us button */}
-      <ContactDialog
+      <DeferredContactDialog
         subject="General Inquiry"
         open={contactOpen}
-        onOpenChange={setContactOpen}
+        onOpenChange={(open) => {
+          setContactOpen(open);
+          if (!open) {
+            window.setTimeout(() => menuButtonRef.current?.focus({ preventScroll: true }), 300);
+          }
+        }}
+        onCloseAutoFocus={(event) => {
+          event.preventDefault();
+        }}
       />
     </nav>
   );

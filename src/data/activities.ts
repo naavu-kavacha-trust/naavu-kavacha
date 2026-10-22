@@ -21,6 +21,7 @@ import communityImg from "@/assets/community.jpg";
 import awarenessCover384 from "@/assets/optimized/awareness-1-384.webp";
 import awarenessCover768 from "@/assets/optimized/awareness-1-768.webp";
 import seedCollectionCover384 from "@/assets/optimized/seed-collection-1-384.webp";
+import seedCollectionCover640 from "@/assets/optimized/seed-collection-1-640.webp";
 import seedCollectionCover768 from "@/assets/optimized/seed-collection-1-768.webp";
 import seedballCover384 from "@/assets/optimized/seedball-preparation-384.webp";
 import seedballCover768 from "@/assets/optimized/seedball-preparation-768.webp";
@@ -337,7 +338,7 @@ export const activities: Activity[] = [
     category: "Seeds",
     summary: "Collecting seeds from students and communities to support biodiversity.",
     coverImage: seedCollectionCover384,
-    coverImageSrcSet: `${seedCollectionCover384} 384w, ${seedCollectionCover768} 768w`,
+    coverImageSrcSet: `${seedCollectionCover384} 384w, ${seedCollectionCover640} 640w, ${seedCollectionCover768} 768w`,
     locations: SEED_COLLECTION_SCHOOLS,
     description:
       "We collect seeds from students and communities to support biodiversity. At schools this has included seed collection activities and competitions with prize distribution, and segregation of the collected seeds.",

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowUp, Instagram } from "lucide-react";
 import BrandLockup from "@/components/BrandLockup";
-import ContactDialog from "@/components/ContactDialog";
+import DeferredContactDialog from "@/components/DeferredContactDialog";
 import { INSTAGRAM_URL, LEGAL_ENTITY, LEGAL_ROUTES, LINKEDIN_URL, ROUTES } from "@/data/siteConfig";
 import { prefetchHandlers } from "@/lib/route-chunks";
 
@@ -70,11 +70,11 @@ const Footer = () => {
               </li>
             </ul>
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-1">
-              <ContactDialog subject="General Inquiry">
+              <DeferredContactDialog subject="General Inquiry">
                 <button type="button" className={linkClass}>
                   Email Us
                 </button>
-              </ContactDialog>
+              </DeferredContactDialog>
               <button
                 type="button"
                 onClick={() => window.scrollTo({ top: 0 })}

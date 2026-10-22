@@ -6,8 +6,13 @@ const Hero = () => {
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <picture className="absolute inset-0 block">
         <source
+          media="(max-width: 600px)"
           type="image/webp"
-          srcSet="/images/hero-bg-768.webp 768w, /images/hero-bg-1440.webp 1440w"
+          srcSet="/images/hero-bg-1152.webp"
+        />
+        <source
+          type="image/webp"
+          srcSet="/images/hero-bg-768.webp 768w, /images/hero-bg-1024.webp 1024w, /images/hero-bg-1152.webp 1152w, /images/hero-bg-1440.webp 1440w"
           sizes="100vw"
         />
         <img

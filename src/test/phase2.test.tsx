@@ -3,6 +3,7 @@ import { render, screen, fireEvent, within, waitFor, renderPage } from "@/test/t
 import Index from "@/pages/Index";
 import VolunteerPage from "@/pages/VolunteerPage";
 import ContactDialog from "@/components/ContactDialog";
+import DeferredContactDialog from "@/components/DeferredContactDialog";
 import { buildGmailUrl, buildMailtoUrl, copyToClipboard } from "@/lib/contact";
 import { EMAIL, NAV_ITEMS } from "@/data/siteConfig";
 
@@ -59,6 +60,22 @@ describe("ContactDialog", () => {
     expect(gmail.getAttribute("rel")).toContain("noopener");
     expect(within(dialog).getByRole("button", { name: /copy email address/i })).toBeTruthy();
   });
+
+  it("loads when opened, closes on Escape, and returns focus to its trigger", async () => {
+    render(
+      <DeferredContactDialog subject="General Inquiry">
+        <button>Lazy Email Us</button>
+      </DeferredContactDialog>,
+    );
+    const trigger = screen.getByRole("button", { name: "Lazy Email Us" });
+    trigger.focus();
+    fireEvent.click(trigger);
+
+    const dialog = await screen.findByRole("dialog");
+    expect(within(dialog).getByText(/choose how you'd like to send your message/i)).toBeTruthy();
+    fireEvent.keyDown(document, { key: "Escape" });
+    await waitFor(() => expect(screen.getByRole("button", { name: "Lazy Email Us" })).toHaveFocus());
+  });
 });
 
 describe("page wiring", () => {
@@ -69,10 +86,10 @@ describe("page wiring", () => {
     expect(container.querySelector('a[href^="mailto:"]')).toBeNull();
   });
 
-  it("Partner Up opens the dialog with the partnership subject", () => {
+  it("Partner Up opens the dialog with the partnership subject", async () => {
     renderPage(<VolunteerPage />);
     fireEvent.click(screen.getByRole("button", { name: "Partner Up" }));
-    const mail = within(screen.getByRole("dialog")).getByRole("link", { name: /open in email app/i });
+    const mail = within(await screen.findByRole("dialog")).getByRole("link", { name: /open in email app/i });
     expect(mail.getAttribute("href")).toContain("subject=Partnership%20Inquiry");
   });
 

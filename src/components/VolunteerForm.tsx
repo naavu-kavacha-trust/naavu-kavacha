@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AlertCircle, CheckCircle2, Instagram, Loader2 } from "lucide-react";
-import ContactDialog from "@/components/ContactDialog";
+import DeferredContactDialog from "@/components/DeferredContactDialog";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
   Form,
@@ -367,7 +367,7 @@ const VolunteerForm = () => {
         </form>
       </Form>
 
-      <ContactDialog
+      <DeferredContactDialog
         open={emailOpen}
         onOpenChange={setEmailOpen}
         subject="Volunteer Registration"

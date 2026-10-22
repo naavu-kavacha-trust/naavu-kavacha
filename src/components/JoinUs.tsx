@@ -1,7 +1,7 @@
 import { m as motion, useInView } from "framer-motion";
 import { Suspense, lazy, useRef } from "react";
 import { Leaf } from "lucide-react";
-import ContactDialog from "@/components/ContactDialog";
+import DeferredContactDialog from "@/components/DeferredContactDialog";
 import SmartImage from "@/components/ui/SmartImage";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
 import teamImg from "@/assets/gallery/team-tunturu.jpg";
@@ -59,7 +59,7 @@ const JoinUs = () => {
             </p>
 
             <div className="mt-6 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
-              <ContactDialog
+              <DeferredContactDialog
                 subject="Partnership Inquiry"
                 title="Partner with Naavu Kavacha"
                 intro="Schools, colleges and organisations: tell us how you'd like to work together."
@@ -71,7 +71,7 @@ const JoinUs = () => {
                 >
                   Partner Up
                 </button>
-              </ContactDialog>
+              </DeferredContactDialog>
               <a
                 href={WHATSAPP_CHANNEL_URL}
                 target="_blank"

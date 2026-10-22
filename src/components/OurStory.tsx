@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { m as motion, useInView, useReducedMotion } from "framer-motion";
-import logo from "@/assets/logo.png";
+import logo400 from "@/assets/optimized/logo-about-400.webp";
+import logo800 from "@/assets/optimized/logo-about-800.webp";
 import SmartImage from "@/components/ui/SmartImage";
 import { aboutContent, getStory, resolveStoryImage, type AboutContent } from "@/data/about";
 import { formatStat, getHeadlineStats } from "@/data/impact";
@@ -9,7 +10,11 @@ import { SECTION_IDS } from "@/data/siteConfig";
 // The two headline figures. Unverified stats are never shown.
 const stats = getHeadlineStats();
 
-const FALLBACK_IMAGE = { src: logo, alt: "Naavu Kavacha logo" };
+const FALLBACK_IMAGE = {
+  src: logo400,
+  srcSet: `${logo400} 400w, ${logo800} 800w`,
+  alt: "Naavu Kavacha logo",
+};
 
 /** "Our Story": the story paragraphs, brand image, and two verified figures. Story text comes from `data/about.ts`. */
 const OurStory = ({ content = aboutContent }: { content?: AboutContent }) => {
@@ -55,6 +60,8 @@ const OurStory = ({ content = aboutContent }: { content?: AboutContent }) => {
           <div className="mx-auto aspect-square w-full max-w-[400px] overflow-hidden rounded-2xl bg-black shadow-xl">
             <SmartImage
               src={image.src}
+              srcSet={"srcSet" in image ? image.srcSet : undefined}
+              sizes="(max-width: 767px) 90vw, 400px"
               alt={image.alt}
               width={500}
               height={499}

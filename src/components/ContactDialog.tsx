@@ -13,7 +13,7 @@ import {
 import { EMAIL } from "@/data/siteConfig";
 import { buildGmailUrl, buildMailtoUrl, copyToClipboard } from "@/lib/contact";
 
-interface ContactDialogProps {
+export interface ContactDialogProps {
   subject: string;
   /** Pre-filled message body. */
   body?: string;
@@ -24,6 +24,7 @@ interface ContactDialogProps {
   children?: ReactNode;
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
+  onCloseAutoFocus?: (event: Event) => void;
 }
 
 /**
@@ -39,6 +40,7 @@ const ContactDialog = ({
   children,
   open,
   onOpenChange,
+  onCloseAutoFocus,
 }: ContactDialogProps) => {
   const [copied, setCopied] = useState(false);
 
@@ -56,7 +58,7 @@ const ContactDialog = ({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       {children && <DialogTrigger asChild>{children}</DialogTrigger>}
-      <DialogContent className="max-w-md rounded-2xl">
+      <DialogContent className="max-w-md rounded-2xl" onCloseAutoFocus={onCloseAutoFocus}>
         <DialogHeader>
           <DialogTitle className="font-display text-2xl">{title}</DialogTitle>
           <DialogDescription>{intro}</DialogDescription>
