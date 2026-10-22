@@ -65,10 +65,10 @@ describe("What We Do cards", () => {
     expect(cleanup.querySelector("img")?.getAttribute("src")).toContain("cleanup-drive");
   });
 
-  it("opens the shared activity pop-up, even when the card is named differently", () => {
+  it("opens the shared activity pop-up, even when the card is named differently", async () => {
     renderPage(<OurWorkPage />);
     fireEvent.click(within(section()).getByRole("button", { name: "Seedball Preparation" }));
-    expect(screen.getByRole("dialog", { name: "Seedball Dispersal" })).toBeTruthy();
+    expect(await screen.findByRole("dialog", { name: "Seedball Dispersal" })).toBeTruthy();
     expect(window.location.hash).toBe("#projects/seedball-dispersal");
   });
 
@@ -77,7 +77,7 @@ describe("What We Do cards", () => {
     const cardButton = within(section()).getByRole("button", { name: "Growing Ganesha" });
     cardButton.focus();
     fireEvent.click(cardButton);
-    fireEvent.keyDown(screen.getByRole("dialog"), { key: "Escape" });
+    fireEvent.keyDown(await screen.findByRole("dialog"), { key: "Escape" });
     await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
     await waitFor(() => expect(document.activeElement).toBe(cardButton));
   });
@@ -95,10 +95,10 @@ describe("Clean-Up Drive feature block", () => {
     expect(grid.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
   });
 
-  it("'See Clean-Up Drives' opens the Clean-Up pop-up", () => {
+  it("'See Clean-Up Drives' opens the Clean-Up pop-up", async () => {
     renderPage(<OurWorkPage />);
     fireEvent.click(within(block()).getByRole("button", { name: "See Clean-Up Drives" }));
-    expect(screen.getByRole("dialog", { name: "Clean-Up Drive" })).toBeTruthy();
+    expect(await screen.findByRole("dialog", { name: "Clean-Up Drive" })).toBeTruthy();
   });
 
   it("'Join the next drive' goes to the Volunteer page", async () => {

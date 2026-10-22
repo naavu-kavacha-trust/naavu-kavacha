@@ -66,5 +66,5 @@ After choosing the production domain, set `SITE_URL` in `src/data/siteConfig.ts`
 | `public/` | Static files served from the site root, including icons and crawler instructions. |
 | `e2e/` and `src/test/` | Browser tests and unit/component tests. |
 
-To update page text or team details, edit the matching file in `src/data/`. For gallery photos, add image files to `src/assets/gallery/`; add captions, alt text, or categories in `src/data/gallery.ts` when needed. See [MISSING_ASSETS.md](MISSING_ASSETS.md) for outstanding asset needs and [CHANGES.md](CHANGES.md) for the project history.
+To update page text or team details, edit the matching file in `src/data/`. For gallery photos, add image files to `src/assets/gallery/`; add captions, alt text, or categories in `src/data/gallery.ts` when needed.
 

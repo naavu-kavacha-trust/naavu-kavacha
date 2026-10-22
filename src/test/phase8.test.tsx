@@ -49,6 +49,13 @@ describe("gallery data", () => {
     expect(galleryImages.some((i) => i.alt.includes("Tunturu"))).toBe(true);
   });
 
+  it("uses responsive thumbnail copies while keeping full-size originals in the viewer data", () => {
+    const teamPhoto = galleryImages.find((image) => image.src.includes("team-tunturu"))!;
+    expect(teamPhoto.thumbnailSrc).toContain("team-tunturu-384.webp");
+    expect(teamPhoto.thumbnailSrcSet).toContain("team-tunturu-768.webp 768w");
+    expect(teamPhoto.src).toContain("team-tunturu.jpg");
+  });
+
   it("lists distinct categories in order", () => {
     expect(galleryCategories(photos(4, (i) => ["A", "B", "A", undefined][i]))).toEqual(["A", "B"]);
   });
@@ -122,6 +129,17 @@ describe("Gallery section", () => {
     fireEvent.keyDown(dialog, { key: "Escape" });
     await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
     await waitFor(() => expect(thumb).toHaveFocus());
+  });
+
+  it("renders optimized thumbnails but opens the original photo in the viewer", async () => {
+    render(<Gallery />);
+    const firstPhoto = galleryImages[0];
+    const trigger = screen.getAllByRole("button", { name: /^Open photo/ })[0];
+    expect(trigger.querySelector("img")).toHaveAttribute("src", firstPhoto.thumbnailSrc);
+    expect(trigger.querySelector("img")).toHaveAttribute("srcset", firstPhoto.thumbnailSrcSet);
+    fireEvent.click(trigger);
+    const dialog = await screen.findByRole("dialog", { name: "Photo viewer" });
+    expect(within(dialog).getByAltText(firstPhoto.alt)).toHaveAttribute("src", firstPhoto.src);
   });
 
   it("only cycles through the filtered photos in the lightbox", async () => {

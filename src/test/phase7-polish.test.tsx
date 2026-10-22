@@ -9,7 +9,7 @@ import { MemoryRouter } from "react-router-dom";
 import App from "@/App";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { PAGE_META, ROUTES, SITE_URL } from "@/data/siteConfig";
+import { LEGAL_ROUTES, PAGE_META, ROUTES, SITE_URL } from "@/data/siteConfig";
 import { createPrefetcher, pageLoaders, prefetcher } from "@/lib/route-chunks";
 import { usePageMeta } from "@/hooks/use-page-meta";
 
@@ -283,8 +283,15 @@ describe("prefetching a page before it is clicked", () => {
     }
   });
 
-  it("the router and the prefetcher use the same loaders, for exactly the four non-home pages", () => {
-    expect(Object.keys(pageLoaders).sort()).toEqual([ROUTES.about, ROUTES.gallery, ROUTES.ourWork, ROUTES.volunteer].sort());
+  it("the router and the prefetcher use the same loaders for every non-home page", () => {
+    expect(Object.keys(pageLoaders).sort()).toEqual([
+      ROUTES.about,
+      ROUTES.gallery,
+      ROUTES.ourWork,
+      ROUTES.volunteer,
+      LEGAL_ROUTES.privacy,
+      LEGAL_ROUTES.terms,
+    ].sort());
   });
 
   describe("on the real links", () => {
@@ -377,8 +384,13 @@ describe("code splitting stays in place", () => {
 
   it("the Lightbox, the activity dialog and the volunteer form are never imported statically", () => {
     expect(staticImports(/components\/(Lightbox|ActivityDialog|VolunteerForm)["']/)).toEqual([]);
-    for (const name of ["Lightbox", "ActivityDialog", "VolunteerForm"]) {
-      expect(sources.some((s) => new RegExp(`lazy\\(\\(\\) => import\\("@/components/${name}"\\)`).test(s.text)), name).toBe(true);
+    const lazySources = {
+      Lightbox: /lazy\(loadLightbox\)/,
+      ActivityDialog: /lazy\(loadActivityDialog\)/,
+      VolunteerForm: /lazy\(\(\) => import\("@\/components\/VolunteerForm"\)/,
+    };
+    for (const [name, pattern] of Object.entries(lazySources)) {
+      expect(sources.some((s) => pattern.test(s.text)), name).toBe(true);
     }
   });
 

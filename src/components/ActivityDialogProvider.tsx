@@ -5,8 +5,14 @@ import { ROUTES, SECTION_IDS } from "@/data/siteConfig";
 import { ActivityDialogContext } from "@/hooks/use-activity-dialog";
 import { useVolunteerPrefill } from "@/hooks/use-volunteer-prefill";
 
-// Loaded in its own chunk right after the first paint, so it never delays the hero.
-const ActivityDialog = lazy(() => import("@/components/ActivityDialog"));
+let dialogPromise: Promise<typeof import("@/components/ActivityDialog")> | undefined;
+const loadActivityDialog = () => (dialogPromise ??= import("@/components/ActivityDialog"));
+const prefetchActivityDialog = () => {
+  void loadActivityDialog().catch(() => {
+    dialogPromise = undefined;
+  });
+};
+const ActivityDialog = lazy(loadActivityDialog);
 
 const PROJECTS_HASH = `#${SECTION_IDS.projects}`;
 const ACTIVITY_HASH_PREFIX = `${PROJECTS_HASH}/`;
@@ -49,6 +55,7 @@ const ActivityDialogProvider = ({ children }: { children: ReactNode }) => {
 
   const openActivity = useCallback((id: string, origin?: HTMLElement | null) => {
     if (!getActivity(id)) return;
+    prefetchActivityDialog();
     originRef.current =
       origin ?? (document.activeElement instanceof HTMLElement ? document.activeElement : null);
     window.history.pushState(null, "", `${ACTIVITY_HASH_PREFIX}${encodeURIComponent(id)}`);
@@ -124,22 +131,30 @@ const ActivityDialogProvider = ({ children }: { children: ReactNode }) => {
     };
   }, [pathname, hash]);
 
-  const value = useMemo(() => ({ openActivity }), [openActivity]);
+  const value = useMemo(() => ({ openActivity, prefetchActivityDialog }), [openActivity]);
   const shownId = activeId ?? lastIdRef.current;
 
   return (
     <ActivityDialogContext.Provider value={value}>
       {children}
-      <Suspense fallback={null}>
-        <ActivityDialog
-          activity={getActivity(shownId)}
-          open={activeId !== null}
-          onOpenChange={handleOpenChange}
-          onSelectRelated={selectRelated}
-          onVolunteer={handleVolunteer}
-          onCloseAutoFocus={handleCloseAutoFocus}
-        />
-      </Suspense>
+      {shownId && (
+        <Suspense
+          fallback={
+            <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/70 p-6 text-white" role="status">
+              <span className="rounded-full bg-white/10 px-5 py-3 text-sm backdrop-blur">Loading activity details…</span>
+            </div>
+          }
+        >
+          <ActivityDialog
+            activity={getActivity(shownId)}
+            open={activeId !== null}
+            onOpenChange={handleOpenChange}
+            onSelectRelated={selectRelated}
+            onVolunteer={handleVolunteer}
+            onCloseAutoFocus={handleCloseAutoFocus}
+          />
+        </Suspense>
+      )}
     </ActivityDialogContext.Provider>
   );
 };

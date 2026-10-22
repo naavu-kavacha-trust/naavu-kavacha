@@ -18,6 +18,22 @@ import cleanupDriveImg from "@/assets/activities/cleanup-drive.jpg";
 import cleaningImg from "@/assets/cleaning.jpg";
 import saplingImg from "@/assets/sapling.jpg";
 import communityImg from "@/assets/community.jpg";
+import awarenessCover384 from "@/assets/optimized/awareness-1-384.webp";
+import awarenessCover768 from "@/assets/optimized/awareness-1-768.webp";
+import seedCollectionCover384 from "@/assets/optimized/seed-collection-1-384.webp";
+import seedCollectionCover768 from "@/assets/optimized/seed-collection-1-768.webp";
+import seedballCover384 from "@/assets/optimized/seedball-preparation-384.webp";
+import seedballCover768 from "@/assets/optimized/seedball-preparation-768.webp";
+import saplingCover384 from "@/assets/optimized/sapling-384.webp";
+import saplingCover768 from "@/assets/optimized/sapling-768.webp";
+import communityCover384 from "@/assets/optimized/community-384.webp";
+import communityCover768 from "@/assets/optimized/community-768.webp";
+import cleanupCover384 from "@/assets/optimized/cleanup-drive-384.webp";
+import cleanupCover768 from "@/assets/optimized/cleanup-drive-768.webp";
+import ganeshaCover384 from "@/assets/optimized/growing-ganesha-1-384.webp";
+import ganeshaCover768 from "@/assets/optimized/growing-ganesha-1-768.webp";
+import birdFeedersCover384 from "@/assets/optimized/bird-feeders-1-384.webp";
+import birdFeedersCover768 from "@/assets/optimized/bird-feeders-1-768.webp";
 import growingGaneshaGalleryImg from "@/assets/gallery/01.jpg";
 import cleanupGalleryImg from "@/assets/gallery/03.jpg";
 import awarenessGalleryImg from "@/assets/gallery/04.jpg";
@@ -49,6 +65,8 @@ export interface Activity {
   summary: string;
   /** Empty string means "no photo yet": the UI shows the neutral leaf placeholder. */
   coverImage: string;
+  /** Responsive, compressed cover sources; full-resolution originals remain in `images` for detail views. */
+  coverImageSrcSet?: string;
   date?: string;
   locations?: string[];
   description: string;
@@ -228,7 +246,8 @@ export const activities: Activity[] = [
     category: "Seeds",
     summary:
       "Clay, soil and manure seedballs dispersed at sites across Karnataka.",
-    coverImage: seedballs.cover,
+    coverImage: seedballCover384,
+    coverImageSrcSet: `${seedballCover384} 384w, ${seedballCover768} 768w`,
     locations: ["Ramanagara", "Hanumagiri", "Agara Lake", "Madeshwara Hills", "Turahalli"],
     description:
       "Seedballs are made from clay, soil and manure to support natural reforestation. Our team prepares them, including sessions with students at Karnataka Samskriti Vidyapeetha (KSVP), and disperses them at the sites listed here.",
@@ -245,7 +264,8 @@ export const activities: Activity[] = [
     title: "Sapling Plantation",
     category: "Plantation",
     summary: "Planting and protecting saplings in community areas.",
-    coverImage: saplings.cover,
+    coverImage: saplingCover384,
+    coverImageSrcSet: `${saplingCover384} 384w, ${saplingCover768} 768w`,
     locations: ["Ramohalli", "Hoskerehalli Lake"],
     description:
       "We plant and protect saplings in community areas. We have also carried out a plantation activity inside a school, at Zen International School.",
@@ -261,7 +281,8 @@ export const activities: Activity[] = [
     title: "Community Activities",
     category: "Community",
     summary: "Environmental events and collaborations with groups across Karnataka.",
-    coverImage: community.cover,
+    coverImage: communityCover384,
+    coverImageSrcSet: `${communityCover384} 384w, ${communityCover768} 768w`,
     locations: ["Jayanagar"],
     description:
       "Beyond our own drives, we take part in environmental events and work alongside other environmental groups across Karnataka. This includes participation in the Water Day environmental event in Jayanagar.",
@@ -280,7 +301,8 @@ export const activities: Activity[] = [
     category: "Clean-Up",
     summary:
       "Volunteers clean public spaces, streets and natural surroundings, collecting and segregating waste.",
-    coverImage: cleanUp.cover,
+    coverImage: cleanupCover384,
+    coverImageSrcSet: `${cleanupCover384} 384w, ${cleanupCover768} 768w`,
     description:
       "Our volunteers come together to clean public spaces, streets and natural surroundings, collecting and segregating waste to restore the beauty of our neighbourhoods and protect local ecosystems from pollution.",
     objective:
@@ -297,7 +319,8 @@ export const activities: Activity[] = [
     category: "Growing Ganesha",
     summary:
       "Eco-friendly Ganesha idols made with seed-embedded clay that grow into plants after immersion.",
-    coverImage: ganesha.cover,
+    coverImage: ganeshaCover384,
+    coverImageSrcSet: `${ganeshaCover384} 384w, ${ganeshaCover768} 768w`,
     locations: ["Karnataka Samskriti Vidyapeetha (KSVP)", "Shanthinikethan School"],
     description:
       "Growing Ganesha idols are eco-friendly idols made with seed-embedded clay that grow into plants after immersion. We have held Growing Ganesha events at KSVP and Shanthinikethan School.",
@@ -313,7 +336,8 @@ export const activities: Activity[] = [
     title: "Seed Collection",
     category: "Seeds",
     summary: "Collecting seeds from students and communities to support biodiversity.",
-    coverImage: seedCollection.cover,
+    coverImage: seedCollectionCover384,
+    coverImageSrcSet: `${seedCollectionCover384} 384w, ${seedCollectionCover768} 768w`,
     locations: SEED_COLLECTION_SCHOOLS,
     description:
       "We collect seeds from students and communities to support biodiversity. At schools this has included seed collection activities and competitions with prize distribution, and segregation of the collected seeds.",
@@ -330,7 +354,8 @@ export const activities: Activity[] = [
     title: "Bamboo Bird Feeders",
     category: "Bird Feeders",
     summary: "Handcrafted bamboo feeders installed to support urban bird populations.",
-    coverImage: birdFeeders.cover,
+    coverImage: birdFeedersCover384,
+    coverImageSrcSet: `${birdFeedersCover384} 384w, ${birdFeedersCover768} 768w`,
     description:
       "Our team handcrafts feeders from bamboo and installs them to support urban bird populations.",
     objective: "To support urban bird populations.",
@@ -348,7 +373,8 @@ export const activities: Activity[] = [
     category: "Awareness",
     summary:
       "Conducting sessions in schools to educate students about environmental protection and sustainable practices.",
-    coverImage: awareness.cover,
+    coverImage: awarenessCover384,
+    coverImageSrcSet: `${awarenessCover384} 384w, ${awarenessCover768} 768w`,
     locations: AWARENESS_SCHOOLS,
     description:
       "We conduct sessions in schools to educate students about environmental protection and sustainable practices. Many of them are paired with hands-on activities such as seed collection, seedball making and plantation.",

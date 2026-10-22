@@ -1,14 +1,24 @@
 import { Link } from "react-router-dom";
-import heroBg from "@/assets/hero-bg.jpg";
 import { ROUTES } from "@/data/siteConfig";
 
 const Hero = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${heroBg})` }}
-      />
+      <picture className="absolute inset-0 block">
+        <source
+          type="image/webp"
+          srcSet="/images/hero-bg-768.webp 768w, /images/hero-bg-1440.webp 1440w"
+          sizes="100vw"
+        />
+        <img
+          src="/images/hero-bg-1440.webp"
+          alt=""
+          aria-hidden="true"
+          {...({ fetchpriority: "high" } as Record<string, string>)}
+          decoding="async"
+          className="h-full w-full object-cover object-center"
+        />
+      </picture>
       <div className="absolute inset-0 bg-bark/60" />
 
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">

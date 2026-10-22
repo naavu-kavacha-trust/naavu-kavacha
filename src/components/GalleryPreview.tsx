@@ -38,7 +38,9 @@ const GalleryPreview = ({ images = galleryImages }: { images?: GalleryImage[] })
                   className="group relative block aspect-[4/3] w-full overflow-hidden rounded-xl border border-border bg-secondary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background md:rounded-2xl"
                 >
                   <SmartImage
-                    src={image.src}
+                    src={image.thumbnailSrc ?? image.src}
+                    srcSet={image.thumbnailSrcSet}
+                    sizes="(max-width: 767px) 50vw, (max-width: 1023px) 33vw, 25vw"
                     alt=""
                     wrapperClassName="h-full"
                     className="transition-transform duration-500 motion-reduce:transition-none [@media(hover:hover)]:group-hover:scale-105 motion-reduce:[@media(hover:hover)]:group-hover:scale-100"

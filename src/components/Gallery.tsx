@@ -7,9 +7,16 @@ import { SECTION_IDS } from "@/data/siteConfig";
 import { cn } from "@/lib/utils";
 
 // The viewer is only needed once a photo is tapped; it loads in its own chunk after first paint.
-const Lightbox = lazy(() => import("@/components/Lightbox"));
+let lightboxPromise: Promise<typeof import("@/components/Lightbox")> | undefined;
+const loadLightbox = () => (lightboxPromise ??= import("@/components/Lightbox"));
+const prefetchLightbox = () => {
+  void loadLightbox().catch(() => {
+    lightboxPromise = undefined;
+  });
+};
+const Lightbox = lazy(loadLightbox);
 
-/** Until enough photos are added (see MISSING_ASSETS.md) the grid is padded with leaf tiles. */
+/** Until enough photos are added, the grid is padded with leaf tiles. */
 const MIN_TILES = 8;
 const INITIAL_VISIBLE = 12;
 const LOAD_MORE_COUNT = 12;
@@ -25,6 +32,7 @@ const Gallery = ({ images = galleryImages }: { images?: GalleryImage[] }) => {
   const [filter, setFilter] = useState<string>(ALL);
   const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE);
   const [viewer, setViewer] = useState<{ index: number; origin: HTMLElement | null } | null>(null);
+  const [viewerRequested, setViewerRequested] = useState(false);
 
   const categories = useMemo(() => galleryCategories(images), [images]);
   // Filter chips only make sense once the client has supplied at least two categories.
@@ -91,11 +99,19 @@ const Gallery = ({ images = galleryImages }: { images?: GalleryImage[] }) => {
                   type="button"
                   aria-haspopup="dialog"
                   aria-label={`Open photo ${i + 1} of ${filteredImages.length}: ${image.caption ?? image.alt}`}
-                  onClick={(e) => setViewer({ index: i, origin: e.currentTarget })}
+                  onMouseEnter={prefetchLightbox}
+                  onFocus={prefetchLightbox}
+                  onTouchStart={prefetchLightbox}
+                  onClick={(e) => {
+                    setViewerRequested(true);
+                    setViewer({ index: i, origin: e.currentTarget });
+                  }}
                   className="group relative block aspect-square w-full cursor-zoom-in overflow-hidden rounded-xl border border-border bg-secondary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background md:rounded-2xl"
                 >
                   <SmartImage
-                    src={image.src}
+                    src={image.thumbnailSrc ?? image.src}
+                    srcSet={image.thumbnailSrcSet}
+                    sizes="(max-width: 767px) 50vw, (max-width: 1023px) 33vw, 25vw"
                     alt=""
                     wrapperClassName="h-full"
                     className="transition-transform duration-500 motion-reduce:transition-none [@media(hover:hover)]:group-hover:scale-105 motion-reduce:[@media(hover:hover)]:group-hover:scale-100"
@@ -133,15 +149,23 @@ const Gallery = ({ images = galleryImages }: { images?: GalleryImage[] }) => {
         </motion.div>
       </div>
 
-      <Suspense fallback={null}>
-        <Lightbox
-          images={filteredImages}
-          index={viewer?.index ?? null}
-          onIndexChange={(index) => setViewer((v) => (v ? { ...v, index } : v))}
-          onClose={() => setViewer(null)}
-          returnFocusTo={viewer?.origin}
-        />
-      </Suspense>
+      {viewerRequested && (
+        <Suspense
+          fallback={
+            <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/90 p-6 text-white" role="status">
+              <span className="rounded-full bg-white/10 px-5 py-3 text-sm backdrop-blur">Loading photo viewer…</span>
+            </div>
+          }
+        >
+          <Lightbox
+            images={filteredImages}
+            index={viewer?.index ?? null}
+            onIndexChange={(index) => setViewer((v) => (v ? { ...v, index } : v))}
+            onClose={() => setViewer(null)}
+            returnFocusTo={viewer?.origin}
+          />
+        </Suspense>
+      )}
     </section>
   );
 };

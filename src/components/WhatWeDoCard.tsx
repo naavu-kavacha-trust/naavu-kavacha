@@ -14,7 +14,7 @@ const WhatWeDoCard = ({
   activity: WhatWeDoActivity;
   className?: string;
 }) => {
-  const { openActivity } = useActivityDialog();
+  const { openActivity, prefetchActivityDialog } = useActivityDialog();
   const title = activity.whatWeDo.title ?? activity.title;
   const description = activity.whatWeDo.description ?? activity.summary;
   const hasPhoto = Boolean(activity.coverImage);
@@ -31,13 +31,15 @@ const WhatWeDoCard = ({
         <div className="h-48 w-full overflow-hidden bg-secondary/40">
           <SmartImage
             src={activity.coverImage}
+            srcSet={activity.coverImageSrcSet}
+            sizes="(max-width: 639px) calc(100vw - 3rem), (max-width: 1023px) calc(50vw - 3rem), 33vw"
             alt={activity.images[0]?.alt ?? title}
             wrapperClassName="h-full"
             className="transition-transform duration-500 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
           />
         </div>
       ) : (
-        // No photo yet (see MISSING_ASSETS.md): keep the original icon treatment for this card only.
+        // No photo yet: keep the original icon treatment for this card only.
         <div className="px-8 pt-8">
           <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 transition-colors group-hover:bg-primary/20">
             {Icon && <Icon className="h-6 w-6 text-primary" strokeWidth={1.5} aria-hidden="true" />}
@@ -51,6 +53,9 @@ const WhatWeDoCard = ({
             type="button"
             aria-haspopup="dialog"
             data-whatwedo-card={activity.id}
+            onMouseEnter={prefetchActivityDialog}
+            onFocus={prefetchActivityDialog}
+            onTouchStart={prefetchActivityDialog}
             onClick={(e) => openActivity(activity.id, e.currentTarget)}
             className="text-left outline-none after:absolute after:inset-0 after:content-['']"
           >

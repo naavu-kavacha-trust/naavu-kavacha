@@ -1,5 +1,6 @@
 import { LEGAL_ENTITY } from "@/data/siteConfig";
-import logo from "@/assets/logo.png";
+import logo96 from "@/assets/optimized/logo-96.webp";
+import logo192 from "@/assets/optimized/logo-192.webp";
 import { cn } from "@/lib/utils";
 
 interface BrandLockupProps {
@@ -23,10 +24,12 @@ const BrandLockup = ({
 }: BrandLockupProps) => (
   <span className={cn("flex items-center gap-2.5 sm:gap-3", className)}>
     <img
-      src={logo}
+      src={logo192}
+      srcSet={`${logo96} 96w, ${logo192} 192w`}
+      sizes="56px"
       alt=""
-      width={192}
-      height={192}
+      width={96}
+      height={96}
       className={cn("shrink-0 rounded-full", logoClassName)}
     />
     <span className="flex min-w-0 flex-col leading-tight">

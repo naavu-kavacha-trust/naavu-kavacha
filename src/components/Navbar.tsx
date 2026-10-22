@@ -41,14 +41,38 @@ const Navbar = () => {
   useEffect(() => {
     const bar = barRef.current;
     if (!bar) return;
-    const publish = () => {
-      if (bar.offsetHeight > 0) document.documentElement.style.setProperty("--navbar-height", `${bar.offsetHeight}px`);
+    const root = document.documentElement;
+    const publish = (height: number) => {
+      if (height > 0) root.style.setProperty("--navbar-height", `${height}px`);
     };
-    publish();
-    if (typeof ResizeObserver === "undefined") return;
-    const observer = new ResizeObserver(publish);
-    observer.observe(bar);
-    return () => observer.disconnect();
+
+    if (typeof ResizeObserver !== "undefined") {
+      const observer = new ResizeObserver(([entry]) => {
+        if (!entry) return;
+        const borderBox = entry.borderBoxSize?.[0];
+        if (borderBox) {
+          publish(borderBox.blockSize);
+          return;
+        }
+        const style = window.getComputedStyle(bar);
+        const verticalPadding = parseFloat(style.paddingTop) + parseFloat(style.paddingBottom);
+        publish(entry.contentRect.height + verticalPadding);
+      });
+      observer.observe(bar);
+      return () => observer.disconnect();
+    }
+
+    // Older browsers get a deferred measurement so initial rendering does not force synchronous layout.
+    let frame = requestAnimationFrame(() => publish(bar.getBoundingClientRect().height));
+    const onResize = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => publish(bar.getBoundingClientRect().height));
+    };
+    window.addEventListener("resize", onResize);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("resize", onResize);
+    };
   }, []);
 
   // A page change always closes the mobile menu.

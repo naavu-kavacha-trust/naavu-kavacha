@@ -13,6 +13,9 @@
 
 export interface GalleryImage {
   src: string;
+  /** Small responsive copies for gallery tiles; `src` remains the full-size viewer image. */
+  thumbnailSrc?: string;
+  thumbnailSrcSet?: string;
   alt: string;
   caption?: string;
   category?: string;
@@ -54,6 +57,22 @@ const files = import.meta.glob("/src/assets/gallery/*.{jpg,jpeg,png,webp}", {
   import: "default",
 }) as Record<string, string>;
 
+const thumbnails = import.meta.glob("/src/assets/optimized/gallery/*.webp", {
+  eager: true,
+  query: "?url",
+  import: "default",
+}) as Record<string, string>;
+
+function thumbnailsFor(name: string) {
+  const base = name.replace(/\.[^.]+$/, "");
+  const small = thumbnails[`/src/assets/optimized/gallery/${base}-384.webp`];
+  const large = thumbnails[`/src/assets/optimized/gallery/${base}-768.webp`];
+  return {
+    ...(small ? { thumbnailSrc: small } : {}),
+    ...(small && large ? { thumbnailSrcSet: `${small} 384w, ${large} 768w` } : {}),
+  };
+}
+
 /** Builds the image list with the Tunturu team photo first, then by file name. */
 export function buildGalleryImages(
   modules: Record<string, string>,
@@ -69,6 +88,7 @@ export function buildGalleryImages(
     })
     .map(({ name, src }) => ({
       src,
+      ...thumbnailsFor(name),
       alt: details[name]?.alt ?? DEFAULT_GALLERY_ALT,
       ...(details[name]?.caption ? { caption: details[name].caption } : {}),
       ...(details[name]?.category ? { category: details[name].category } : {}),

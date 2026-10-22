@@ -12,7 +12,7 @@ const MAX_CHIPS = 3;
  * heading, while mouse and touch users can tap anywhere.
  */
 const ActivityCard = ({ activity }: { activity: Activity }) => {
-  const { openActivity } = useActivityDialog();
+  const { openActivity, prefetchActivityDialog } = useActivityDialog();
   const locations = activity.locations ?? [];
   const shown = locations.slice(0, MAX_CHIPS);
   const hidden = locations.length - shown.length;
@@ -22,6 +22,8 @@ const ActivityCard = ({ activity }: { activity: Activity }) => {
       <div className="relative h-48 w-full overflow-hidden bg-secondary/40">
         <SmartImage
           src={activity.coverImage}
+          srcSet={activity.coverImageSrcSet}
+          sizes="(max-width: 639px) calc(100vw - 3rem), (max-width: 1023px) calc(50vw - 3rem), 33vw"
           alt={activity.coverImage ? (activity.images[0]?.alt ?? activity.title) : activity.title}
           wrapperClassName="h-full"
           className="transition-transform duration-500 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
@@ -37,6 +39,9 @@ const ActivityCard = ({ activity }: { activity: Activity }) => {
             type="button"
             aria-haspopup="dialog"
             data-activity-card={activity.id}
+            onMouseEnter={prefetchActivityDialog}
+            onFocus={prefetchActivityDialog}
+            onTouchStart={prefetchActivityDialog}
             onClick={(e) => openActivity(activity.id, e.currentTarget)}
             className="text-left outline-none after:absolute after:inset-0 after:content-['']"
           >

@@ -76,19 +76,19 @@ describe("Projects grid", () => {
 });
 
 describe("Activity modal", () => {
-  it("opens from a card and puts the activity in the URL", () => {
+  it("opens from a card and puts the activity in the URL", async () => {
     renderPage(<OurWorkPage />);
     fireEvent.click(card("Growing Ganesha"));
 
-    const dialog = screen.getByRole("dialog", { name: "Growing Ganesha" });
+    const dialog = await screen.findByRole("dialog", { name: "Growing Ganesha" });
     expect(within(dialog).getByText("150+")).toBeTruthy();
     expect(window.location.hash).toBe("#projects/growing-ganesha");
   });
 
-  it("only shows fields that have data", () => {
+  it("only shows fields that have data", async () => {
     renderPage(<OurWorkPage />);
     fireEvent.click(card("Clean-Up Drive"));
-    const dialog = screen.getByRole("dialog");
+    const dialog = await screen.findByRole("dialog");
     // Clean-Up has no highlights, locations or date in the data.
     expect(within(dialog).queryByText("Outcomes")).toBeNull();
     expect(within(dialog).queryByRole("list", { name: "Locations" })).toBeNull();
@@ -98,27 +98,27 @@ describe("Activity modal", () => {
   it("closes with Escape and restores #projects", async () => {
     renderPage(<OurWorkPage />);
     fireEvent.click(card("Sapling Plantation"));
-    expect(screen.getByRole("dialog")).toBeTruthy();
+    const dialog = await screen.findByRole("dialog");
 
-    fireEvent.keyDown(screen.getByRole("dialog"), { key: "Escape" });
+    fireEvent.keyDown(dialog, { key: "Escape" });
     await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
     expect(window.location.hash).toBe("#projects");
   });
 
-  it("switches to a related activity from its chips", () => {
+  it("switches to a related activity from its chips", async () => {
     renderPage(<OurWorkPage />);
     fireEvent.click(card("Sapling Plantation"));
-    const dialog = screen.getByRole("dialog", { name: "Sapling Plantation" });
+    const dialog = await screen.findByRole("dialog", { name: "Sapling Plantation" });
 
     fireEvent.click(within(dialog).getByRole("button", { name: "Seedball Dispersal" }));
     expect(screen.getByRole("dialog", { name: "Seedball Dispersal" })).toBeTruthy();
     expect(window.location.hash).toBe("#projects/seedball-dispersal");
   });
 
-  it("opens straight from a #projects/<id> link", () => {
+  it("opens straight from a #projects/<id> link", async () => {
     window.history.replaceState(null, "", "/#projects/bird-feeders");
     renderPage(<OurWorkPage />);
-    expect(screen.getByRole("dialog", { name: "Bamboo Bird Feeders" })).toBeTruthy();
+    expect(await screen.findByRole("dialog", { name: "Bamboo Bird Feeders" })).toBeTruthy();
   });
 
   it("ignores a link to an activity that does not exist", () => {
@@ -132,7 +132,7 @@ describe("Activity modal", () => {
     const seedCard = card("Seed Collection");
     seedCard.focus();
     fireEvent.click(seedCard);
-    fireEvent.keyDown(screen.getByRole("dialog"), { key: "Escape" });
+    fireEvent.keyDown(await screen.findByRole("dialog"), { key: "Escape" });
 
     await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
     await waitFor(() => expect(document.activeElement).toBe(seedCard));
@@ -141,7 +141,7 @@ describe("Activity modal", () => {
   it("Volunteer button closes the modal and opens the Volunteer page", async () => {
     renderPage(<OurWorkPage />);
     fireEvent.click(card("Clean-Up Drive"));
-    fireEvent.click(within(screen.getByRole("dialog")).getByRole("button", { name: /volunteer for this activity/i }));
+    fireEvent.click(within(await screen.findByRole("dialog")).getByRole("button", { name: /volunteer for this activity/i }));
 
     await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
     await waitFor(() => expect(window.location.pathname).toBe("/volunteer"));

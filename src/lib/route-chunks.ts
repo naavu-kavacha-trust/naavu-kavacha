@@ -7,6 +7,7 @@ import { LEGAL_ROUTES, ROUTES } from "@/data/siteConfig";
  * browser by the time the click happens. The home page ships in the main bundle and needs no loader.
  */
 export const pageLoaders: Record<string, () => Promise<{ default: ComponentType }>> = {
+  [ROUTES.about]: () => import("@/pages/AboutPage"),
   [ROUTES.ourWork]: () => import("@/pages/OurWorkPage"),
   [ROUTES.gallery]: () => import("@/pages/GalleryPage"),
   [ROUTES.volunteer]: () => import("@/pages/VolunteerPage"),

@@ -7,11 +7,10 @@ import PageLayout from "@/components/PageLayout";
 import { LEGAL_ROUTES, ROUTES } from "@/data/siteConfig";
 import { pageLoaders } from "@/lib/route-chunks";
 import Index from "./pages/Index.tsx";
-import AboutPage from "./pages/AboutPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
-// The About page is bundled with the app so it is available immediately on navigation. Other secondary pages
-// load on demand; their loaders live in lib/route-chunks.ts so hovering a link can prefetch them.
+// Secondary pages load on demand; their loaders live in lib/route-chunks.ts so links can prefetch them.
+const AboutPage = lazy(pageLoaders[ROUTES.about]);
 const OurWorkPage = lazy(pageLoaders[ROUTES.ourWork]);
 const GalleryPage = lazy(pageLoaders[ROUTES.gallery]);
 const VolunteerPage = lazy(pageLoaders[ROUTES.volunteer]);

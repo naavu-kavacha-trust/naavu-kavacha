@@ -18,7 +18,7 @@ import { cn } from "@/lib/utils";
 const Lightbox = lazy(() => import("@/components/Lightbox"));
 
 const AUTOPLAY_DELAY_MS = 3500;
-/** Shown instead of photos until the first ones are added (see MISSING_ASSETS.md). */
+/** Shown instead of photos until the first ones are added. */
 const PLACEHOLDER_COUNT = 3;
 
 const slideClass = "basis-full pl-4 sm:basis-1/2 lg:basis-1/3";

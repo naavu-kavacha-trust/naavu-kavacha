@@ -12,7 +12,7 @@
  * `LEGAL_DETAILS` in `siteConfig.ts`; they appear only once filled in.
  *
  * This is a plain-language draft prepared for the Trust. It is not legal advice: have a lawyer who knows Indian
- * charity and data-protection law read it before it is relied on (see the notes in CHANGES.md).
+ * charity and data-protection law read it before it is relied on.
  *
  * Style: short sentences, no legal Latin, because many of the people reading it are students.
  * Each `{email}` is replaced with the contact address from `siteConfig.ts`.
