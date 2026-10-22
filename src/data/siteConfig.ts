@@ -11,6 +11,8 @@ export const EMAIL = "naavu.kavacha@gmail.com"; // TODO(client): confirm this is
 export const INSTAGRAM_URL =
   "https://www.instagram.com/naavu_kavacha?igsh=emQwZDQ5NjRwbGY3";
 
+export const LINKEDIN_URL = "https://www.linkedin.com/company/naavukavacha-trust";
+
 export const WHATSAPP_CHANNEL_URL =
   "https://whatsapp.com/channel/0029VbCWaid5fM5c0TJFbb1N";
 
