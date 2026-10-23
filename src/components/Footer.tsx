@@ -24,7 +24,7 @@ const linkClass =
 
 const Footer = () => {
   return (
-    <footer id="contact" className="bg-bark px-6 pt-16 pb-28 md:px-12 md:pb-24 md:pt-16 lg:px-20">
+    <footer id="contact" className="site-footer bg-bark px-6 pt-16 pb-28 md:px-12 md:pb-24 md:pt-16 lg:px-20">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-12 md:grid-cols-[1fr_auto] md:gap-16 lg:gap-28">
           {/* Brand, short description and social links */}

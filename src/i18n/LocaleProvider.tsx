@@ -22,7 +22,8 @@ function translateValue(value: string, catalog: MessageCatalog, locale: Locale):
   // JSX whitespace can be emitted with line breaks or indentation; compare a
   // normalized key so a translation does not depend on source formatting.
   const trimmed = value.trim().replace(/\s+/g, " ");
-  let translated = catalog[trimmed];
+  // Keep the footer's legal wording in its original English form in every locale.
+  let translated = trimmed === "All rights reserved." ? trimmed : catalog[trimmed];
   if (!translated) {
     const moreCount = trimmed.match(/^\+(\d+) more$/i);
     const copyright = trimmed.match(/^©\s*(\d{4})\s+NAAVU KAVACHA\. All rights reserved\.$/i);
@@ -42,8 +43,8 @@ function translateValue(value: string, catalog: MessageCatalog, locale: Locale):
     if (moreCount) translated = locale === "kn"
       ? `+${moreCount[1]} ಇನ್ನಷ್ಟು`
       : `+${moreCount[1]} और`;
-    else if (copyright) translated = `© ${copyright[1]} NAAVU KAVACHA. ${catalog["All rights reserved."] ?? "All rights reserved."}`;
-    else if (copyrightSuffix) translated = `NAAVU KAVACHA. ${catalog["All rights reserved."] ?? "All rights reserved."}`;
+    else if (copyright) translated = trimmed;
+    else if (copyrightSuffix) translated = trimmed;
     else if (shown) translated = locale === "kn"
       ? `${shown[2]} ಚಿತ್ರಗಳಲ್ಲಿ ${shown[1]} ತೋರಿಸಲಾಗುತ್ತಿದೆ`
       : `${shown[2]} तस्वीरों में से ${shown[1]} दिखाई जा रही हैं`;
