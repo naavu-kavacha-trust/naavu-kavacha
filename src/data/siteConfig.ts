@@ -131,21 +131,21 @@ export const PAGE_META = {
       "Naavu Kavacha Trust is a student-driven environmental initiative in Karnataka focused on seed collection, plantation drives, clean-ups, and community awareness.",
   },
   about: {
-    title: "About Us | NAAVU KAVACHA",
+    title: "About Us | Naavu Kavacha Trust",
     description:
       "Naavu Kavacha is a group of passionate students striving to make our surroundings a better place to live.",
   },
   ourWork: {
-    title: "Our Work | NAAVU KAVACHA",
+    title: "Our Work | Naavu Kavacha Trust",
     description:
       "Awareness programs, seed collection, plantation drives and community environmental action by Naavu Kavacha, a student-driven environmental initiative.",
   },
   gallery: {
-    title: "Gallery | NAAVU KAVACHA",
+    title: "Gallery | Naavu Kavacha Trust",
     description: "Moments from the field: seeds, saplings, clean-ups and the people behind them.",
   },
   volunteer: {
-    title: "Volunteer | NAAVU KAVACHA",
+    title: "Volunteer | Naavu Kavacha Trust",
     description:
       "We invite volunteers, schools, and organizations to collaborate with Naavu Kavacha to protect the environment and build a sustainable future.",
   },

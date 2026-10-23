@@ -166,7 +166,7 @@ describe("working features on their new pages", () => {
     const nav = screen.getByRole("navigation", { name: "Main" });
     fireEvent.click(within(nav).getByRole("link", { name: "Gallery" }));
     await screen.findByRole("heading", { level: 1, name: "Gallery" });
-    await waitFor(() => expect(document.title).toBe("Gallery | NAAVU KAVACHA"));
+    await waitFor(() => expect(document.title).toBe("Gallery | Naavu Kavacha Trust"));
     expect(window.scrollTo).toHaveBeenCalledWith({ top: 0, left: 0, behavior: "instant" });
     expect(within(nav).getByRole("link", { name: "Gallery" })).toHaveAttribute("aria-current", "page");
   });

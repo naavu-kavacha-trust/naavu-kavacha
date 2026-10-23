@@ -7,7 +7,7 @@ import PageLayout from "@/components/PageLayout";
 import LegacyHashRedirect from "@/components/LegacyHashRedirect";
 import { usePageMeta } from "@/hooks/use-page-meta";
 import { resolveLegacyHash } from "@/lib/legacy-redirects";
-import { LEGACY_HASH_REDIRECTS, NAV_ITEMS, PAGE_META, ROUTES, isRouteHref } from "@/data/siteConfig";
+import { LEGACY_HASH_REDIRECTS, NAV_ITEMS, PAGE_META, ROUTES, SITE_URL, isRouteHref } from "@/data/siteConfig";
 
 afterEach(() => cleanup());
 
@@ -145,13 +145,26 @@ describe("usePageMeta", () => {
     meta.content = "Original description";
     document.head.appendChild(meta);
 
-    const { unmount } = render(<Page title="About Us | NAAVU KAVACHA" description="About copy" />);
-    expect(document.title).toBe("About Us | NAAVU KAVACHA");
+    const ogTitle = document.createElement("meta");
+    ogTitle.setAttribute("property", "og:title");
+    ogTitle.setAttribute("content", "Original Open Graph title");
+    document.head.appendChild(ogTitle);
+    const ogUrl = document.createElement("meta");
+    ogUrl.setAttribute("property", "og:url");
+    ogUrl.setAttribute("content", "https://example.org/original");
+    document.head.appendChild(ogUrl);
+
+    const { unmount } = render(<Page title="About Us | Naavu Kavacha Trust" description="About copy" />);
+    expect(document.title).toBe("About Us | Naavu Kavacha Trust");
     expect(meta.getAttribute("content")).toBe("About copy");
+    expect(ogTitle.getAttribute("content")).toBe("About Us | Naavu Kavacha Trust");
+    expect(ogUrl.getAttribute("content")).toBe(`${SITE_URL}${window.location.pathname}`);
 
     unmount();
     expect(document.title).toBe("Original title");
     expect(meta.getAttribute("content")).toBe("Original description");
+    expect(ogTitle.getAttribute("content")).toBe("Original Open Graph title");
+    expect(ogUrl.getAttribute("content")).toBe("https://example.org/original");
   });
 
   it("creates the description tag when the document has none, and removes it again afterwards", () => {
@@ -161,10 +174,10 @@ describe("usePageMeta", () => {
     expect(document.querySelector('meta[name="description"]')).toBeNull();
   });
 
-  it("every page title but the home page's follows 'Page | NAAVU KAVACHA'", () => {
+  it("every non-home page title ends with the organization's name", () => {
     for (const [name, meta] of Object.entries(PAGE_META)) {
       if (name === "home") continue; // the home title is the one in index.html (checked in phase7-polish.test.tsx)
-      expect(meta.title).toMatch(/^[^|]+ \| NAAVU KAVACHA$/);
+      expect(meta.title).toMatch(/^[^|]+ \| (?:NAAVU KAVACHA|Naavu Kavacha Trust)$/);
       expect(meta.description.length).toBeGreaterThan(30);
     }
   });
