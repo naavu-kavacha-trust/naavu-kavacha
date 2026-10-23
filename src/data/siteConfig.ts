@@ -126,7 +126,7 @@ export const PAGE_META = {
   // The same words as in index.html (a test keeps the two identical): this is what visitors and search engines
   // see before the site has loaded, and again whenever they come back to the home page.
   home: {
-    title: "Naavu Kavacha Trust | Environmental Initiative, Karnataka",
+    title: "Naavu Kavacha - One Planet, One Purpose",
     description:
       "Naavu Kavacha Trust is a student-driven environmental initiative in Karnataka focused on seed collection, plantation drives, clean-ups, and community awareness.",
   },
