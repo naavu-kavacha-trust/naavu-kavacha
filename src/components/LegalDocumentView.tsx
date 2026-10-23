@@ -2,6 +2,7 @@ import { Fragment, type ReactNode } from "react";
 import PageHero from "@/components/PageHero";
 import { EMAIL, LEGAL_DETAILS } from "@/data/siteConfig";
 import type { LegalDocument } from "@/data/legal";
+import { useLocale } from "@/i18n/LocaleProvider";
 
 interface LegalDocumentViewProps {
   hero: { eyebrow: string; title: string; description: string };
@@ -32,6 +33,8 @@ const withEmail = (text: string): ReactNode => {
  * `LEGAL_DETAILS`. One `h1` (in the banner), `h2` per section, long lines kept to a comfortable length.
  */
 const LegalDocumentView = ({ hero, content }: LegalDocumentViewProps) => {
+  const { catalog } = useLocale();
+  const localize = (text: string) => catalog[text] ?? text;
   const { registrationNumber, registeredAddress, contactPerson } = LEGAL_DETAILS;
   const details = [
     registrationNumber && ["Registration number", registrationNumber],
@@ -51,7 +54,7 @@ const LegalDocumentView = ({ hero, content }: LegalDocumentViewProps) => {
 
           <div className="space-y-4 text-base leading-relaxed text-foreground/90">
             {content.intro.map((paragraph) => (
-              <p key={paragraph}>{withEmail(paragraph)}</p>
+              <p key={paragraph}>{withEmail(localize(paragraph))}</p>
             ))}
           </div>
 
@@ -95,15 +98,15 @@ const LegalDocumentView = ({ hero, content }: LegalDocumentViewProps) => {
                   {section.heading}
                 </h2>
                 <div className="space-y-4 text-base leading-relaxed text-foreground/90">
-                  {section.paragraphs?.map((paragraph) => <p key={paragraph}>{withEmail(paragraph)}</p>)}
+                  {section.paragraphs?.map((paragraph) => <p key={paragraph}>{withEmail(localize(paragraph))}</p>)}
                   {section.items && (
                     <ul className="list-disc space-y-2 pl-6 marker:text-primary">
                       {section.items.map((item) => (
-                        <li key={item}>{withEmail(item)}</li>
+                        <li key={item}>{withEmail(localize(item))}</li>
                       ))}
                     </ul>
                   )}
-                  {section.after?.map((paragraph) => <p key={paragraph}>{withEmail(paragraph)}</p>)}
+                  {section.after?.map((paragraph) => <p key={paragraph}>{withEmail(localize(paragraph))}</p>)}
                 </div>
               </section>
             ))}

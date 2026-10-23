@@ -154,13 +154,13 @@ describe("robots.txt and the sitemap", () => {
     expect(parsed.siteUrl).toBe(SITE_URL);
   });
 
-  it("builds a sitemap for the five pages", async () => {
+  it("builds a sitemap for the five pages in all three languages", async () => {
     const { buildSitemap, GENERATED_MARK } = await sitemap();
     const xml = buildSitemap("https://example.org", Object.values(ROUTES));
     expect(xml).toContain(GENERATED_MARK);
     expect(xml).toContain('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">');
-    expect(xml.match(/<loc>/g)).toHaveLength(5);
-    for (const route of ["/", "/about", "/our-work", "/gallery", "/volunteer"]) {
+    expect(xml.match(/<loc>/g)).toHaveLength(15);
+    for (const route of ["/", "/about", "/our-work", "/gallery", "/volunteer", "/kn", "/kn/about", "/kn/our-work", "/kn/gallery", "/kn/volunteer", "/hi", "/hi/about", "/hi/our-work", "/hi/gallery", "/hi/volunteer"]) {
       expect(xml).toContain(`<loc>https://example.org${route}</loc>`);
     }
   });
@@ -214,8 +214,10 @@ describe("robots.txt and the sitemap", () => {
       const { run } = await sitemap();
       expect(run(dir).written).toBe(true);
       const xml = readFileSync(join(dir, "public/sitemap.xml"), "utf8");
-      expect(xml.match(/<loc>/g)).toHaveLength(3);
+      expect(xml.match(/<loc>/g)).toHaveLength(9);
       expect(xml).toContain("<loc>https://example.org/about</loc>");
+      expect(xml).toContain("<loc>https://example.org/kn/about</loc>");
+      expect(xml).toContain("<loc>https://example.org/hi/about</loc>");
       expect(xml).not.toContain("example.org//");
       expect(readFileSync(join(dir, "public/robots.txt"), "utf8")).toContain("Sitemap: https://example.org/sitemap.xml");
     });

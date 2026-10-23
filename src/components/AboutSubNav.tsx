@@ -62,7 +62,7 @@ const AboutSubNav = ({ items }: { items: SubNavItem[] }) => {
                     : "border-border bg-card text-foreground/80 hover:border-primary/40 hover:text-primary",
                 )}
               >
-                {item.label}
+                <span className="localized-chip-label">{item.label}</span>
               </a>
             </li>
           );

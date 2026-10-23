@@ -78,10 +78,12 @@ const Footer = () => {
               <button
                 type="button"
                 onClick={() => window.scrollTo({ top: 0 })}
-                className={`${linkClass} gap-1.5 rounded-xl border border-sand/25 bg-sand/5 px-4 hover:border-leaf/60 hover:bg-sand/10`}
+                className={`${linkClass} footer-back-to-top relative -top-[3px] rounded-xl border border-sand/25 bg-sand/5 px-4 hover:border-leaf/60 hover:bg-sand/10`}
               >
-                Back to top
-                <ArrowUp className="h-4 w-4" aria-hidden="true" />
+                <span className="inline-flex items-baseline gap-1.5">
+                  Back to top
+                  <ArrowUp className="relative top-[3px] h-4 w-4" aria-hidden="true" />
+                </span>
               </button>
             </div>
           </div>

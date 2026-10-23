@@ -22,7 +22,8 @@ const escapeXml = (text) =>
   text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;");
 
 export function buildSitemap(siteUrl, routes) {
-  const urls = routes.map((route) => `  <url><loc>${escapeXml(`${siteUrl}${route}`)}</loc></url>`).join("\n");
+  const localizedRoutes = routes.flatMap((route) => [route, `/kn${route === "/" ? "" : route}`, `/hi${route === "/" ? "" : route}`]);
+  const urls = localizedRoutes.map((route) => `  <url><loc>${escapeXml(`${siteUrl}${route}`)}</loc></url>`).join("\n");
   return `<?xml version="1.0" encoding="UTF-8"?>\n${GENERATED_MARK}\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
 }
 
@@ -48,7 +49,7 @@ export function run(root = resolve(fileURLToPath(import.meta.url), "..", "..")) 
 
   writeFileSync(sitemapPath, buildSitemap(config.siteUrl, config.routes));
   if (existsSync(robotsPath)) writeFileSync(robotsPath, updateRobots(readFileSync(robotsPath, "utf8"), config.siteUrl));
-  console.log(`sitemap: wrote public/sitemap.xml with ${config.routes.length} pages for ${config.siteUrl}`);
+  console.log(`sitemap: wrote public/sitemap.xml with ${config.routes.length * 3} localized URLs for ${config.siteUrl}`);
   return { written: true };
 }
 

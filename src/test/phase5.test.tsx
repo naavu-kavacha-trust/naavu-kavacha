@@ -254,7 +254,7 @@ describe("volunteer section and floating button", () => {
     expect(within(section).getByRole("button", { name: "Partner Up" })).toBeTruthy();
     expect(within(section).getAllByRole("link", { name: /join our whatsapp channel/i }).length).toBeGreaterThan(0);
     expect(within(section).getByAltText(/tunturu mahiti kendra/i)).toBeTruthy();
-    expect(within(section).getByText(/we use these details only to contact you/i)).toBeTruthy();
+    expect(within(section).getByText(/we use your details to coordinate volunteer opportunities/i)).toBeTruthy();
   });
 
   it("the floating button stays hidden until the hero has been scrolled past", () => {

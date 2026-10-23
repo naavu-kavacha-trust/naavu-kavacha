@@ -22,23 +22,23 @@ const VolunteerBand = () => (
 
       <Link
         to={ROUTES.volunteer}
-        className="inline-flex min-h-12 items-center rounded-full bg-primary-foreground px-8 py-3.5 text-sm font-medium text-primary transition-colors hover:bg-sand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+        className="inline-flex min-h-12 items-center justify-center rounded-full bg-primary-foreground px-8 py-3.5 text-center text-sm font-medium text-primary transition-colors hover:bg-sand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
       >
-        Become a Volunteer
+        <span className="volunteer-band-label">Become a Volunteer</span>
       </Link>
 
       <ul className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
         <li>
           <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className={outlineLink}>
             <Instagram className="h-4 w-4" aria-hidden="true" />
-            Follow us on Instagram
+            <span className="volunteer-band-label">Follow us on Instagram</span>
             <span className="sr-only"> (opens in a new tab)</span>
           </a>
         </li>
         <li>
           <a href={WHATSAPP_CHANNEL_URL} target="_blank" rel="noopener noreferrer" className={outlineLink}>
             <WhatsAppIcon className="h-4 w-4 shrink-0" />
-            Join our WhatsApp channel
+            <span className="volunteer-band-label">Join our WhatsApp channel</span>
             <span className="sr-only"> (opens in a new tab)</span>
           </a>
         </li>

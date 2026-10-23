@@ -1,0 +1,113 @@
+{
+  "en": {
+    "home": {
+      "title": "Naavu Kavacha - One Planet, One Purpose",
+      "description": "Naavu Kavacha Trust is a student-driven environmental initiative in Karnataka focused on seed collection, plantation drives, clean-ups, and community awareness.",
+      "imageAlt": "Naavu Kavacha volunteers caring for the environment"
+    },
+    "about": {
+      "title": "About Us | Naavu Kavacha Trust",
+      "description": "Naavu Kavacha is a group of passionate students striving to make our surroundings a better place to live.",
+      "imageAlt": "Naavu Kavacha volunteers caring for the environment"
+    },
+    "ourWork": {
+      "title": "Our Work | Naavu Kavacha Trust",
+      "description": "Awareness programs, seed collection, plantation drives and community environmental action by Naavu Kavacha, a student-driven environmental initiative.",
+      "imageAlt": "Naavu Kavacha volunteers caring for the environment"
+    },
+    "gallery": {
+      "title": "Gallery | Naavu Kavacha Trust",
+      "description": "Moments from the field: seeds, saplings, clean-ups and the people behind them.",
+      "imageAlt": "Naavu Kavacha volunteers caring for the environment"
+    },
+    "volunteer": {
+      "title": "Volunteer | Naavu Kavacha Trust",
+      "description": "We invite volunteers, schools, and organizations to collaborate with Naavu Kavacha to protect the environment and build a sustainable future.",
+      "imageAlt": "Naavu Kavacha volunteers caring for the environment"
+    },
+    "privacy": {
+      "title": "Privacy Policy | NAAVU KAVACHA",
+      "description": "What personal information Naavu Kavacha Trust collects through this website, why, who sees it, how long we keep it and your choices.",
+      "imageAlt": "Naavu Kavacha volunteers caring for the environment"
+    },
+    "terms": {
+      "title": "Terms of Service | NAAVU KAVACHA",
+      "description": "The rules for using the Naavu Kavacha website and for volunteering with Naavu Kavacha Trust, in plain language.",
+      "imageAlt": "Naavu Kavacha volunteers caring for the environment"
+    }
+  },
+  "kn": {
+    "home": {
+      "title": "ನಾವೂ ಕವಚ — ಒಂದೇ ಭೂಮಿ, ಒಂದೇ ಧ್ಯೇಯ",
+      "description": "ವಿದ್ಯಾರ್ಥಿಗಳ ಮುನ್ನಡೆ, ಪರಿಸರದ ಕಾಳಜಿ: ಬೀಜ ಸಂಗ್ರಹ, ಸಸಿ ನೆಡುವಿಕೆ, ಸ್ವಚ್ಛತಾ ಅಭಿಯಾನ ಮತ್ತು ಜನಜಾಗೃತಿಯ ಮೂಲಕ ಹಸಿರು ಭವಿಷ್ಯಕ್ಕಾಗಿ ನಾವೂ ಕವಚದ ಕೆಲಸ.",
+      "imageAlt": "ಪರಿಸರದ ಆರೈಕೆಯಲ್ಲಿ ತೊಡಗಿರುವ ನಾವೂ ಕವಚದ ಸ್ವಯಂಸೇವಕರು"
+    },
+    "about": {
+      "title": "ನಮ್ಮ ಬಗ್ಗೆ | ನಾವೂ ಕವಚ ಟ್ರಸ್ಟ್",
+      "description": "ನಮ್ಮ ಸುತ್ತಲಿನ ಪರಿಸರವನ್ನು ವಾಸಯೋಗ್ಯವಾಗಿಸಲು ಶ್ರಮಿಸುವ ಉತ್ಸಾಹಿ ವಿದ್ಯಾರ್ಥಿಗಳ ತಂಡವೇ ನಾವೂ ಕವಚ.",
+      "imageAlt": "ಪರಿಸರದ ಕಾಳಜಿ ವಹಿಸುವ ನಾವೂ ಕವಚದ ಸ್ವಯಂಸೇವಕರು"
+    },
+    "ourWork": {
+      "title": "ನಮ್ಮ ಕಾರ್ಯಗಳು | ನಾವೂ ಕವಚ ಟ್ರಸ್ಟ್",
+      "description": "ನಾವೂ ಕವಚದ ಪರಿಸರ ಅರಿವು ಕಾರ್ಯಕ್ರಮಗಳು, ಬೀಜ ಸಂಗ್ರಹ, ಸಸಿ ನೆಡುವಿಕೆ ಮತ್ತು ಸಮುದಾಯದೊಂದಿಗೆ ಕೈಗೊಳ್ಳುವ ಪರಿಸರ ಕಾರ್ಯಗಳು.",
+      "imageAlt": "ಪರಿಸರದ ಕಾಳಜಿ ವಹಿಸುವ ನಾವೂ ಕವಚದ ಸ್ವಯಂಸೇವಕರು"
+    },
+    "gallery": {
+      "title": "ಚಿತ್ರಸಂಪುಟ | ನಾವೂ ಕವಚ ಟ್ರಸ್ಟ್",
+      "description": "ಬೀಜ ಸಂಗ್ರಹ, ಸಸಿ ನೆಡುವಿಕೆ, ಸ್ವಚ್ಛತಾ ಕಾರ್ಯಗಳು ಮತ್ತು ಅವುಗಳಲ್ಲಿ ತೊಡಗಿರುವವರ ನೆನಪುಗಳು.",
+      "imageAlt": "ಪರಿಸರದ ಕಾಳಜಿ ವಹಿಸುವ ನಾವೂ ಕವಚದ ಸ್ವಯಂಸೇವಕರು"
+    },
+    "volunteer": {
+      "title": "ಸ್ವಯಂಸೇವೆ | ನಾವೂ ಕವಚ ಟ್ರಸ್ಟ್",
+      "description": "ಪರಿಸರ ರಕ್ಷಣೆ ಮತ್ತು ಸುಸ್ಥಿರ ಭವಿಷ್ಯಕ್ಕಾಗಿ ನಾವೂ ಕವಚದೊಂದಿಗೆ ಕೈಜೋಡಿಸಲು ಸ್ವಯಂಸೇವಕರು, ಶಾಲೆಗಳು ಮತ್ತು ಸಂಸ್ಥೆಗಳಿಗೆ ಆಹ್ವಾನ.",
+      "imageAlt": "ಪರಿಸರದ ಕಾಳಜಿ ವಹಿಸುವ ನಾವೂ ಕವಚದ ಸ್ವಯಂಸೇವಕರು"
+    },
+    "privacy": {
+      "title": "ಗೌಪ್ಯತಾ ನೀತಿ | ನಾವೂ ಕವಚ ಟ್ರಸ್ಟ್",
+      "description": "ಈ ಜಾಲತಾಣದಲ್ಲಿ Naavu Kavacha Trust ಯಾವ ವೈಯಕ್ತಿಕ ಮಾಹಿತಿಯನ್ನು ಸಂಗ್ರಹಿಸುತ್ತದೆ, ಏಕೆ ಬಳಸುತ್ತದೆ, ಯಾರೊಂದಿಗೆ ಹಂಚಿಕೊಳ್ಳುತ್ತದೆ, ಎಷ್ಟು ಕಾಲ ಉಳಿಸುತ್ತದೆ ಮತ್ತು ನಿಮಗಿರುವ ಆಯ್ಕೆಗಳು ಯಾವುವು ಎಂಬುದನ್ನು ತಿಳಿಯಿರಿ.",
+      "imageAlt": "ಪರಿಸರದ ಕಾಳಜಿ ವಹಿಸುವ ನಾವೂ ಕವಚದ ಸ್ವಯಂಸೇವಕರು"
+    },
+    "terms": {
+      "title": "ಸೇವಾ ನಿಯಮಗಳು | ನಾವೂ ಕವಚ ಟ್ರಸ್ಟ್",
+      "description": "ನಾವೂ ಕವಚ ಜಾಲತಾಣ ಮತ್ತು ಟ್ರಸ್ಟ್‌ನೊಂದಿಗೆ ಸ್ವಯಂಸೇವೆ ಮಾಡುವುದಕ್ಕೆ ಅನ್ವಯಿಸುವ ನಿಯಮಗಳು—ಸರಳ ಭಾಷೆಯಲ್ಲಿ.",
+      "imageAlt": "ಪರಿಸರದ ಕಾಳಜಿ ವಹಿಸುವ ನಾವೂ ಕವಚದ ಸ್ವಯಂಸೇವಕರು"
+    }
+  },
+  "hi": {
+    "home": {
+      "title": "नावू कवच — एक धरती, एक संकल्प",
+      "description": "विद्यार्थियों की पहल से बीज-संग्रह, पौधारोपण, सफ़ाई अभियान और पर्यावरण जागरूकता के ज़रिए हरियाली भरे भविष्य की ओर बढ़ते कदम।",
+      "imageAlt": "पर्यावरण की देखभाल करते Naavu Kavacha के स्वयंसेवक"
+    },
+    "about": {
+      "title": "हमारे बारे में | नावू कवच ट्रस्ट",
+      "description": "Naavu Kavacha उत्साही विद्यार्थियों का समूह है, जो अपने आसपास की जगहों को बेहतर और रहने योग्य बनाने के लिए जुटा है।",
+      "imageAlt": "पर्यावरण की देखभाल करते Naavu Kavacha के स्वयंसेवक"
+    },
+    "ourWork": {
+      "title": "हमारे काम | नावू कवच ट्रस्ट",
+      "description": "Naavu Kavacha के जागरूकता कार्यक्रम, बीज संग्रह, पौधारोपण और समुदाय के साथ मिलकर किए जाने वाले पर्यावरण कार्य।",
+      "imageAlt": "पर्यावरण की देखभाल करते Naavu Kavacha के स्वयंसेवक"
+    },
+    "gallery": {
+      "title": "चित्र दीर्घा | नावू कवच ट्रस्ट",
+      "description": "बीज जुटाने, पौधे लगाने, सफ़ाई करने और इन कामों में जुटे लोगों की झलकियाँ।",
+      "imageAlt": "पर्यावरण की देखभाल करते Naavu Kavacha के स्वयंसेवक"
+    },
+    "volunteer": {
+      "title": "स्वयंसेवा | नावू कवच ट्रस्ट",
+      "description": "पर्यावरण की रक्षा और टिकाऊ भविष्य के लिए Naavu Kavacha के साथ काम करने हेतु स्वयंसेवकों, स्कूलों और संस्थाओं का स्वागत है।",
+      "imageAlt": "पर्यावरण की देखभाल करते Naavu Kavacha के स्वयंसेवक"
+    },
+    "privacy": {
+      "title": "गोपनीयता नीति | नावू कवच ट्रस्ट",
+      "description": "जानें कि Naavu Kavacha Trust इस वेबसाइट से कौन-सी निजी जानकारी लेता है, क्यों लेता है, किसे दिखती है, कितने समय तक रखता है और आपके पास क्या विकल्प हैं।",
+      "imageAlt": "पर्यावरण की देखभाल करते Naavu Kavacha के स्वयंसेवक"
+    },
+    "terms": {
+      "title": "सेवा की शर्तें | नावू कवच ट्रस्ट",
+      "description": "Naavu Kavacha वेबसाइट और Trust के साथ स्वयंसेवा करने के नियम, सरल भाषा में।",
+      "imageAlt": "पर्यावरण की देखभाल करते Naavu Kavacha के स्वयंसेवक"
+    }
+  }
+}

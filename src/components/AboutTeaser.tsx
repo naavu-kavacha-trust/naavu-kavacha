@@ -4,12 +4,13 @@ import { useRef } from "react";
 import logo400 from "@/assets/optimized/logo-about-400.webp";
 import logo800 from "@/assets/optimized/logo-about-800.webp";
 import SmartImage from "@/components/ui/SmartImage";
-import { getStoryTeaser } from "@/data/about";
+import { getStory } from "@/data/about";
 import { formatStat, getHeadlineStats } from "@/data/impact";
 import { ROUTES, SECTION_IDS } from "@/data/siteConfig";
 
 // The same two verified figures as the About page. Unverified stats are never shown.
 const stats = getHeadlineStats();
+const story = getStory();
 
 /**
  * Home-page introduction: the start of the About page's story (from `data/about.ts`), the organization logo and headline
@@ -29,8 +30,10 @@ const AboutTeaser = () => {
         >
           <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-primary">About Us</p>
           <h2 className="section-title mb-6">Who We Are</h2>
-          <p className="section-subtitle">{getStoryTeaser()}</p>
-          <div className="mt-8 flex gap-8">
+          <div className="max-w-prose space-y-5 text-lg leading-relaxed text-muted-foreground">
+            {story.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+          </div>
+          <div className="mt-10 flex flex-wrap gap-x-8 gap-y-4">
             {stats.map((stat) => (
               <div key={stat.id}>
                 <p className="font-display text-3xl font-bold text-primary">{formatStat(stat)}</p>

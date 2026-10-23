@@ -28,7 +28,7 @@ const Hero = () => {
 
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
         <p
-          className="hero-rise text-sand text-sm md:text-base font-body tracking-[0.3em] uppercase mb-6"
+          className="hero-rise hero-eyebrow text-sand text-sm md:text-base font-body tracking-[0.3em] uppercase mb-6"
         >
           Student-Driven Environmental Initiative
         </p>
@@ -56,15 +56,15 @@ const Hero = () => {
         >
           <Link
             to={ROUTES.volunteer}
-            className="bg-primary text-primary-foreground px-8 py-3.5 rounded-full font-medium hover:bg-forest-light transition-colors text-sm"
+            className="inline-flex items-center justify-center bg-primary text-primary-foreground px-8 py-3.5 rounded-full font-medium text-center hover:bg-forest-light transition-colors text-sm"
           >
-            Become a Volunteer
+            <span className="localized-action-label">Become a Volunteer</span>
           </Link>
           <Link
             to={ROUTES.ourWork}
-            className="border border-sand/40 text-sand px-8 py-3.5 rounded-full font-medium hover:bg-sand/10 transition-colors text-sm"
+            className="inline-flex items-center justify-center border border-sand/40 text-sand px-8 py-3.5 rounded-full font-medium text-center hover:bg-sand/10 transition-colors text-sm"
           >
-            Explore Our Work
+            <span className="localized-action-label">Explore Our Work</span>
           </Link>
         </div>
       </div>

@@ -8,6 +8,9 @@ import { INSTAGRAM_URL, NAV_ITEMS, ROUTES, isRouteHref } from "@/data/siteConfig
 import { prefetchHandlers } from "@/lib/route-chunks";
 import { isPlainClick, scrollToSection } from "@/lib/scroll";
 import { cn } from "@/lib/utils";
+import LanguagePicker from "@/components/LanguagePicker";
+import { useLocale } from "@/i18n/LocaleProvider";
+import { localizedPath, unlocalizedPath } from "@/i18n/types";
 
 /** The full desktop bar needs about 1280px; below that the menu button is shown. */
 const DESKTOP_QUERY = "(min-width: 1280px)";
@@ -26,7 +29,10 @@ const Navbar = () => {
 
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const isHome = pathname === ROUTES.home;
+  const { locale } = useLocale();
+  const basePath = unlocalizedPath(pathname);
+  const routePath = (href: string) => localizedPath(locale, href);
+  const isHome = basePath === ROUTES.home;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -99,7 +105,7 @@ const Navbar = () => {
   // See-through over the hero only: on the home page, at the top. Every other page has a solid bar.
   const transparent = isHome && !scrolled;
 
-  const isActive = (href: string) => isRouteHref(href) && href === pathname;
+  const isActive = (href: string) => isRouteHref(href) && href === basePath;
 
   const linkClass = (active: boolean) =>
     cn(
@@ -114,7 +120,7 @@ const Navbar = () => {
 
   /** Pages open through the router; "#contact" jumps to the footer on whichever page we are on. */
   const follow = (href: string) => {
-    if (isRouteHref(href)) navigate(href);
+    if (isRouteHref(href)) navigate(routePath(href));
     else scrollToSection(href);
   };
 
@@ -153,7 +159,7 @@ const Navbar = () => {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
         <Link
-          to={ROUTES.home}
+          to={routePath(ROUTES.home)}
           onClick={(e) => {
             // Already on the home page: a Link to the same place does nothing, so scroll up instead.
             if (isHome && window.location.hash === "" && isPlainClick(e)) {
@@ -176,7 +182,7 @@ const Navbar = () => {
             return isRouteHref(item.href) ? (
               <Link
                 key={item.href}
-                to={item.href}
+                to={routePath(item.href)}
                 aria-current={active ? "page" : undefined}
                 className={linkClass(active)}
                 {...prefetchHandlers(item.href)}
@@ -199,13 +205,14 @@ const Navbar = () => {
             );
           })}
           <Link
-            to={ROUTES.volunteer}
-            aria-current={pathname === ROUTES.volunteer ? "page" : undefined}
+            to={routePath(ROUTES.volunteer)}
+            aria-current={basePath === ROUTES.volunteer ? "page" : undefined}
             {...prefetchHandlers(ROUTES.volunteer)}
-            className="rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 aria-[current=page]:ring-2 aria-[current=page]:ring-primary/30 aria-[current=page]:ring-offset-2"
+            className="navbar-volunteer-cta rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 aria-[current=page]:ring-2 aria-[current=page]:ring-primary/30 aria-[current=page]:ring-offset-2"
           >
             Volunteer
           </Link>
+          <LanguagePicker heroOverlay={transparent} />
         </div>
 
         {/* Mobile / tablet menu button */}
@@ -244,13 +251,14 @@ const Navbar = () => {
           </div>
 
           <nav aria-label="Mobile" className="flex-1 px-3 py-4">
+            <div className="flex justify-center px-3 pb-3"><LanguagePicker /></div>
             <ul className="flex flex-col">
               {NAV_ITEMS.map((item) => {
                 const active = isActive(item.href);
                 return (
                   <li key={item.href}>
                     <a
-                      href={item.href}
+                      href={isRouteHref(item.href) ? routePath(item.href) : item.href}
                       aria-current={active ? "page" : undefined}
                       {...(isRouteHref(item.href) ? prefetchHandlers(item.href) : {})}
                       onClick={(e) => {
@@ -275,8 +283,8 @@ const Navbar = () => {
 
           <div className="space-y-4 border-t border-border px-6 py-5">
             <a
-              href={ROUTES.volunteer}
-              aria-current={pathname === ROUTES.volunteer ? "page" : undefined}
+              href={routePath(ROUTES.volunteer)}
+              aria-current={basePath === ROUTES.volunteer ? "page" : undefined}
               {...prefetchHandlers(ROUTES.volunteer)}
               onClick={(e) => {
                 if (!isPlainClick(e)) return;

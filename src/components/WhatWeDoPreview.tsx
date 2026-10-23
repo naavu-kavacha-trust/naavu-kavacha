@@ -48,8 +48,10 @@ const WhatWeDoPreview = () => {
             to={ROUTES.ourWork}
             className="inline-flex min-h-12 items-center gap-2 rounded-full border border-primary px-8 py-3 text-sm font-medium text-primary transition-colors hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-card"
           >
-            See all projects &amp; activities
-            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            <span className="localized-action-label inline-flex items-baseline gap-1.5">
+              See all projects &amp; activities
+              <ArrowRight className="relative top-[2px] h-[18px] w-[18px] shrink-0" aria-hidden="true" />
+            </span>
           </Link>
         </div>
       </div>

@@ -6,7 +6,7 @@
 /** Shown under the brand name in the header and footer. */
 export const LEGAL_ENTITY = "[Legal Entity: Naavu Kavacha Trust]";
 
-export const EMAIL = "naavu.kavacha@gmail.com"; // TODO(client): confirm this is the official address
+export const EMAIL = "naavu.kavacha@gmail.com";
 
 export const INSTAGRAM_URL =
   "https://www.instagram.com/naavu_kavacha?igsh=emQwZDQ5NjRwbGY3";

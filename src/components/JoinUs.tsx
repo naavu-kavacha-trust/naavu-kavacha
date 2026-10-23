@@ -72,7 +72,7 @@ const JoinUs = () => {
                   type="button"
                   className="inline-flex min-h-12 items-center justify-center rounded-full border border-primary/35 bg-primary/5 px-7 py-3 text-sm font-semibold text-primary shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/50 hover:bg-primary/10 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                 >
-                  Partner Up
+                  <span className="join-us-action-label">Partner Up</span>
                 </button>
               </DeferredContactDialog>
               <a
@@ -82,7 +82,7 @@ const JoinUs = () => {
                 className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground shadow-md shadow-primary/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               >
                 <WhatsAppIcon className="h-5 w-5 shrink-0" />
-                Join our WhatsApp channel
+                <span className="join-us-action-label">Join our WhatsApp channel</span>
               </a>
             </div>
           </motion.div>

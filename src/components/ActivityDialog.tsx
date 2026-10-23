@@ -138,7 +138,7 @@ const PhotoCarousel = ({ activity }: { activity: Activity }) => {
 };
 
 const SectionLabel = ({ children }: { children: string }) => (
-  <h3 className="mb-2 text-sm font-semibold uppercase tracking-[0.12em] text-primary">{children}</h3>
+  <h3 className="activity-dialog-section-label mb-2 text-sm font-semibold uppercase tracking-[0.12em] text-primary">{children}</h3>
 );
 
 /**
@@ -208,26 +208,26 @@ const ActivityDialog = ({
               <div ref={scrollRef} className="flex-1 overflow-y-auto overscroll-contain">
                 <PhotoCarousel key={activity.id} activity={activity} />
 
-                <div className="space-y-6 px-5 py-6 sm:px-8">
+                <div className="activity-dialog-copy space-y-6 px-5 py-6 text-left sm:px-8">
                   <header>
-                    <span className="inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
+                    <span className="activity-dialog-category inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
                       {activity.category}
                     </span>
                     <DialogTitle
                       ref={setTitleRef}
                       tabIndex={-1}
-                      className="mt-3 font-display text-2xl font-bold leading-tight outline-none sm:text-3xl"
+                      className="activity-dialog-title mt-3 font-display text-2xl font-bold leading-tight outline-none sm:text-3xl"
                     >
                       {activity.title}
                     </DialogTitle>
-                    <DialogDescription className="mt-2 text-base leading-relaxed text-foreground/90">
+                    <DialogDescription className="activity-dialog-summary mt-2 text-base leading-relaxed text-foreground/90">
                       {activity.summary}
                     </DialogDescription>
 
                     {(activity.date || (activity.locations && activity.locations.length > 0)) && (
                       <ul className="mt-4 flex flex-wrap gap-2">
                         {activity.date && (
-                          <li className="inline-flex items-center gap-1.5 rounded-full bg-card px-3 py-1.5 text-sm text-foreground">
+                          <li className="activity-dialog-meta inline-flex items-center gap-1.5 rounded-full bg-card px-3 py-1.5 text-sm text-foreground">
                             <CalendarDays className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
                             {activity.date}
                           </li>
@@ -235,10 +235,10 @@ const ActivityDialog = ({
                         {activity.locations?.map((loc) => (
                           <li
                             key={loc}
-                            className="inline-flex items-center gap-1.5 rounded-full bg-card px-3 py-1.5 text-sm text-foreground"
+                            className="activity-dialog-meta inline-flex items-center gap-1.5 rounded-full bg-card px-3 py-1.5 text-sm text-foreground"
                           >
-                            <MapPin className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
-                            {loc}
+                            <MapPin className="h-3.5 w-3.5 shrink-0 text-primary" aria-hidden="true" />
+                            <span className="activity-dialog-location-label leading-none">{loc}</span>
                           </li>
                         ))}
                       </ul>
@@ -250,7 +250,7 @@ const ActivityDialog = ({
                       {activity.highlights.map((h) => (
                         <div key={h.label} className="rounded-xl bg-primary px-4 py-3 text-primary-foreground">
                           <dd className="font-display text-2xl font-bold">{h.value}</dd>
-                          <dt className="text-sm text-primary-foreground/90">{h.label}</dt>
+                      <dt className="activity-dialog-small-label text-sm text-primary-foreground/90">{h.label}</dt>
                         </div>
                       ))}
                     </dl>
@@ -307,10 +307,12 @@ const ActivityDialog = ({
                 <button
                   type="button"
                   onClick={() => onVolunteer(activity)}
-                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-primary px-8 py-3 text-base font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:w-auto"
+                  className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-primary px-8 py-3 text-base font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:w-auto"
                 >
-                  Volunteer for this activity
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  <span className="inline-flex items-center gap-1.5">
+                    Volunteer for this activity
+                    <ArrowRight className="h-[18px] w-[18px] shrink-0" aria-hidden="true" />
+                  </span>
                 </button>
               </div>
             </>

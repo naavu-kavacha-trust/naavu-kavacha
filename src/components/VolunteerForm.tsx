@@ -360,9 +360,9 @@ const VolunteerForm = () => {
             </p>
           )}
 
-          {/* TODO(client): confirm the privacy wording. */}
           <p className="text-center text-xs text-muted-foreground">
-            We use these details only to contact you about volunteering with Naavu Kavacha.
+            We use your details to coordinate volunteer opportunities and contact you about them. Read our{" "}
+            <a href="/privacy" className="underline underline-offset-2 hover:text-foreground">Privacy Policy</a>.
           </p>
         </form>
       </Form>

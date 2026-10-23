@@ -28,7 +28,7 @@ describe("the supplied founder and co-founder", () => {
     expect(getCoFounders()).toHaveLength(1);
     expect([founder.name, founder.role]).toEqual(["Ajay Gowda H", "Founder"]);
     expect([coFounder.name, coFounder.role]).toEqual(["Nidhi B S", "Co-Founder"]);
-    expect(getCoreTeam()).toEqual([]);
+    expect(getCoreTeam()).toHaveLength(6);
   });
 
   it("keeps both bios concise and in a single paragraph", () => {
@@ -38,18 +38,18 @@ describe("the supplied founder and co-founder", () => {
     expect(paragraphsOf(getCoFounders()[0].bio)).toHaveLength(1);
   });
 
-  it("nothing was added that was not supplied: no message, quote, social links or contact details", () => {
+  it("does not invent messages, quotes or social links", () => {
     for (const person of [...getFounders(), ...getCoFounders()]) {
       expect(person.message, person.name).toBeUndefined();
       expect(person.quote, person.name).toBeUndefined();
       expect(person.social, person.name).toBeUndefined();
-      expect(person.photo, person.name).toBeUndefined();
+      expect(person.photo, person.name).toBeTruthy();
     }
   });
 
-  it("keeps a note that the written consent still has to be confirmed (and that it is never shown)", () => {
+  it("keeps the confirmed consent note internal", () => {
     for (const person of [...getFounders(), ...getCoFounders()]) {
-      expect(person.note).toMatch(/consent .* not yet confirmed/i);
+      expect(person.note).toMatch(/confirmed consent for publication/i);
     }
   });
 });
@@ -58,8 +58,8 @@ describe("how they appear on the About page", () => {
   it("each has a heading, name, role and one concise bio paragraph, in the right section", () => {
     const { container } = renderPage(<AboutPage />);
     for (const [id, heading, name, role, supplied] of [
-      ["founder", "Our Founder", "Ajay Gowda H", "Founder", SUPPLIED_FOUNDER],
-      ["cofounder", "Our Co-Founder", "Nidhi B S", "Co-Founder", SUPPLIED_COFOUNDER],
+      ["founder", "Meet Our Founder", "Ajay Gowda H", "Founder", SUPPLIED_FOUNDER],
+      ["cofounder", "Meet Our Co-Founder", "Nidhi B S", "Co-Founder", SUPPLIED_COFOUNDER],
     ] as const) {
       const section = within(container.querySelector(`#${id}`) as HTMLElement);
       expect(section.getByRole("heading", { level: 2, name: heading })).toBeInTheDocument();
@@ -71,11 +71,15 @@ describe("how they appear on the About page", () => {
     }
   });
 
-  it("shows initials avatars (AG and NB) until photos are added, with the names still visible", () => {
+  it("shows responsive founder portraits with accessible names", () => {
     const { container } = renderPage(<AboutPage />);
-    const avatars = within(container.querySelector(".about-page") as HTMLElement).getAllByTestId("initials-avatar");
-    expect(avatars.map((a) => a.textContent)).toEqual(["AG", "NB"]);
-    expect(container.querySelector("#founder img, #cofounder img")).toBeNull();
+    const images = Array.from(container.querySelectorAll("#founder img, #cofounder img"));
+    expect(images).toHaveLength(2);
+    expect(images.map((image) => image.getAttribute("alt"))).toEqual([
+      "Ajay Gowda H, Founder",
+      "Nidhi B S, Co-Founder",
+    ]);
+    expect(images.every((image) => image.getAttribute("srcset")?.includes("384w"))).toBe(true);
   });
 
   it("puts the Founder before the Co-Founder, with mirrored portraits and opposite backgrounds", () => {
@@ -91,7 +95,7 @@ describe("how they appear on the About page", () => {
   it("the sub-navigation links to both", () => {
     renderPage(<AboutPage />);
     const labels = within(screen.getByRole("navigation", { name: "On this page" })).getAllByRole("link").map((a) => a.textContent);
-    expect(labels).toEqual(["Our Story", "Founder", "Co-Founder", "Journey", "Future Plans"]);
+    expect(labels).toEqual(["Our Story", "Founder", "Co-Founder", "Core Team", "Journey", "Future Plans"]);
   });
 
   it("the internal note never reaches the page", () => {

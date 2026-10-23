@@ -4,6 +4,20 @@
     { "source": "/our-work", "destination": "/our-work/index.html" },
     { "source": "/gallery", "destination": "/gallery/index.html" },
     { "source": "/volunteer", "destination": "/volunteer/index.html" },
+    { "source": "/kn", "destination": "/kn/index.html" },
+    { "source": "/kn/about", "destination": "/kn/about/index.html" },
+    { "source": "/kn/our-work", "destination": "/kn/our-work/index.html" },
+    { "source": "/kn/gallery", "destination": "/kn/gallery/index.html" },
+    { "source": "/kn/volunteer", "destination": "/kn/volunteer/index.html" },
+    { "source": "/kn/privacy", "destination": "/kn/privacy/index.html" },
+    { "source": "/kn/terms", "destination": "/kn/terms/index.html" },
+    { "source": "/hi", "destination": "/hi/index.html" },
+    { "source": "/hi/about", "destination": "/hi/about/index.html" },
+    { "source": "/hi/our-work", "destination": "/hi/our-work/index.html" },
+    { "source": "/hi/gallery", "destination": "/hi/gallery/index.html" },
+    { "source": "/hi/volunteer", "destination": "/hi/volunteer/index.html" },
+    { "source": "/hi/privacy", "destination": "/hi/privacy/index.html" },
+    { "source": "/hi/terms", "destination": "/hi/terms/index.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

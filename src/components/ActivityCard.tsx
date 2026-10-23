@@ -18,7 +18,7 @@ const ActivityCard = ({ activity }: { activity: Activity }) => {
   const hidden = locations.length - shown.length;
 
   return (
-    <article className="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lg motion-reduce:transition-none motion-reduce:hover:translate-y-0 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-ring has-[:focus-visible]:ring-offset-2 has-[:focus-visible]:ring-offset-background">
+    <article className="activity-card group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lg motion-reduce:transition-none motion-reduce:hover:translate-y-0 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-ring has-[:focus-visible]:ring-offset-2 has-[:focus-visible]:ring-offset-background">
       <div className="relative h-48 w-full overflow-hidden bg-secondary/40">
         <SmartImage
           src={activity.coverImage}
@@ -28,13 +28,13 @@ const ActivityCard = ({ activity }: { activity: Activity }) => {
           wrapperClassName="h-full"
           className="transition-transform duration-500 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
         />
-        <span className="absolute left-3 top-3 rounded-full bg-background/90 px-3 py-1 text-sm font-medium text-primary shadow-sm">
+        <span className="activity-card-category absolute left-3 top-3 rounded-full bg-background/90 px-3 py-1 text-sm font-medium text-primary shadow-sm">
           {activity.category}
         </span>
       </div>
 
       <div className="flex flex-1 flex-col p-6">
-        <h3 className="font-display text-xl font-semibold text-foreground">
+        <h3 className="activity-card-title font-display text-xl font-semibold text-foreground">
           <button
             type="button"
             aria-haspopup="dialog"
@@ -49,7 +49,7 @@ const ActivityCard = ({ activity }: { activity: Activity }) => {
           </button>
         </h3>
 
-        <p className="mt-2 line-clamp-3 text-[0.9375rem] leading-relaxed text-foreground/80">
+        <p className="activity-card-summary mt-2 line-clamp-3 text-[0.9375rem] leading-relaxed text-foreground/80">
           {activity.summary}
         </p>
 
@@ -58,10 +58,10 @@ const ActivityCard = ({ activity }: { activity: Activity }) => {
             {shown.map((loc) => (
               <li
                 key={loc}
-                className="inline-flex items-center gap-1 rounded-full bg-background px-2.5 py-1 text-[0.8125rem] text-foreground/80"
+                className="activity-location-chip inline-flex items-center gap-1 rounded-full bg-background px-2.5 py-1 text-[0.8125rem] text-foreground/80"
               >
-                <MapPin className="h-3 w-3 flex-shrink-0 text-primary" aria-hidden="true" />
-                {loc}
+                <MapPin className="activity-location-icon h-3 w-3 flex-shrink-0 text-primary" aria-hidden="true" />
+                <span className="activity-location-label">{loc}</span>
               </li>
             ))}
             {hidden > 0 && (
@@ -74,10 +74,10 @@ const ActivityCard = ({ activity }: { activity: Activity }) => {
 
         <span
           aria-hidden="true"
-          className="mt-auto inline-flex items-center gap-1 pt-5 text-base font-medium text-primary"
+          className="mt-auto inline-flex items-baseline gap-1.5 pt-5 text-base font-medium text-primary"
         >
           View details
-          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 motion-reduce:transition-none" />
+          <ArrowRight className="relative top-[2px] h-[18px] w-[18px] shrink-0 transition-transform group-hover:translate-x-1 motion-reduce:transition-none" />
         </span>
       </div>
     </article>

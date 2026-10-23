@@ -110,7 +110,7 @@ const CoreTeam = ({ members, tone }: CoreTeamProps) => {
                   <span className="block break-words font-sans text-lg font-semibold leading-snug text-primary-foreground sm:text-xl">
                     {person.name}
                   </span>
-                  <span className="mt-1 block break-words text-base text-primary-foreground/80 sm:text-lg">{person.role}</span>
+                  <span className="mt-1 block break-words text-base text-primary-foreground sm:text-lg">{person.role}</span>
                 </span>
               </div>
             );
