@@ -187,7 +187,7 @@ const Navbar = () => {
                 className={linkClass(active)}
                 {...prefetchHandlers(item.href)}
               >
-                {item.label}
+                <span className="navbar-desktop-label">{item.label}</span>
               </Link>
             ) : (
               <a
@@ -200,7 +200,7 @@ const Navbar = () => {
                 }}
                 className={linkClass(false)}
               >
-                {item.label}
+                <span className="navbar-desktop-label">{item.label}</span>
               </a>
             );
           })}

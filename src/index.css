@@ -17,6 +17,11 @@ html[data-locale="kn"] .text-sm,
 html[data-locale="hi"] .text-sm { font-size: 1rem; }
 html[data-locale="kn"] .navbar-volunteer-cta,
 html[data-locale="hi"] .navbar-volunteer-cta { font-size: 0.9375rem; }
+html[data-locale="kn"] .navbar-desktop-label {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+}
 /* Give Hindi labels and compact copy a slight boost, with a smaller step on phones. */
 html[data-locale="hi"] .text-xs { font-size: 0.9375rem; }
 html[data-locale="hi"] .text-sm { font-size: 1rem; }
