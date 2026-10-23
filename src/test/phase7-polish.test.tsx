@@ -76,6 +76,15 @@ describe("page titles and descriptions", () => {
 });
 
 describe("social previews", () => {
+  it("declares the square brand favicon at the site root for search crawlers", () => {
+    expect(indexHtml).toContain('<link rel="icon" href="/favicon.png" type="image/png" sizes="192x192" />');
+    expect(existsSync(resolve(root, "public/favicon.png"))).toBe(true);
+    expect(existsSync(resolve(root, "public/favicon.ico"))).toBe(true);
+    const png = readFileSync(resolve(root, "public/favicon.png"));
+    expect(png.readUInt32BE(16)).toBe(192);
+    expect(png.readUInt32BE(20)).toBe(192);
+  });
+
   it("index.html keeps its site-wide preview image and card settings", () => {
     for (const tag of [
       'property="og:image" content="https://naavu-kavacha.vercel.app/og-image.jpg"',
