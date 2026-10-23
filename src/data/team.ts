@@ -85,7 +85,7 @@ export const teamMembers: TeamMember[] = [
   {
     id: "sharadha",
     group: "core",
-    name: "Sharadha Nagaraj M",
+    name: "Sharada Nagaraj M",
     role: "Core Team",
     photo: "sharadha.png",
     order: 4,
