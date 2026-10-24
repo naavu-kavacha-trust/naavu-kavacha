@@ -318,12 +318,12 @@ export const termsOfService: LegalDocument = {
 /** Titles and descriptions for the legal pages (same rules as `PAGE_META` in `siteConfig.ts`; kept here so they stay out of the home page's code). */
 export const LEGAL_PAGE_META = {
   privacy: {
-    title: "Privacy Policy | NAAVU KAVACHA",
+    title: "Privacy Policy | Naavu Kavacha Trust",
     description:
       "What personal information Naavu Kavacha Trust collects through this website, why, who sees it, how long we keep it and your choices.",
   },
   terms: {
-    title: "Terms of Service | NAAVU KAVACHA",
+    title: "Terms of Service | Naavu Kavacha Trust",
     description:
       "The rules for using the Naavu Kavacha website and for volunteering with Naavu Kavacha Trust, in plain language.",
   },

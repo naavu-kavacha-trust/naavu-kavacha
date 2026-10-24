@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const config = readFileSync(resolve(root, "src/data/siteConfig.ts"), "utf8");
+const legalConfig = readFileSync(resolve(root, "src/data/legal.ts"), "utf8");
 const htmlPath = resolve(root, "dist/index.html");
 const html = readFileSync(htmlPath, "utf8");
 
@@ -68,6 +69,20 @@ for (const key of staticRouteKeys) {
   const meta = new RegExp(`${key}:\\s*\\{\\s*title:\\s*"([^"]+)"\\s*,\\s*description:\\s*"([^"]+)"`, "s").exec(config);
   if (!route) throw new Error(`Could not read route "${key}" from src/data/siteConfig.ts`);
   if (!meta) throw new Error(`Could not read metadata for "${key}" from src/data/siteConfig.ts`);
+
+  const outputPath = resolve(root, "dist", route.slice(1), "index.html");
+  mkdirSync(dirname(outputPath), { recursive: true });
+  writeFileSync(outputPath, renderRoutePage(route, { title: meta[1], description: meta[2] }, siteUrl));
+  console.log(`prerender: wrote route metadata for ${route}`);
+}
+
+const legalRouteConfig = /export const LEGAL_ROUTES = \{([\s\S]*?)\} as const/.exec(config)?.[1];
+const legalMetaConfig = /export const LEGAL_PAGE_META = \{([\s\S]*?)\} as const/.exec(legalConfig)?.[1];
+if (!legalRouteConfig || !legalMetaConfig) throw new Error("Could not read legal routes and metadata");
+for (const key of ["privacy", "terms"]) {
+  const route = new RegExp(`\\b${key}:\\s*"([^"]+)"`).exec(legalRouteConfig)?.[1];
+  const meta = new RegExp(`${key}:\\s*\\{\\s*title:\\s*"([^"]+)"\\s*,\\s*description:\\s*"([^"]+)"`, "s").exec(legalMetaConfig);
+  if (!route || !meta) throw new Error(`Could not read legal page metadata for "${key}"`);
 
   const outputPath = resolve(root, "dist", route.slice(1), "index.html");
   mkdirSync(dirname(outputPath), { recursive: true });
