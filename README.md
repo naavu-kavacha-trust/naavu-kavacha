@@ -31,8 +31,9 @@ Explore the initiative through these pages:
 - **Our Work** — activities and environmental programs.
 - **Gallery** — photos and moments from the field.
 - **Volunteer** — ways to participate and collaborate.
+- **Privacy** and **Terms** — information about privacy and site use, linked from the footer.
 
-The site is built with React, TypeScript, Vite, Tailwind CSS, and React Router. It includes responsive layouts, optimized images, and page metadata for search and social sharing.
+The site is built with React, TypeScript, Vite, Tailwind CSS, and React Router. It includes responsive layouts, optimized images, and page metadata for search and social sharing. The build creates route-specific metadata for all six secondary pages.
 
 ## Run locally
 
@@ -54,9 +55,9 @@ npm run preview
 
 ## Configuration
 
-Copy `.env.example` to `.env` to configure local settings. `VITE_VOLUNTEER_ENDPOINT` is optional; it accepts volunteer form submissions as JSON. If unset, the form provides an email fallback.
+Copy `.env.example` to `.env` to configure local settings. `VITE_VOLUNTEER_ENDPOINT` is optional; when set, the volunteer form sends registrations to it as a JSON `POST`. If unset, the form opens an email draft instead.
 
-Set the production site URL in `src/data/siteConfig.ts`. The build uses it to generate the sitemap and update crawler instructions. For deployments, configure `VITE_VOLUNTEER_ENDPOINT` in the hosting provider’s environment settings when using a form endpoint. Vite exposes `VITE_` variables in the browser bundle, so do not store secrets in them.
+Set the production site URL in `src/data/siteConfig.ts`. The build uses it to generate the sitemap and add its location to `public/robots.txt`. The sitemap includes the five main pages and the Privacy and Terms pages. For deployments, configure `VITE_VOLUNTEER_ENDPOINT` in the hosting provider’s environment settings when using a form endpoint. Vite exposes `VITE_` variables in the browser bundle, so do not store secrets in them.
 
 ## Useful commands
 
@@ -76,7 +77,8 @@ Set the production site URL in `src/data/siteConfig.ts`. The build uses it to ge
 | --- | --- |
 | `src/pages/` | Route pages. |
 | `src/components/` | Shared sections, navigation, dialogs, forms, and gallery UI. |
-| `src/data/` | Site configuration, activities, team, impact, and gallery content. |
+| `src/data/` | Site configuration, legal page content, activities, team, impact, and gallery content. |
+| `src/lib/` | Shared helpers, including volunteer form submission and route handling. |
 | `src/assets/` | Source photos, logo, and optimized image variants. |
 | `public/` | Static files served from the site root, including icons, sitemap, and crawler instructions. |
 | `src/test/` and `e2e/` | Unit/component tests and browser tests. |
