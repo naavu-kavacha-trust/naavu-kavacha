@@ -399,6 +399,10 @@ html[data-locale="hi"] .about-teaser-copy {
   font-size: 1.1875rem;
 }
 
+html[data-locale="hi"] .our-story-copy {
+  font-size: 1.1875rem;
+}
+
 html[data-locale="hi"] .gallery-intro-copy {
   font-size: 1.125rem;
 }
