@@ -61,7 +61,9 @@ function translateValue(value: string, catalog: MessageCatalog, locale: Locale):
       const title = catalog[activityPhoto[1]] ?? activityPhoto[1];
       translated = locale === "kn"
         ? `${title}: ನಾವೂ ಕವಚದ ಚಿತ್ರ ${activityPhoto[2]}`
-        : `${title}: Naavu Kavacha की तस्वीर ${activityPhoto[2]}`;
+        : locale === "hi"
+          ? `${title}: 'नावू कवचा' की तस्वीर ${activityPhoto[2]}`
+          : `${title}: Naavu Kavacha photo ${activityPhoto[2]}`;
     }
     else if (photoList) {
       const title = catalog[photoList[1]] ?? photoList[1];
@@ -82,7 +84,9 @@ function translateValue(value: string, catalog: MessageCatalog, locale: Locale):
       : `${social[1]} — ${social[2] === "Instagram" ? "इंस्टाग्राम" : "लिंक्डइन"} (नए टैब में खुलेगा)`;
     else if (paperCollection) translated = locale === "kn"
       ? "KSVPಯಲ್ಲಿ ನಡೆದ ಕಾಗದ ಸಂಗ್ರಹ ಅಭಿಯಾನದಲ್ಲಿ " + paperCollection[1] + " ಕಾಗದ ಸಂಗ್ರಹಿಸಲಾಯಿತು"
-      : "KSVP में हुए काग़ज़ संग्रह अभियान में " + paperCollection[1] + " काग़ज़ इकट्ठा किया गया";
+      : locale === "hi"
+        ? `${catalog["Karnataka Samskriti Vidyapeetha (KSVP)"] ?? "KSVP"} में हुए काग़ज़ संग्रह अभियान में ${paperCollection[1]} काग़ज़ इकट्ठा किया गया`
+        : `Paper collection drive at KSVP: ${paperCollection[1]} of paper collected`;
   }
   return translated ? `${leading}${translated}${trailing}` : value;
 }

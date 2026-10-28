@@ -51,6 +51,7 @@ html[data-locale="kn"] .site-footer .text-xs,
 html[data-locale="hi"] .site-footer .text-xs { font-size: 0.75rem; line-height: 1rem; }
 html[data-locale="kn"] .site-footer .text-sm,
 html[data-locale="hi"] .site-footer .text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+html[data-locale="hi"] .site-footer .grid .text-sm { font-size: 0.9375rem; }
 html[data-locale="kn"] .site-footer .leading-relaxed,
 html[data-locale="hi"] .site-footer .leading-relaxed { line-height: 1.625; }
 html[data-locale="kn"] .site-footer :is(p, li, dd, dt, h1, h2, h3, h4, h5, h6),
@@ -165,7 +166,7 @@ html[data-locale="hi"] .footer-back-to-top { font-size: 0.875rem; line-height: 1
 html[data-locale="kn"] .localized-chip-label,
 html[data-locale="hi"] .localized-chip-label { position: relative; top: 2px; }
 
-/* Activity cards and their detail dialog should retain the English type scale and alignment. */
+/* Keep activity cards aligned while allowing targeted localized type adjustments. */
 html[data-locale="kn"] .activity-dialog-copy,
 html[data-locale="hi"] .activity-dialog-copy { position: relative; top: 2px; text-align: left; }
 html[data-locale="kn"] .activity-card { text-align: left; }
@@ -204,6 +205,8 @@ html[data-locale="hi"] .activity-dialog-copy p,
 html[data-locale="kn"] .activity-dialog-copy li:not(.activity-dialog-meta),
 html[data-locale="hi"] .activity-dialog-copy li:not(.activity-dialog-meta) { line-height: 1.625; }
 
+html[data-locale="hi"] .activity-card-summary { font-size: 1.0625rem; }
+
 html[data-locale="kn"] .activity-card-title,
 html[data-locale="hi"] .activity-card-title { line-height: 1.75rem; }
 html[data-locale="kn"] .activity-dialog-title,
@@ -226,6 +229,24 @@ html[data-locale="kn"] #faq [data-radix-collection-item],
 html[data-locale="hi"] #faq [data-radix-collection-item] {
   justify-content: space-between;
   text-align: left;
+}
+
+html[data-locale="hi"] #faq .faq-question {
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
+html[data-locale="hi"] #faq .faq-answer {
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+
+html[data-locale="hi"] #journey .journey-activity-copy {
+  font-size: 1.0625rem;
+}
+
+html[data-locale="hi"] .cleanup-feature-description {
+  font-size: 1.125rem;
 }
 
 /* Letter spacing breaks the natural shaping of Kannada and Devanagari. */
@@ -347,6 +368,49 @@ html[data-locale="hi"] [class*="tracking-"] { letter-spacing: normal; }
 }
 .hero-rise {
   animation: hero-rise 0.5s ease-out both;
+}
+
+/* Hindi impact labels and founder biographies need a little more room for legibility. */
+html[data-locale="hi"] .impact-stat-label {
+  font-size: 1.125rem;
+}
+
+html[data-locale="hi"] .impact-intro-copy {
+  font-size: 1.125rem;
+}
+
+html[data-locale="hi"] .impact-section {
+  padding-block: 4rem;
+}
+
+html[data-locale="hi"] .impact-intro-copy {
+  margin-bottom: 2.5rem;
+}
+
+html[data-locale="hi"] .impact-stat-grid {
+  row-gap: 1rem;
+}
+
+html[data-locale="hi"] .impact-cta {
+  margin-top: 2rem;
+}
+
+html[data-locale="hi"] .about-teaser-copy {
+  font-size: 1.1875rem;
+}
+
+html[data-locale="hi"] .gallery-intro-copy {
+  font-size: 1.125rem;
+}
+
+html[data-locale="hi"] .founder-bio-copy {
+  font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+  html[data-locale="hi"] .founder-bio-copy {
+    font-size: 1.125rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

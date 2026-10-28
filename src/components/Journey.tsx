@@ -112,7 +112,7 @@ const Journey = () => {
                     {m.activities.map((a) => (
                       <li key={a} className="flex gap-3 border-b border-border/60 pb-2 text-[15px] font-medium leading-6 text-muted-foreground last:border-0 last:pb-0">
                         <span className="mt-[0.6rem] h-1.5 w-1.5 shrink-0 rounded-full bg-primary/70" aria-hidden="true" />
-                        <span className="min-w-0">{a}</span>
+                        <span className="journey-activity-copy min-w-0">{a}</span>
                       </li>
                     ))}
                   </ul>

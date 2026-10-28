@@ -45,7 +45,7 @@ const CleanUpDriveFeature = () => {
         <h3 id="cleanup-feature-title" className="mb-5 font-display text-3xl font-bold text-foreground md:text-4xl">
           Cleaner streets, healthier neighbourhoods
         </h3>
-        <p className="mb-8 leading-relaxed text-muted-foreground">{activity.description}</p>
+        <p className="cleanup-feature-description mb-8 leading-relaxed text-muted-foreground">{activity.description}</p>
 
         <div className="flex flex-col gap-3 sm:flex-row">
           <button

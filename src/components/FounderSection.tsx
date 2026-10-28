@@ -103,7 +103,7 @@ const FounderSection = ({ group, members, tone }: FounderSectionProps) => {
                   <p className="mt-3 inline-flex w-fit rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary md:text-base">{person.role}</p>
 
                   {body.length > 0 && (
-                    <div className="mt-6 max-w-prose space-y-4 text-sm leading-relaxed text-foreground/80 md:text-base">
+                    <div className="founder-bio-copy mt-6 max-w-prose space-y-4 text-sm leading-relaxed text-foreground/80 md:text-base">
                       {body.map((paragraph) => (
                         <p key={paragraph}>{paragraph}</p>
                       ))}

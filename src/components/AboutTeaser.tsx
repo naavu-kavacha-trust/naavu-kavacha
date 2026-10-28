@@ -30,7 +30,7 @@ const AboutTeaser = () => {
         >
           <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-primary">About Us</p>
           <h2 className="section-title mb-6">Who We Are</h2>
-          <div className="max-w-prose space-y-5 text-lg leading-relaxed text-muted-foreground">
+          <div className="about-teaser-copy max-w-prose space-y-5 text-lg leading-relaxed text-muted-foreground">
             {story.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
           </div>
           <div className="mt-10 flex flex-wrap gap-x-8 gap-y-4">

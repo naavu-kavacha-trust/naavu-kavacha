@@ -70,10 +70,10 @@ const FAQ = ({ showCta = true }: { showCta?: boolean }) => {
                 value={`item-${i}`}
                 className="border border-border rounded-xl bg-card px-6 data-[state=open]:shadow-sm"
               >
-                <AccordionTrigger className="font-display font-semibold text-left text-foreground hover:no-underline py-5">
+                <AccordionTrigger className="faq-question font-display font-semibold text-left text-foreground hover:no-underline py-5">
                   {item.q}
                 </AccordionTrigger>
-                <AccordionContent className="border-t border-border/80 pt-4 pb-6 text-base leading-7 text-foreground/85">
+                <AccordionContent className="faq-answer border-t border-border/80 pt-4 pb-6 text-base leading-7 text-foreground/85">
                   {item.a}
                 </AccordionContent>
               </AccordionItem>
