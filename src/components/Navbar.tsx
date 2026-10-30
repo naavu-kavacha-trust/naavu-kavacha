@@ -303,7 +303,7 @@ const Navbar = () => {
                 className="flex min-h-11 flex-1 items-center justify-center gap-2 rounded-full border border-border text-sm font-medium text-foreground/80 transition-colors hover:bg-muted"
               >
                 <Instagram className="h-4 w-4" aria-hidden="true" />
-                Instagram
+                <span className="navbar-mobile-social-label">Instagram</span>
               </a>
               <button
                 type="button"
@@ -311,7 +311,7 @@ const Navbar = () => {
                 className="flex min-h-11 flex-1 items-center justify-center gap-2 rounded-full border border-border text-sm font-medium text-foreground/80 transition-colors hover:bg-muted"
               >
                 <Mail className="h-4 w-4" aria-hidden="true" />
-                Email Us
+                <span className="navbar-mobile-social-label">Email Us</span>
               </button>
             </div>
           </div>

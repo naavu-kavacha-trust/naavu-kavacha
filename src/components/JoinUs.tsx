@@ -56,7 +56,7 @@ const JoinUs = () => {
               </div>
             </div>
 
-              <p className="mt-6 text-lg leading-relaxed text-foreground/85">
+              <p className="join-us-team-copy mt-6 text-lg leading-relaxed text-foreground/85">
               Students, teachers, schools and organisations are all welcome. Fill in the form and
               we'll get in touch.
             </p>

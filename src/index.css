@@ -22,6 +22,9 @@ html[data-locale="kn"] .navbar-desktop-label {
   top: 1px;
   display: inline-block;
 }
+@media (max-width: 1279px) {
+  html[data-locale="kn"] .navbar-mobile-social-label { position: relative; top: 3px; }
+}
 html[data-locale="kn"] a[class*="rounded-full"] > .navbar-volunteer-label {
   position: relative;
   top: 2px;
@@ -84,7 +87,7 @@ html[data-locale="hi"] :is(button, [role="button"], a[class*="rounded-full"], a[
   justify-content: center;
   text-align: center;
 }
-html[data-locale="kn"] :is(button, [role="button"], a[class*="rounded-full"], a[class*="rounded-xl"]) > span:not([aria-hidden="true"]):not(.home-cta-label):not(.section-cta-label):not(.join-us-whatsapp-label):not(.volunteer-submit-label):not(.radio-group-indicator):not(.checkbox-indicator) {
+html[data-locale="kn"] :is(button, [role="button"], a[class*="rounded-full"], a[class*="rounded-xl"]) > span:not([aria-hidden="true"]):not(.home-cta-label):not(.section-cta-label):not(.join-us-whatsapp-label):not(.volunteer-submit-label):not(.navbar-mobile-social-label):not(.radio-group-indicator):not(.checkbox-indicator) {
   position: relative;
   top: 2px;
 }
@@ -196,6 +199,7 @@ html[data-locale="hi"] .footer-back-to-top { font-size: 0.875rem; line-height: 1
 html[data-locale="kn"] .join-us-actions { align-items: center; }
 @media (max-width: 639px) {
   html[data-locale="kn"] .join-us-actions { align-items: stretch; }
+  html[data-locale="kn"] .join-us-team-copy { text-align: center; }
 }
 @media (min-width: 640px) and (max-width: 1023px) {
   html[data-locale="kn"] .join-us-actions { justify-content: center; }
