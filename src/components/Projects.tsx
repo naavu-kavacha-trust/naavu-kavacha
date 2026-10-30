@@ -24,12 +24,12 @@ const Projects = () => {
   );
 
   return (
-    <section id="projects" className="section-padding bg-background">
+    <section id="projects" className="section-padding bg-background pt-12">
       <div ref={ref} className="mx-auto max-w-7xl">
         <div className="mb-10 text-center">
           <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-primary">Our Reach</p>
           <h2 className="section-title">Projects &amp; Activities</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
+          <p className="projects-description mx-auto mt-4 max-w-2xl text-muted-foreground">
             Tap any activity to see where we have worked, what we do and how you can help.
           </p>
         </div>
@@ -48,13 +48,13 @@ const Projects = () => {
                 aria-pressed={active}
                 onClick={() => setFilter(f)}
                 className={cn(
-                  "min-h-11 rounded-full border px-5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+                  "activity-filter-button min-h-11 rounded-full border px-5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                   active
                     ? "border-primary bg-primary text-primary-foreground"
                     : "border-border bg-card text-foreground hover:border-primary/50 hover:bg-secondary/60",
                 )}
               >
-                {f}
+                <span className="activity-filter-label">{f}</span>
               </button>
             );
           })}

@@ -56,7 +56,7 @@ const GalleryPreview = ({ images = galleryImages }: { images?: GalleryImage[] })
               to={ROUTES.gallery}
               className="inline-flex min-h-12 items-center rounded-full border border-primary px-8 py-3 text-sm font-medium text-primary transition-colors hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
-              View the full gallery
+              <span className="home-cta-label">View the full gallery</span>
             </Link>
           </div>
         </motion.div>

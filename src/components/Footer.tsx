@@ -106,7 +106,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-12 flex flex-col gap-4 border-t border-sand/15 pt-8 md:flex-row md:items-start md:justify-between">
-          <div className="space-y-1 text-xs text-sand/70">
+          <div className="footer-legal-copy space-y-1 text-xs text-sand/70">
             <p>&copy; {new Date().getFullYear()} NAAVU KAVACHA. All rights reserved.</p>
             <p>{LEGAL_ENTITY}</p>
           </div>

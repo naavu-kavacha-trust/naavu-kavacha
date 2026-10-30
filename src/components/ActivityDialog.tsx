@@ -211,7 +211,7 @@ const ActivityDialog = ({
                 <div className="activity-dialog-copy space-y-6 px-5 py-6 text-left sm:px-8">
                   <header>
                     <span className="activity-dialog-category inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
-                      {activity.category}
+                      <span className="activity-dialog-category-label">{activity.category}</span>
                     </span>
                     <DialogTitle
                       ref={setTitleRef}
@@ -293,7 +293,7 @@ const ActivityDialog = ({
                               onClick={() => onSelectRelated(r.id)}
                               className="min-h-11 rounded-full border border-border bg-card px-4 text-base font-medium text-foreground transition-colors hover:border-primary/50 hover:bg-secondary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                             >
-                              {r.title}
+                              <span className="activity-dialog-related-label">{r.title}</span>
                             </button>
                           </li>
                         ))}
@@ -311,7 +311,7 @@ const ActivityDialog = ({
                 >
                   <span className="inline-flex items-center gap-1.5">
                     Volunteer for this activity
-                    <ArrowRight className="h-[18px] w-[18px] shrink-0" aria-hidden="true" />
+                    <ArrowRight className="relative -top-[3px] h-[18px] w-[18px] shrink-0" aria-hidden="true" />
                   </span>
                 </button>
               </div>

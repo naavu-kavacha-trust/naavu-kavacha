@@ -33,7 +33,7 @@ const FuturePlans = () => {
               className="flex items-center gap-4 bg-background rounded-xl p-5 border border-border hover:border-primary/30 transition-colors"
             >
               <plan.icon className="w-6 h-6 text-primary flex-shrink-0" strokeWidth={1.5} />
-              <p className="font-medium text-foreground text-sm">{plan.title}</p>
+              <p className="future-plan-label font-medium text-foreground text-sm">{plan.title}</p>
             </motion.div>
           ))}
         </div>

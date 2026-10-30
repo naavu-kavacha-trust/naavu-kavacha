@@ -44,7 +44,9 @@ const LegalDocumentView = ({ hero, content }: LegalDocumentViewProps) => {
 
   return (
     <>
-      <PageHero {...hero} />
+      <div className="legal-page-hero">
+        <PageHero {...hero} />
+      </div>
 
       <section className="section-padding bg-background">
         <div className="mx-auto max-w-3xl">

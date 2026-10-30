@@ -16,7 +16,7 @@ const WhatWeDo = () => {
   const centreLast = items.length % 3 === 1;
 
   return (
-    <section id={SECTION_IDS.whatWeDo} className="section-padding bg-background">
+    <section id={SECTION_IDS.whatWeDo} className="section-padding bg-background pb-12">
       <div ref={ref} className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
           <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-primary">Our Work</p>

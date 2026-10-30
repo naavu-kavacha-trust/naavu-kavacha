@@ -22,6 +22,10 @@ html[data-locale="kn"] .navbar-desktop-label {
   top: 1px;
   display: inline-block;
 }
+html[data-locale="kn"] a[class*="rounded-full"] > .navbar-volunteer-label {
+  position: relative;
+  top: 2px;
+}
 /* Give Hindi labels and compact copy a slight boost, with a smaller step on phones. */
 html[data-locale="hi"] .text-xs { font-size: 0.9375rem; }
 html[data-locale="hi"] .text-sm { font-size: 1rem; }
@@ -47,10 +51,18 @@ html[data-locale="hi"] :is(h1, h2, h3, h4, h5, h6) { line-height: 1.3; }
 /* Keep translated footer copy on the same type scale and rhythm as English. */
 html[data-locale="kn"] .site-footer,
 html[data-locale="hi"] .site-footer { line-height: 1.5; }
-html[data-locale="kn"] .site-footer .text-xs,
-html[data-locale="hi"] .site-footer .text-xs { font-size: 0.75rem; line-height: 1rem; }
-html[data-locale="kn"] .site-footer .text-sm,
-html[data-locale="hi"] .site-footer .text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+@media (max-width: 767px) {
+  html[data-locale="kn"] .site-footer {
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+  }
+}
+html[data-locale="kn"] .site-footer .text-xs { font-size: calc(0.75rem + 1px); line-height: 1rem; }
+html[data-locale="hi"] .site-footer .text-xs { font-size: calc(0.75rem + 1px); line-height: 1rem; }
+html[data-locale="kn"] .site-footer .text-sm { font-size: calc(0.875rem + 1px); line-height: 1.25rem; }
+html[data-locale="hi"] .site-footer .text-sm { font-size: calc(0.875rem + 1px); line-height: 1.25rem; }
+html[data-locale="kn"] .site-footer .footer-legal-copy,
+html[data-locale="hi"] .site-footer .footer-legal-copy { font-size: 0.75rem; line-height: 1rem; }
 html[data-locale="hi"] .site-footer .grid .text-sm { font-size: 0.9375rem; }
 html[data-locale="kn"] .site-footer .leading-relaxed,
 html[data-locale="hi"] .site-footer .leading-relaxed { line-height: 1.625; }
@@ -63,6 +75,14 @@ html[data-locale="hi"] :is(button, [role="button"], a[class*="rounded-full"], a[
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+html[data-locale="kn"] :is(button, [role="button"], a[class*="rounded-full"], a[class*="rounded-xl"]) > span:not([aria-hidden="true"]):not(.home-cta-label):not(.section-cta-label):not(.join-us-whatsapp-label):not(.volunteer-submit-label):not(.radio-group-indicator):not(.checkbox-indicator) {
+  position: relative;
+  top: 2px;
+}
+html[data-locale="kn"] .home-cta-label {
+  position: relative;
+  top: 1px;
 }
 html[data-locale="en"] #what-we-do-preview .localized-action-label {
   position: relative;
@@ -155,17 +175,29 @@ html[data-locale] .localized-language-picker option[value="en"] {
   }
 }
 html[data-locale="kn"] .localized-action-label,
-html[data-locale="hi"] .localized-action-label { position: relative; top: 1px; }
-html[data-locale="kn"] .join-us-action-label,
+html[data-locale="kn"] .join-us-action-label { position: relative; top: 2px; }
+html[data-locale="hi"] .localized-action-label,
 html[data-locale="hi"] .join-us-action-label { position: relative; top: 1px; }
 html[data-locale="kn"] .volunteer-band-label { position: relative; top: 2px; }
 html[data-locale="hi"] .volunteer-band-label { position: relative; top: 0; }
+html[data-locale="kn"] .volunteer-submit-label { position: relative; top: 2px; }
 html[data-locale="kn"] .footer-back-to-top,
 html[data-locale="hi"] .footer-back-to-top { font-size: 0.875rem; line-height: 1.25rem; }
-
+html[data-locale="kn"] button.footer-back-to-top > span {
+  position: relative;
+  top: 2px;
+  transform: translateY(-1px);
+}
+html[data-locale="kn"] .future-plan-label {
+  transform: translateY(2px);
+}
+html[data-locale="kn"] #future .section-cta-label {
+  position: relative;
+  top: 2px;
+}
 html[data-locale="kn"] .localized-chip-label,
 html[data-locale="hi"] .localized-chip-label { position: relative; top: 2px; }
-
+html[data-locale="kn"] .activity-filter-label { position: relative; top: 2px; }
 /* Keep activity cards aligned while allowing targeted localized type adjustments. */
 html[data-locale="kn"] .activity-dialog-copy,
 html[data-locale="hi"] .activity-dialog-copy { position: relative; top: 2px; text-align: left; }
@@ -193,10 +225,23 @@ html[data-locale="hi"] .activity-dialog-section-label {
 html[data-locale="hi"] .activity-dialog-category,
 html[data-locale="hi"] .activity-dialog-meta,
 html[data-locale="hi"] .activity-dialog-small-label { font-size: calc(0.875rem + 0.5px); }
+html[data-locale="kn"] .activity-dialog-category-label {
+  position: relative;
+  top: 2px;
+}
 html[data-locale="hi"] .activity-dialog-summary,
 html[data-locale="hi"] .activity-dialog-copy p,
 html[data-locale="hi"] .activity-dialog-copy li:not(.activity-dialog-meta),
 html[data-locale="hi"] .activity-dialog-copy button { font-size: calc(1rem + 0.5px); }
+html[data-locale="kn"] .activity-card,
+html[data-locale="kn"] .activity-dialog-copy {
+  word-spacing: 0.08em;
+}
+html[data-locale="kn"] .activity-dialog-summary,
+html[data-locale="kn"] .activity-dialog-copy p,
+html[data-locale="kn"] .activity-dialog-copy li:not(.activity-dialog-meta) {
+  font-size: calc(1rem + 0.5px);
+}
 
 html[data-locale="kn"] .activity-card-summary,
 html[data-locale="hi"] .activity-card-summary,
@@ -205,7 +250,15 @@ html[data-locale="hi"] .activity-dialog-copy p,
 html[data-locale="kn"] .activity-dialog-copy li:not(.activity-dialog-meta),
 html[data-locale="hi"] .activity-dialog-copy li:not(.activity-dialog-meta) { line-height: 1.625; }
 
+html[data-locale="kn"] .activity-card-summary { font-size: calc(0.9375rem + 0.5px); }
 html[data-locale="hi"] .activity-card-summary { font-size: 1.0625rem; }
+html[data-locale="kn"] #projects .projects-description { font-size: 1.125rem; }
+html[data-locale="kn"] .activity-dialog-location-label,
+html[data-locale="kn"] .activity-dialog-small-label { font-size: calc(0.875rem + 1px); }
+html[data-locale="kn"] .activity-dialog-related-label {
+  position: relative;
+  top: 2px;
+}
 
 html[data-locale="kn"] .activity-card-title,
 html[data-locale="hi"] .activity-card-title { line-height: 1.75rem; }
@@ -223,6 +276,12 @@ html[data-locale="kn"] .activity-card li,
 html[data-locale="hi"] .activity-card li { line-height: 1.5; }
 html[data-locale="kn"] .activity-dialog-location-label,
 html[data-locale="hi"] .activity-dialog-location-label { display: inline-block; position: relative; top: 2px; }
+html[data-locale="kn"] .activity-location-label {
+  display: inline-block;
+  position: relative;
+  top: 2px;
+  font-size: calc(0.8125rem + 2px);
+}
 
 /* FAQ questions are reading prompts, so keep their text at the start of each row. */
 html[data-locale="kn"] #faq [data-radix-collection-item],
@@ -239,6 +298,11 @@ html[data-locale="hi"] #faq .faq-question {
 html[data-locale="hi"] #faq .faq-answer {
   font-size: 1.125rem;
   line-height: 1.7;
+}
+
+html[data-locale="kn"] #faq .faq-question,
+html[data-locale="kn"] #faq .faq-answer {
+  font-size: calc(1rem + 1px);
 }
 
 html[data-locale="hi"] #journey .journey-activity-copy {
@@ -374,9 +438,53 @@ html[data-locale="hi"] [class*="tracking-"] { letter-spacing: normal; }
 html[data-locale="hi"] .impact-stat-label {
   font-size: 1.125rem;
 }
+html[data-locale="kn"] .impact-stat-label {
+  font-size: 1.125rem;
+}
 
 html[data-locale="hi"] .impact-intro-copy {
   font-size: 1.125rem;
+}
+html[data-locale="kn"] .impact-eyebrow,
+html[data-locale="kn"] .impact-intro-copy {
+  font-size: 1.25rem;
+}
+html[data-locale="kn"] .oath-copy {
+  font-size: 1.25rem;
+}
+html[data-locale="kn"] .legal-page-hero header > div > p:last-child {
+  font-size: calc(1rem + 1px);
+}
+html[data-locale="kn"] .gallery-intro-copy {
+  font-size: 1.125rem;
+  position: relative;
+  top: 4px;
+}
+html[data-locale="kn"] .gallery-eyebrow {
+  position: relative;
+  top: -2px;
+}
+html[data-locale="kn"] .gallery-title {
+  position: relative;
+  top: -2px;
+}
+/* Keep the enlarged Kannada copy readable without crowding narrow screens. */
+@media (max-width: 639px) {
+  html[data-locale="kn"] .activity-card,
+  html[data-locale="kn"] .activity-dialog-copy { word-spacing: 0.04em; }
+  html[data-locale="kn"] .impact-stat-label { font-size: 1rem; }
+  html[data-locale="kn"] .impact-eyebrow,
+  html[data-locale="kn"] .impact-intro-copy,
+  html[data-locale="kn"] .oath-copy { font-size: 1.125rem; }
+  html[data-locale="kn"] .gallery-intro-copy { font-size: 1.0625rem; }
+}
+@media (max-width: 359px) {
+  html[data-locale="kn"] .join-us-whatsapp-cta { padding-inline: 1rem; }
+  html[data-locale="kn"] .join-us-whatsapp-label {
+    font-size: 0.9375rem;
+    line-height: 1.3;
+    text-align: center;
+  }
 }
 
 html[data-locale="hi"] .impact-section {

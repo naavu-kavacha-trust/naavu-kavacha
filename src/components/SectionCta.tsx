@@ -16,7 +16,7 @@ const SectionCta = ({ message, label = "Join Us", className = "mt-14" }: Section
       to={ROUTES.volunteer}
       className="inline-flex min-h-12 items-center justify-center rounded-full bg-primary px-8 py-3.5 text-center text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
     >
-      {label}
+      <span className="section-cta-label">{label}</span>
     </Link>
   </div>
 );

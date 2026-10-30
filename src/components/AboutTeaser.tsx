@@ -45,7 +45,7 @@ const AboutTeaser = () => {
             to={ROUTES.about}
             className="mt-8 inline-flex min-h-12 items-center rounded-full bg-primary px-8 py-3.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
-            Our story &amp; team
+            <span className="home-cta-label">Our story &amp; team</span>
           </Link>
         </motion.div>
 

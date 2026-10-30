@@ -28,7 +28,7 @@ const ActivityCard = ({ activity }: { activity: Activity }) => {
           wrapperClassName="h-full"
           className="transition-transform duration-500 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
         />
-        <span className="activity-card-category absolute left-3 top-3 rounded-full bg-background/90 px-3 py-1 text-sm font-medium text-primary shadow-sm">
+        <span className="activity-card-category absolute left-3 top-3 rounded-full bg-background/90 px-3 pt-1 pb-0 text-sm font-medium text-primary shadow-sm">
           {activity.category}
         </span>
       </div>

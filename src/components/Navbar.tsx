@@ -210,7 +210,7 @@ const Navbar = () => {
             {...prefetchHandlers(ROUTES.volunteer)}
             className="navbar-volunteer-cta rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 aria-[current=page]:ring-2 aria-[current=page]:ring-primary/30 aria-[current=page]:ring-offset-2"
           >
-            Volunteer
+            <span className="navbar-volunteer-label">Volunteer</span>
           </Link>
           <LanguagePicker heroOverlay={transparent} />
         </div>
@@ -293,7 +293,7 @@ const Navbar = () => {
               }}
               className="flex min-h-11 items-center justify-center rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
             >
-              Volunteer
+              <span className="navbar-volunteer-label">Volunteer</span>
             </a>
             <div className="flex gap-3">
               <a

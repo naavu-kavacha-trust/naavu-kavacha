@@ -350,7 +350,9 @@ const VolunteerForm = () => {
             className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-primary px-8 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-70"
           >
             {sending && <Loader2 className="h-4 w-4 animate-spin motion-reduce:animate-none" aria-hidden="true" />}
-            {sending ? "Sending…" : status === "error" ? "Try again" : "Become a Volunteer"}
+            <span className="volunteer-submit-label">
+              {sending ? "Sending…" : status === "error" ? "Try again" : "Become a Volunteer"}
+            </span>
           </button>
 
           {!VOLUNTEER_ENDPOINT && (

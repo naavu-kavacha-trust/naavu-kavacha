@@ -18,7 +18,7 @@ const Impact = () => {
         <motion.p
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
-          className="mb-3 text-sm uppercase tracking-[0.2em] text-primary-foreground/90"
+          className="impact-eyebrow mb-3 text-sm uppercase tracking-[0.2em] text-primary-foreground/90"
         >
           Numbers That Matter
         </motion.p>

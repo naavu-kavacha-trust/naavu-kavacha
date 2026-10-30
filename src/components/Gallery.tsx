@@ -54,8 +54,8 @@ const Gallery = ({ images = galleryImages }: { images?: GalleryImage[] }) => {
           transition={{ duration: 0.6 }}
         >
           <div className="mb-10 text-center">
-            <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-primary">Our Gallery</p>
-            <h2 className="section-title">Moments from the Field</h2>
+            <p className="gallery-eyebrow mb-3 text-sm font-medium uppercase tracking-[0.2em] text-primary">Our Gallery</p>
+            <h2 className="gallery-title section-title">Moments from the Field</h2>
             <p className="gallery-intro-copy mx-auto mt-4 max-w-2xl text-muted-foreground">
               Seeds, saplings, clean-ups and the people behind them. Tap any photo to view it full screen.
             </p>

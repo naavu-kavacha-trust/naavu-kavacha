@@ -86,7 +86,7 @@ const Journey = () => {
         <div className="text-center mb-12">
           <p className="text-primary text-sm font-medium tracking-[0.2em] uppercase mb-3">Our Story</p>
           <h2 className="section-title">The Journey So Far</h2>
-          <p className="mt-3 text-muted-foreground">Growing change, one school and one small action at a time.</p>
+          <p className="mt-3 text-lg md:text-xl text-muted-foreground">Growing change, one school and one small action at a time.</p>
         </div>
 
         <div className="relative mx-auto max-w-5xl">
@@ -110,7 +110,7 @@ const Journey = () => {
                   <h3 className="mb-3 font-display text-xl font-semibold leading-snug text-foreground">{m.place}</h3>
                   <ul className="space-y-2">
                     {m.activities.map((a) => (
-                      <li key={a} className="flex gap-3 border-b border-border/60 pb-2 text-[15px] font-medium leading-6 text-muted-foreground last:border-0 last:pb-0">
+                      <li key={a} className="flex gap-3 border-b border-border/60 pb-2 text-base md:text-lg font-medium leading-7 text-muted-foreground last:border-0 last:pb-0">
                         <span className="mt-[0.6rem] h-1.5 w-1.5 shrink-0 rounded-full bg-primary/70" aria-hidden="true" />
                         <span className="journey-activity-copy min-w-0">{a}</span>
                       </li>
@@ -122,7 +122,7 @@ const Journey = () => {
           })}
         </div>
 
-        <p className="mt-10 text-center text-muted-foreground">The journey is still going. Walk the next stretch with us.</p>
+        <p className="mt-10 text-center text-lg md:text-xl text-muted-foreground">The journey is still going. Walk the next stretch with us.</p>
       </div>
     </section>
   );
