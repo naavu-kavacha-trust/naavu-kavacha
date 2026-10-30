@@ -30,7 +30,7 @@ const JoinUs = () => {
           <h2 className="mb-6 font-display text-3xl font-bold text-foreground md:text-4xl lg:text-5xl">
             Be Part of the Change
           </h2>
-          <p className="mx-auto max-w-xl text-lg leading-relaxed text-muted-foreground">
+          <p className="join-us-intro-copy mx-auto max-w-xl text-lg leading-relaxed text-muted-foreground">
             We invite volunteers, schools, and organizations to collaborate with Naavu Kavacha
             to protect the environment and build a sustainable future.
           </p>
@@ -61,7 +61,7 @@ const JoinUs = () => {
               we'll get in touch.
             </p>
 
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
+            <div className="join-us-actions mt-6 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
               <DeferredContactDialog
                 subject="Partnership Inquiry"
                 title="Partner with Naavu Kavacha"
