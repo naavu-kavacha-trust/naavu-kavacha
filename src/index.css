@@ -36,10 +36,18 @@ html[data-locale="hi"] p.text-primary.text-sm.uppercase { font-size: calc(1rem +
   html[data-locale="hi"] .text-sm { font-size: 1.03125rem; }
   html[data-locale="hi"] p.text-primary.text-sm.uppercase { font-size: calc(1.03125rem + 2px); }
 }
-html[data-locale="kn"] .hero-eyebrow { font-size: 1.0625rem; }
-html[data-locale="hi"] .hero-eyebrow { font-size: calc(1rem + 4px); }
+html[data-locale="kn"] .hero-eyebrow { font-size: 1.1875rem; }
+html[data-locale="kn"] .hero-description { font-size: 1.125rem; }
+html[data-locale="en"] .hero-eyebrow { font-size: 1rem; }
+html[data-locale="en"] .hero-description,
+html[data-locale="hi"] .hero-description { font-size: 1.125rem; }
+html[data-locale="hi"] .hero-eyebrow { font-size: calc(1rem + 6px); }
 @media (min-width: 768px) {
-  html[data-locale="kn"] .hero-eyebrow { font-size: 1.125rem; }
+  html[data-locale="kn"] .hero-eyebrow { font-size: 1.25rem; }
+  html[data-locale="kn"] .hero-description { font-size: 1.25rem; }
+  html[data-locale="en"] .hero-eyebrow { font-size: 1.125rem; }
+  html[data-locale="en"] .hero-description,
+  html[data-locale="hi"] .hero-description { font-size: 1.25rem; }
 }
 html[data-locale="kn"],
 html[data-locale="hi"] { line-height: 1.6; }
@@ -476,6 +484,7 @@ html[data-locale="kn"] .gallery-title {
   html[data-locale="kn"] .impact-eyebrow,
   html[data-locale="kn"] .impact-intro-copy,
   html[data-locale="kn"] .oath-copy { font-size: 1.125rem; }
+  html[data-locale="kn"] .hero-eyebrow { font-size: 1.09375rem; }
   html[data-locale="kn"] .gallery-intro-copy { font-size: 1.0625rem; }
 }
 @media (max-width: 359px) {
