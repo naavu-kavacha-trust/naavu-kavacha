@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Scale the desktop layout for laptop-sized CSS viewports, regardless of OS or display scaling. */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  html { font-size: 90%; }
+}
+
 html[data-locale="kn"] body { font-family: "Noto Sans Kannada", Inter, sans-serif; }
 html[data-locale="hi"] body { font-family: "Noto Sans Devanagari", Inter, sans-serif; }
 html[data-locale-pending="true"] #root { visibility: hidden; }
