@@ -3,7 +3,7 @@ import type { MessageCatalog } from "../types";
 const uiKn: MessageCatalog = {
   "Who We Are": "ನಮ್ಮ ಪರಿಚಯ",
   "The Journey So Far": "ಇಲ್ಲಿಯವರೆಗಿನ ಪಯಣ",
-  "Growing change, one school and one small action at a time.": "ಒಂದು ಶಾಲೆ, ಒಂದು ಸಣ್ಣ ಹೆಜ್ಜೆ—ಹೀಗೆ ಬದಲಾವಣೆ ಬೆಳೆಸುತ್ತಾ.",
+  "Growing change, one school and one small action at a time.": "ಒಂದು ಶಾಲೆ, ಒಂದು ಸಣ್ಣ ಕಾರ್ಯದ ಮೂಲಕ ಬದಲಾವಣೆಯನ್ನು ಬೆಳೆಸುತ್ತಾ…",
   "The journey is still going. Walk the next stretch with us.": "ನಮ್ಮ ಪಯಣ ಮುಂದುವರಿದಿದೆ. ಮುಂದಿನ ಹೆಜ್ಜೆಯಲ್ಲಿ ನಮ್ಮೊಂದಿಗೆ ನಡೆಯಿರಿ.",
   "What Guides Us": "ನಮ್ಮನ್ನು ಮುನ್ನಡೆಸುವ ಮೌಲ್ಯಗಳು",
   "Projects & Activities": "ಯೋಜನೆಗಳು ಮತ್ತು ಚಟುವಟಿಕೆಗಳು",
