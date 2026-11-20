@@ -16,7 +16,7 @@ import { cn } from "@/lib/utils";
 // The viewer is only needed once a photo is tapped; it loads in its own chunk after first paint.
 const Lightbox = lazy(() => import("@/components/Lightbox"));
 
-const AUTOPLAY_DELAY_MS = 250;
+const AUTOPLAY_DELAY_MS = 8000;
 /** Shown instead of photos until the first ones are added. */
 const PLACEHOLDER_COUNT = 3;
 
