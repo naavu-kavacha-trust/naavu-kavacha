@@ -35,6 +35,10 @@ Explore the initiative through these pages:
 
 The site is built with React, TypeScript, Vite, Tailwind CSS, and React Router. It includes responsive layouts, optimized images, and page metadata for search and social sharing. The build creates route-specific metadata for all six secondary pages.
 
+## Languages
+
+The website is available in English, Kannada (ಕನ್ನಡ), and Hindi (हिन्दी). Visitors can change languages with the language selector. Kannada and Hindi pages use the `/kn/` and `/hi/` URL prefixes, respectively.
+
 ## Run locally
 
 Requirements: Node.js 18 or newer and npm.
