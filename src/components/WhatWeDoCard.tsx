@@ -65,10 +65,10 @@ const WhatWeDoCard = ({
         <p className="text-base leading-relaxed text-foreground">{description}</p>
         <span
           aria-hidden="true"
-          className="mt-auto inline-flex items-center gap-1 pt-5 text-base font-medium text-primary"
+          className="mt-auto inline-flex items-baseline gap-1.5 pt-5 text-base font-medium text-primary"
         >
           Learn more
-          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 motion-reduce:transition-none" />
+          <ArrowRight className="relative top-[2px] h-[18px] w-[18px] shrink-0 transition-transform group-hover:translate-x-1 motion-reduce:transition-none" />
         </span>
       </div>
     </article>

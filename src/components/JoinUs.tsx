@@ -30,7 +30,7 @@ const JoinUs = () => {
           <h2 className="mb-6 font-display text-3xl font-bold text-foreground md:text-4xl lg:text-5xl">
             Be Part of the Change
           </h2>
-          <p className="mx-auto max-w-xl text-lg leading-relaxed text-muted-foreground">
+          <p className="join-us-intro-copy mx-auto max-w-xl text-lg leading-relaxed text-muted-foreground">
             We invite volunteers, schools, and organizations to collaborate with Naavu Kavacha
             to protect the environment and build a sustainable future.
           </p>
@@ -56,12 +56,12 @@ const JoinUs = () => {
               </div>
             </div>
 
-              <p className="mt-6 text-lg leading-relaxed text-foreground/85">
+              <p className="join-us-team-copy mt-6 text-lg leading-relaxed text-foreground/85">
               Students, teachers, schools and organisations are all welcome. Fill in the form and
               we'll get in touch.
             </p>
 
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
+            <div className="join-us-actions mt-6 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
               <DeferredContactDialog
                 subject="Partnership Inquiry"
                 title="Partner with Naavu Kavacha"
@@ -72,17 +72,17 @@ const JoinUs = () => {
                   type="button"
                   className="inline-flex min-h-12 items-center justify-center rounded-full border border-primary/35 bg-primary/5 px-7 py-3 text-sm font-semibold text-primary shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/50 hover:bg-primary/10 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                 >
-                  Partner Up
+                  <span className="join-us-action-label">Partner Up</span>
                 </button>
               </DeferredContactDialog>
               <a
                 href={WHATSAPP_CHANNEL_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground shadow-md shadow-primary/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                className="join-us-whatsapp-cta inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground shadow-md shadow-primary/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               >
                 <WhatsAppIcon className="h-5 w-5 shrink-0" />
-                Join our WhatsApp channel
+                <span className="join-us-whatsapp-label">Join our WhatsApp channel</span>
               </a>
             </div>
           </motion.div>

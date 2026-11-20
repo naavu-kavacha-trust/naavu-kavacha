@@ -4,6 +4,7 @@ import { AnimatePresence, m as motion, useReducedMotion, type PanInfo } from "fr
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import SmartImage from "@/components/ui/SmartImage";
 import { cn } from "@/lib/utils";
+import { useLocale } from "@/i18n/LocaleProvider";
 
 export interface LightboxImage {
   src: string;
@@ -34,6 +35,7 @@ const controlClass =
  * behind cannot scroll.
  */
 const Lightbox = ({ images, index, onIndexChange, onClose, returnFocusTo }: LightboxProps) => {
+  const { locale } = useLocale();
   const reduceMotion = useReducedMotion();
   const open = index !== null && images.length > 0;
   const count = images.length;
@@ -115,9 +117,14 @@ const Lightbox = ({ images, index, onIndexChange, onClose, returnFocusTo }: Ligh
           <div className="pointer-events-none absolute inset-x-0 top-0 z-10 flex items-start justify-between p-4 pt-[max(1rem,env(safe-area-inset-top))]">
             <p
               aria-hidden="true"
-              className="rounded-full bg-white/15 px-3 py-1.5 text-sm font-medium tabular-nums backdrop-blur"
+              className="m-0 inline-flex h-9 min-w-[4.5rem] items-center justify-center rounded-full bg-white/15 px-3 text-center text-sm font-medium leading-none tabular-nums backdrop-blur"
             >
-              {lastIndexRef.current + 1} / {count}
+              <span
+                className={locale === "kn" ? "translate-y-[3px]" : ""}
+                style={locale === "kn" ? { fontSize: "calc(1em - 1px)" } : undefined}
+              >
+                {lastIndexRef.current + 1} / {count}
+              </span>
             </p>
             <DialogPrimitive.Close
               aria-label="Close photo viewer"

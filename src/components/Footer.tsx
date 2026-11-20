@@ -24,7 +24,7 @@ const linkClass =
 
 const Footer = () => {
   return (
-    <footer id="contact" className="bg-bark px-6 pt-16 pb-28 md:px-12 md:pb-24 md:pt-16 lg:px-20">
+    <footer id="contact" className="site-footer bg-bark px-6 pt-16 pb-28 md:px-12 md:pb-24 md:pt-16 lg:px-20">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-12 md:grid-cols-[1fr_auto] md:gap-16 lg:gap-28">
           {/* Brand, short description and social links */}
@@ -78,10 +78,12 @@ const Footer = () => {
               <button
                 type="button"
                 onClick={() => window.scrollTo({ top: 0 })}
-                className={`${linkClass} gap-1.5 rounded-xl border border-sand/25 bg-sand/5 px-4 hover:border-leaf/60 hover:bg-sand/10`}
+                className={`${linkClass} footer-back-to-top relative -top-[3px] rounded-xl border border-sand/25 bg-sand/5 px-4 hover:border-leaf/60 hover:bg-sand/10`}
               >
-                Back to top
-                <ArrowUp className="h-4 w-4" aria-hidden="true" />
+                <span className="inline-flex items-baseline gap-1.5">
+                  Back to top
+                  <ArrowUp className="relative top-[3px] h-4 w-4" aria-hidden="true" />
+                </span>
               </button>
             </div>
           </div>
@@ -104,7 +106,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-12 flex flex-col gap-4 border-t border-sand/15 pt-8 md:flex-row md:items-start md:justify-between">
-          <div className="space-y-1 text-xs text-sand/70">
+          <div className="footer-legal-copy space-y-1 text-xs text-sand/70">
             <p>&copy; {new Date().getFullYear()} NAAVU KAVACHA. All rights reserved.</p>
             <p>{LEGAL_ENTITY}</p>
           </div>

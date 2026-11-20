@@ -45,7 +45,7 @@ const CleanUpDriveFeature = () => {
         <h3 id="cleanup-feature-title" className="mb-5 font-display text-3xl font-bold text-foreground md:text-4xl">
           Cleaner streets, healthier neighbourhoods
         </h3>
-        <p className="mb-8 leading-relaxed text-muted-foreground">{activity.description}</p>
+        <p className="cleanup-feature-description mb-8 leading-relaxed text-muted-foreground">{activity.description}</p>
 
         <div className="flex flex-col gap-3 sm:flex-row">
           <button
@@ -54,14 +54,14 @@ const CleanUpDriveFeature = () => {
             onClick={(e) => openActivity(activity.id, e.currentTarget)}
             className="inline-flex min-h-12 items-center justify-center rounded-full border border-primary px-8 py-3 text-sm font-medium text-primary transition-colors hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
-            See Clean-Up Drives
+            <span className="cleanup-feature-action-label">See Clean-Up Drives</span>
           </button>
           <Link
             to={ROUTES.volunteer}
             onClick={() => prefill([activity.interestTag])}
             className="inline-flex min-h-12 items-center justify-center rounded-full bg-primary px-8 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
-            Join the next drive
+            <span className="cleanup-feature-action-label">Join the next drive</span>
           </Link>
         </div>
       </div>

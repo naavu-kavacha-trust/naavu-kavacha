@@ -4,7 +4,7 @@
  * Written for what this website actually does today:
  *  - it has one form (volunteer registration) and an email chooser; it has no accounts, payments or donations;
  *  - it sets no cookies of its own and has no analytics or advertising tools;
- *  - it loads its two fonts from Google Fonts;
+ *  - it loads fonts from Google Fonts (and loads a script font when a visitor selects Kannada or Hindi);
  *  - it shows photographs of events and (with consent) the names, roles, photos and bios of team members.
  *
  * If any of that changes (analytics, donations, a new form, a new service provider), update this file in the same
@@ -109,7 +109,7 @@ export const privacyPolicy: LegalDocument = {
         "Your details are seen by the Trust's trustees and the volunteers who coordinate events and are asked to keep them private. We share them with other people only in these cases:",
       ],
       items: [
-        "Service providers who help us run the site and collect forms, such as our web host, the tool that stores form submissions (for example a private online spreadsheet) and our email provider. They may only use the information to provide that service to us.",
+        "Google Apps Script receives volunteer form submissions, records them in Google Sheets and sends an email notification to the Trust. Google also provides the services that store and deliver those records and notifications. Our web host and email provider also process information to provide their services.",
         "Authorities, if the law requires it or if it is needed to protect someone's safety.",
         "A school or partner organisation, only when you have asked to volunteer through them or at an event with them, and only what they need.",
       ],
@@ -121,7 +121,7 @@ export const privacyPolicy: LegalDocument = {
       id: "how-the-form-works",
       heading: "How the volunteer form sends your details",
       paragraphs: [
-        "Depending on how the site is set up at the time, pressing the button either (a) sends your details directly to the Trust's private collection point, or (b) opens an email in your own email app or Gmail with your details already filled in. In case (b) nothing is sent to us until you press send in your email. The page tells you which of the two is happening.",
+        "When the volunteer form is connected, pressing the button sends your details to Google Apps Script. It records them in Google Sheets and automatically emails the Trust. If the form endpoint is not configured, or a submission cannot be sent, the page offers to open an email with your details filled in. In that case, nothing is sent until you press Send in your email app.",
         "A hidden field on the form is there only to catch automated spam. It is not stored.",
       ],
     },
@@ -129,7 +129,7 @@ export const privacyPolicy: LegalDocument = {
       id: "cookies",
       heading: "Cookies and tracking",
       paragraphs: [
-        "This site does not set cookies of its own, and it does not use advertising or analytics tools. It loads two typefaces from Google Fonts, so your browser asks Google's servers for those font files and Google can see your IP address when it does. If we add analytics in the future, we will say so here first.",
+        "This site does not set cookies of its own, and it does not use advertising or analytics tools. It loads fonts from Google Fonts, so your browser asks Google's servers for those font files and Google can see your IP address when it does. If we add analytics in the future, we will say so here first.",
       ],
     },
     {

@@ -3,6 +3,7 @@ import { LazyMotion } from "framer-motion";
 import { domMax } from "framer-motion";
 import ActivityDialogProvider from "@/components/ActivityDialogProvider";
 import VolunteerPrefillProvider from "@/components/VolunteerPrefillProvider";
+import { LocaleProvider } from "@/i18n/LocaleProvider";
 
 /**
  * Everything that must live above the routes, so the activity pop-up and the volunteer pre-selection work
@@ -11,7 +12,9 @@ import VolunteerPrefillProvider from "@/components/VolunteerPrefillProvider";
 const AppProviders = ({ children }: { children: ReactNode }) => (
   <LazyMotion features={domMax}>
     <VolunteerPrefillProvider>
-      <ActivityDialogProvider>{children}</ActivityDialogProvider>
+      <LocaleProvider>
+        <ActivityDialogProvider>{children}</ActivityDialogProvider>
+      </LocaleProvider>
     </VolunteerPrefillProvider>
   </LazyMotion>
 );

@@ -1,5 +1,7 @@
 import { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useLocale } from "@/i18n/LocaleProvider";
+import { localizedPath } from "@/i18n/types";
 import { getActivity, type Activity } from "@/data/activities";
 import { ROUTES, SECTION_IDS } from "@/data/siteConfig";
 import { ActivityDialogContext } from "@/hooks/use-activity-dialog";
@@ -39,6 +41,7 @@ const ActivityDialogProvider = ({ children }: { children: ReactNode }) => {
   const [activeId, setActiveId] = useState<string | null>(null);
   const { prefill } = useVolunteerPrefill();
   const navigate = useNavigate();
+  const { locale } = useLocale();
   const { pathname, hash } = useLocation();
 
   /** The element that opened the modal; focus goes back to it on close. */
@@ -96,7 +99,7 @@ const ActivityDialogProvider = ({ children }: { children: ReactNode }) => {
 
       if (goToVolunteerRef.current) {
         goToVolunteerRef.current = false;
-        navigate(ROUTES.volunteer);
+        navigate(localizedPath(locale, ROUTES.volunteer));
         return;
       }
 

@@ -15,7 +15,7 @@ const SpecialStory = () => {
   const oathInView = useInView(oathRef, { once: true, margin: "-100px" });
 
   return (
-    <section id={SECTION_IDS.specialMoments} className="section-padding bg-primary/5">
+    <section id={SECTION_IDS.specialMoments} className="section-padding bg-primary/5 pb-10 md:pb-20">
       <div ref={storyRef} className="mx-auto max-w-4xl text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -57,7 +57,7 @@ const SpecialStory = () => {
               {oathCopy.eyebrow}
             </p>
             <h3 className="section-title mb-6">{oathCopy.heading}</h3>
-            <div className="space-y-4 text-lg leading-relaxed text-muted-foreground">
+            <div className="oath-copy space-y-4 text-lg leading-relaxed text-muted-foreground">
               {oathCopy.paragraphs.map((p) => (
                 <p key={p}>{p}</p>
               ))}

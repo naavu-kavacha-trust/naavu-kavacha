@@ -34,7 +34,7 @@ const OurStory = ({ content = aboutContent }: { content?: AboutContent }) => {
         <motion.div initial={slide(-40)} animate={inView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.7 }}>
           <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-primary">Who We Are</p>
           <h2 className="section-title mb-8">Our Story</h2>
-          <div className="max-w-prose space-y-5 text-lg leading-relaxed text-muted-foreground">
+          <div className="our-story-copy max-w-prose space-y-5 text-lg leading-relaxed text-muted-foreground">
             {story.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}

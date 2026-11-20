@@ -54,10 +54,8 @@ export const teamMembers: TeamMember[] = [
     photo: "ajay-gowda-h.png",
     bio: "Ajay Gowda H is an environmentalist, student, and founder of Naavu Kavacha. He leads grassroots work across Karnataka, including seed conservation, plantation drives, lake and forest clean-ups, and community awareness initiatives. His work engages young people and communities in protecting nature and building a more sustainable future. Driven by a commitment to community development and youth empowerment, he inspires environmental responsibility and collective action. He envisions sustainable communities where conservation becomes a way of life.",
     order: 1,
-    // TODO(client): confirm in writing that Ajay agrees to his name and bio being published (and, if he is under 18,
-    // that a parent or guardian does). Set `consent: false` to hide him from the site at once.
     consent: true,
-    note: "Bio text supplied by the site owner in the project chat on 18 Oct 2026, and photo supplied on 20 Oct 2026, for the About page. Written consent from Ajay has not been confirmed.",
+    note: "Bio and photo supplied for the About page; the site owner confirmed consent for publication.",
   },
   {
     id: "nidhi-b-s",
@@ -67,10 +65,8 @@ export const teamMembers: TeamMember[] = [
     photo: "nidhi-b-s.png",
     bio: "Nidhi B S is a student, environmentalist, and co-founder of Naavu Kavacha. She supports grassroots initiatives across Karnataka through planning, community outreach, environmental awareness, plantation drives, and clean-ups. Her work helps engage communities in conservation and contributes to a greener, more sustainable future. She is dedicated to turning collective action into meaningful change and building communities where conservation becomes a way of life. Her discipline and dedication support the trust’s vision for a sustainable future.",
     order: 1,
-    // TODO(client): confirm in writing that Nidhi agrees to her name and bio being published (and, if she is under 18,
-    // that a parent or guardian does). Set `consent: false` to hide her from the site at once.
     consent: true,
-    note: "Bio text supplied by the site owner in the project chat on 18 Oct 2026, and photo supplied on 20 Oct 2026, for the About page. Written consent from Nidhi has not been confirmed.",
+    note: "Bio and photo supplied for the About page; the site owner confirmed consent for publication.",
   },
   {
     id: "shriya-a",
