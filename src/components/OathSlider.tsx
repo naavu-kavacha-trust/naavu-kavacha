@@ -1,5 +1,5 @@
 import { Suspense, lazy, useEffect, useMemo, useState } from "react";
-import AutoScroll from "embla-carousel-auto-scroll";
+import Autoplay from "embla-carousel-autoplay";
 import { Leaf } from "lucide-react";
 import {
   Carousel,
@@ -16,7 +16,7 @@ import { cn } from "@/lib/utils";
 // The viewer is only needed once a photo is tapped; it loads in its own chunk after first paint.
 const Lightbox = lazy(() => import("@/components/Lightbox"));
 
-const AUTO_SCROLL_SPEED = 0.5;
+const AUTOPLAY_DELAY_MS = 3000;
 /** Shown instead of photos until the first ones are added. */
 const PLACEHOLDER_COUNT = 3;
 
@@ -24,8 +24,8 @@ const slideClass = "basis-full pl-4 sm:basis-1/2 lg:basis-1/3";
 
 /**
  * Swipeable photo slider: one photo (with a peek of the next) on phones, two on
- * tablets, three on desktop. Loops continuously at a slow, steady pace and pauses
- * on hover. Tapping a photo opens it in the shared Lightbox.
+ * tablets, three on desktop. Advances every three seconds, loops, and pauses on
+ * hover. Tapping a photo opens it in the shared Lightbox.
  */
 const OathSlider = ({ images }: { images: OathImage[] }) => {
   const [api, setApi] = useState<CarouselApi>();
@@ -39,9 +39,8 @@ const OathSlider = ({ images }: { images: OathImage[] }) => {
     () =>
       hasPhotos
         ? [
-            AutoScroll({
-              speed: AUTO_SCROLL_SPEED,
-              startDelay: 0,
+            Autoplay({
+              delay: AUTOPLAY_DELAY_MS,
               stopOnInteraction: false,
               stopOnMouseEnter: true,
               stopOnFocusIn: false,
