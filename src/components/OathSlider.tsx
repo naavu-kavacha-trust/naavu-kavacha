@@ -1,6 +1,5 @@
 import { Suspense, lazy, useEffect, useMemo, useState } from "react";
 import Autoplay from "embla-carousel-autoplay";
-import { useReducedMotion } from "framer-motion";
 import { Leaf } from "lucide-react";
 import {
   Carousel,
@@ -17,7 +16,7 @@ import { cn } from "@/lib/utils";
 // The viewer is only needed once a photo is tapped; it loads in its own chunk after first paint.
 const Lightbox = lazy(() => import("@/components/Lightbox"));
 
-const AUTOPLAY_DELAY_MS = 3500;
+const AUTOPLAY_DELAY_MS = 250;
 /** Shown instead of photos until the first ones are added. */
 const PLACEHOLDER_COUNT = 3;
 
@@ -25,34 +24,30 @@ const slideClass = "basis-full pl-4 sm:basis-1/2 lg:basis-1/3";
 
 /**
  * Swipeable photo slider: one photo (with a peek of the next) on phones, two on
- * tablets, three on desktop. Slow autoplay that pauses on hover, focus and touch,
- * never runs with reduced motion. Tapping a photo
- * opens it in the shared Lightbox.
+ * tablets, three on desktop. Loops continuously, advancing every 250ms. Tapping
+ * a photo opens it in the shared Lightbox.
  */
 const OathSlider = ({ images }: { images: OathImage[] }) => {
-  const reduceMotion = useReducedMotion();
   const [api, setApi] = useState<CarouselApi>();
   const [snapCount, setSnapCount] = useState(0);
   const [selected, setSelected] = useState(0);
   const [viewer, setViewer] = useState<{ index: number; origin: HTMLElement | null } | null>(null);
 
   const hasPhotos = images.length > 0;
-  const autoplayOn = hasPhotos && !reduceMotion && viewer === null;
 
-  // No plugin at all when autoplay should be off, so nothing can restart it behind our back.
   const plugins = useMemo(
     () =>
-      autoplayOn
+      hasPhotos
         ? [
             Autoplay({
               delay: AUTOPLAY_DELAY_MS,
-              stopOnInteraction: false, // pause on touch/focus/hover, resume afterwards
+              stopOnInteraction: false,
               stopOnMouseEnter: true,
-              stopOnFocusIn: true,
+              stopOnFocusIn: false,
             }),
           ]
         : [],
-    [autoplayOn],
+    [hasPhotos],
   );
 
   useEffect(() => {
